@@ -1,0 +1,77 @@
+#NAV_1 {
+    bottom: 213px;
+    height: 53px;
+    left: 0px;
+    position: absolute;
+    right: 0px;
+    text-size-adjust: 100%;
+    top: 0px;
+    width: 1676px;
+    z-index: 98;
+    perspective-origin: 838px 26.5px;
+    transform-origin: 838px 26.5px;
+    background: rgba(255, 255, 255, 0.952941) none repeat scroll 0% 0% / auto padding-box border-box;
+    font: normal normal normal normal 16px / normal 'Source Sans Pro', sans-serif;
+}/*#NAV_1*/
+
+#FIGURE_2 {
+    bottom: -6px;
+    height: 28px;
+    left: 0px;
+    position: absolute;
+    right: 1617px;
+    text-indent: -9999px;
+    text-size-adjust: 100%;
+    top: 0px;
+    width: 28px;
+    perspective-origin: 17px 17px;
+    transform-origin: 17px 17px;
+    border: 3px solid rgb(32, 105, 169);
+    border-radius: 100% 100% 100% 100%;
+    font: normal normal normal normal 16px / normal 'Montserrat', sans-serif;
+    margin: 25px 0px 0px 25px;
+    transition: all 0.5s cubic-bezier(0.165, 0.63, 0.14, 0.82) 0s;
+}/*#FIGURE_2*/
+
+#A_3 {
+    color: rgb(51, 51, 51);
+    display: block;
+    height: 24px;
+    text-decoration: none;
+    text-indent: -9999px;
+    text-size-adjust: 100%;
+    width: 24px;
+    column-rule-color: rgb(51, 51, 51);
+    perspective-origin: 14px 14px;
+    transform-origin: 14px 14px;
+    background: rgb(32, 105, 169) url("https://b.svbtleusercontent.com/726orIKH4AqyFbORQWUrQqDXinaxU_medium.jpg") repeat scroll 0% 0% / 100% padding-box border-box;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 100% 100% 100% 100%;
+    font: normal normal normal normal 16px / normal 'Montserrat', sans-serif;
+    outline: rgb(51, 51, 51) none 0px;
+    transition: all 0.5s cubic-bezier(0.165, 0.63, 0.14, 0.82) 0s;
+}/*#A_3*/
+
+#H2_4 {
+    height: 23px;
+    text-size-adjust: 100%;
+    text-transform: uppercase;
+    width: 1606px;
+    perspective-origin: 803px 11.5px;
+    transform-origin: 803px 11.5px;
+    font: normal normal 900 normal 18px / normal 'Source Sans Pro', sans-serif;
+    margin: 30px 0px 0px 70px;
+    transition: all 0.2s cubic-bezier(0.165, 0.63, 0.14, 0.82) 0s;
+}/*#H2_4*/
+
+#A_5 {
+    color: rgb(32, 105, 169);
+    text-decoration: none;
+    text-size-adjust: 100%;
+    text-transform: uppercase;
+    column-rule-color: rgb(32, 105, 169);
+    border: 0px none rgb(32, 105, 169);
+    font: normal normal 900 normal 18px / normal 'Source Sans Pro', sans-serif;
+    outline: rgb(32, 105, 169) none 0px;
+    transition: all 0.2s cubic-bezier(0.165, 0.63, 0.14, 0.82) 0s;
+}/*#A_5*/
