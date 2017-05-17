@@ -1,0 +1,49 @@
+body {
+  font-family: "Catamaran", "HelveticaNeue", "Helvetica Neue", Helvetica, sans-serif;
+  font-weight: 300;
+  color: #222;
+  cursor: default;
+  user-select: none;
+}
+a {
+  color: #222;
+}
+.container.profile {
+  position:absolute;
+  bottom: 20%;
+  left: 15%;
+}
+h3 {
+  font-weight: 300;
+  line-height: 0;
+}
+.socials, .link {
+  margin-bottom: 0px;
+}
+.socials:hover {
+  cursor: pointer;
+}
+.socials > .appear {
+  display: inline-block;
+  width: 0px;
+  white-space: nowrap;
+  overflow: hidden;
+  transition: width 0.25s;
+  vertical-align: bottom;
+}
+.socials:hover > .appear {
+  width: 200px;
+}
+.link {
+  text-decoration: underline;
+}
+.link:hover {
+  cursor: pointer;
+  color: #1EAEDB;
+}
+@media screen (max-device-width : 667px) {
+  .container.profile {
+    bottom: 7%;
+    left: 7%;
+  }
+}
