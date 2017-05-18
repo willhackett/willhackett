@@ -35,7 +35,7 @@ class App extends Component {
               {link('https://willhackett.blog', 'willhackett.blog')}
             </p>
             <p className="socials" onMouseOver={() => { mixpanel.track('social hover') }}>
-              <u>@willhackett</u> <span className="appear"> &#8213; {link('https://twitter.com/willhackett', 'twitter')}, {link('https://instagram.com/willhackett', 'instagram')}, {link('https://linkedin.com/in/willhackett', 'linkedin')}.</span>
+              <u className="touch-target">@willhackett</u> <span className="appear"> &#8213; {link('https://twitter.com/willhackett', 'twitter')}, {link('https://instagram.com/willhackett', 'instagram')}, {link('https://linkedin.com/in/willhackett', 'linkedin')}.</span>
             </p>
             <p className="link" onClick={email}>
               hello@willhackett.com
