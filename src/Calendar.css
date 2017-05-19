@@ -43,6 +43,11 @@
   -webkit-transition: background-color 0.2s;
   transition: background-color 0.2s;
 }
+@media only screen and (max-width : 1500px) {
+  .calendar {
+    height: 80%
+  }
+}
 @media only screen and (max-width : 400px) {
   .display-calendar .container.profile {
     position: relative;
@@ -55,10 +60,5 @@
     left: 0;
     top: -150px;
     height: 1000px;
-  }
-}
-@media only screen and (max-width : 1500px) {
-  .calendar {
-    height: 80%
   }
 }
