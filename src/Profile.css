@@ -40,7 +40,7 @@ h5.focus > small {
   transition: max-width 0.25s;
   vertical-align: bottom;
 }
-.sub-link:hover > .appear {
+.sub-link.open > .appear {
   max-width: 80%;
 }
 .link {

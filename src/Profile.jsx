@@ -7,8 +7,11 @@ class Profile extends Component {
     super(props);
 
     this.state = {
-      title: false
+      title: false,
+      social: false,
+      contact: false
     }
+    this.timeout = {};
   }
   render() {
     const { mixpanel, toggleCalendar } = this.props;
@@ -17,6 +20,19 @@ class Profile extends Component {
     const email = () => {
       mixpanel.track('email click');
       window.location = 'mailto:hello@willhackett.com?subject=Greetings'
+    }
+
+    const toggle = (type, e) => {
+      mixpanel.track(`toggled ${type}`);
+      e.preventDefault();
+      this.setState({ [type]: !this.state[type] })
+    }
+
+    const mouseEnter = (type) => {
+      if (this.timeout[type]) clearTimeout(this.timeout[type]);
+    }
+    const mouseLeave = (type) => {
+      if (this.state[type]) this.timeout[type] = setTimeout(() => this.setState({ [type]: false }), 5000);
     }
 
     return (
@@ -41,11 +57,11 @@ class Profile extends Component {
           <p className="link" onMouseOver={() => { mixpanel.track('blog hover') }}>
             {link('https://willhackett.blog', 'willhackett.blog')}
           </p>
-          <p className="sub-link" onMouseOver={() => { mixpanel.track('social hover') }}>
-            <a>@willhackett</a> <span className="appear"> &#8213; {link('https://twitter.com/willhackett', 'twitter')}, {link('https://instagram.com/willhackett', 'instagram')}, {link('https://linkedin.com/in/willhackett', 'linkedin')}.</span>
+          <p className={cx("sub-link", { open: this.state.social })} onMouseEnter={mouseEnter.bind(this, 'social')} onMouseLeave={mouseLeave.bind(this, 'social')}>
+            <a href="#" onClick={toggle.bind(this, 'social')}>@willhackett</a> <span className="appear"> &#8213; {link('https://twitter.com/willhackett', 'twitter')}, {link('https://instagram.com/willhackett', 'instagram')}, {link('https://linkedin.com/in/willhackett', 'linkedin')}.</span>
           </p>
-          <p className="sub-link" onMouseOver={() => { mixpanel.track('contact hover') }}>
-            <a>hello@willhackett.com</a> <span className="appear"> &#8213; <a onClick={email}>email</a>, <a onClick={toggleCalendar}>call</a>.</span>
+          <p className={cx("sub-link", { open: this.state.contact })} onMouseEnter={mouseEnter.bind(this, 'contact')} onMouseLeave={mouseLeave.bind(this, 'contact')}>
+            <a href="#" onClick={toggle.bind(this, 'contact')}>hello@willhackett.com</a> <span className="appear"> &#8213; <a onClick={email}>email</a>, <a onClick={toggleCalendar}>call</a>.</span>
           </p>
         </div>
       </div>
