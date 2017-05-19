@@ -4,7 +4,7 @@ body {
   color: #222;
   cursor: default;
   user-select: none;
-  overflow: none;
+  overflow: hidden;
 }
 a {
   color: #222;
