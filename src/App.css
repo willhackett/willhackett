@@ -5,6 +5,7 @@ body {
   cursor: default;
   user-select: none;
   overflow: hidden;
+  box-sizing: border-box;
 }
 a {
   color: #222;

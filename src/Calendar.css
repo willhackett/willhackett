@@ -48,7 +48,10 @@
     height: 80%
   }
 }
-@media only screen and (max-width : 400px) {
+@media only screen and (max-width : 900px) {
+  body {
+  overflow-y: scroll;
+  }
   .display-calendar .container.profile {
     position: relative;
     margin-top: 50px;
@@ -60,5 +63,9 @@
     left: 0;
     top: -150px;
     height: 1000px;
+    z-index: -1;
+  }
+  .calenar .branding {
+    height: 150px;
   }
 }
