@@ -194,8 +194,8 @@ class TelstraStatus extends Component {
                           {ev.description}
                           <br />
                           <small>
-                            <strong>Starting: </strong> {ev.start_timestamp ? m(ev.start_timestamp.slice(0,19)).format() : 'N/A'}<br />
-                            <strong>Ending: </strong> {ev.end_timestamp ? m(ev.end_timestamp.slice(0,19)).format() : 'No ETA yet'}<br />
+                            <strong>Starting: </strong> {ev.start_timestamp ? m(ev.start_timestamp.slice(0,19)).format('llll') : 'N/A'}<br />
+                            <strong>Ending: </strong> {ev.end_timestamp ? m(ev.end_timestamp.slice(0,19)).format('llll') : 'No ETA yet'}<br />
                             <strong>State: </strong> {ev.state || 'N/A'}<br />
                             <strong>Post Codes: </strong> {ev.postcodes ? ev.postcodes.join(', ') : 'N/A'}<br />
                           </small>
