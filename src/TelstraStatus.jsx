@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'teardrop';
 import _ from 'lodash';
 import m from 'moment';
 
@@ -144,7 +145,7 @@ class TelstraStatus extends Component {
             <h2>Telstra Status</h2>
           </div>
           <div className="six columns">
-            <h4 style={{ textAlign: 'right', paddingTop: 10 }}>by Will Hackett</h4>
+            <h4 style={{ textAlign: 'right', paddingTop: 10 }}>by <Link to="/">Will Hackett</Link></h4>
           </div>
         </div>
         {this.state.loading ? (

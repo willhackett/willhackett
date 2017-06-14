@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'teardrop';
 import cx from 'classnames';
 import './Profile.css';
 
@@ -63,6 +64,7 @@ class Profile extends Component {
           <p className={cx("sub-link", { open: this.state.contact })} onMouseEnter={mouseEnter.bind(this, 'contact')} onMouseLeave={mouseLeave.bind(this, 'contact')}>
             <a href="#" onClick={toggle.bind(this, 'contact')}>hello@willhackett.com</a> <span className="appear"> &#8213; <a onClick={email}>email</a>, <a onClick={toggleCalendar}>call</a>.</span>
           </p>
+          <p>projects: {link('https://www.openclub.co/', 'openclub')}, <Link to="/telstra">honest telstra status</Link>, {link('https://www.funxxion.com/', 'funxxion')}, {link('https://www.firelabs.com.au/', 'firelabs')}, {link('https://www.expedia.com/pictures/', 'expedia viewfinder')}, {link('https://www.npmjs.com/teardrop', 'teardrop')}, {link('https://www.npmjs.com/twobyfour', 'twobyfour')}.</p>
         </div>
       </div>
     );
