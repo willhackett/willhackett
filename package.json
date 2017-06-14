@@ -4,10 +4,13 @@
   "private": true,
   "dependencies": {
     "classnames": "^2.2.5",
+    "lodash": "^4.17.4",
     "mixpanel-browser": "^2.11.1",
+    "moment": "^2.18.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "skeleton-css": "^2.0.4",
+    "teardrop": "^5.0.3",
     "universal-analytics": "^0.4.13"
   },
   "devDependencies": {

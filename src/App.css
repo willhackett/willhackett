@@ -4,7 +4,6 @@ body {
   color: #222;
   cursor: default;
   user-select: none;
-  overflow: hidden;
   box-sizing: border-box;
 }
 a {
