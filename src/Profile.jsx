@@ -39,24 +39,9 @@ class Profile extends Component {
     return (
       <div className="container profile">
         <div className="content">
-          <h3>Will Hackett</h3>
-          <h5
-            onClick={() => {
-              this.setState({ title: !this.state.title });
-              mixpanel.track('title click')
-            }}
-            onMouseOver={() => {
-              mixpanel.track('title hover')
-            }}
-            className={cx({ focus: this.state.title })}
-            title="Though unprepossessing, complexities exist behind the layers of minification and obfuscation.">
-            idiosyncratic.
-            <small>
-              Though unprepossessing, complexities exist behind the layers of minification and obfuscation.
-            </small>
-          </h5>
+          <h3 style={{ marginBottom: 30 }}>Will Hackett</h3>
           <p className="link" onMouseOver={() => { mixpanel.track('blog hover') }}>
-            {link('https://willhackett.blog', 'willhackett.blog')}
+            {link('https://willhackett.blog', 'blog')}
           </p>
           <p className={cx("sub-link", { open: this.state.social })} onMouseEnter={mouseEnter.bind(this, 'social')} onMouseLeave={mouseLeave.bind(this, 'social')}>
             <a href="#" onClick={toggle.bind(this, 'social')}>@willhackett</a> <span className="appear"> &#8213; {link('https://twitter.com/willhackett', 'twitter')}, {link('https://instagram.com/willhackett', 'instagram')}, {link('https://linkedin.com/in/willhackett', 'linkedin')}.</span>
@@ -64,7 +49,17 @@ class Profile extends Component {
           <p className={cx("sub-link", { open: this.state.contact })} onMouseEnter={mouseEnter.bind(this, 'contact')} onMouseLeave={mouseLeave.bind(this, 'contact')}>
             <a href="#" onClick={toggle.bind(this, 'contact')}>hello@willhackett.com</a> <span className="appear"> &#8213; <a onClick={email}>email</a>, <a onClick={toggleCalendar}>call</a>.</span>
           </p>
-          <p>projects: {link('https://www.openclub.co/', 'openclub')}, <Link to="/telstra">honest telstra status</Link>, {link('https://www.funxxion.com/', 'funxxion')}, {link('https://www.firelabs.com.au/', 'firelabs')}, {link('https://www.expedia.com/pictures/', 'expedia viewfinder')}, {link('https://www.npmjs.com/teardrop', 'teardrop')}, {link('https://www.npmjs.com/twobyfour', 'twobyfour')}.</p>
+          <p style={{ marginTop: 30 }}>
+            projects:<br />
+            {link('https://www.openclub.co/', 'openclub')},<br />
+            <Link to="/telstra">honest telstra status</Link>,<br />
+            {link('https://www.funxxion.com/', 'funxxion')},<br />
+            {link('https://www.auslaw.org/', 'auslaw')},<br />
+            {link('https://www.firelabs.com.au/', 'firelabs')},<br />
+            {link('https://www.expedia.com/pictures/', 'expedia viewfinder')},<br />
+            {link('https://www.npmjs.com/teardrop', 'teardrop')},<br />
+            {link('https://www.npmjs.com/twobyfour', 'twobyfour')}.
+          </p>
         </div>
       </div>
     );
