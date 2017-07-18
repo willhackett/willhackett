@@ -1,0 +1,26 @@
+@media (min-width:450px) {
+  .ant-layout-content {
+    padding: 0px 50px;
+  }
+}
+.logo {
+  width: 120px;
+  height: 31px;
+  border-radius: 6px;
+  margin: 16px 24px 16px 0;
+  float: left;
+}
+.logo h1 a {
+  color: white;
+  font-weight: 200;
+}
+td.center {
+  padding: 3px;
+  text-align: center;
+}
+p {
+  margin-bottom: 10px;
+}
+strong {
+  font-weight: 600;
+}

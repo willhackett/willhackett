@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import mixpanel from 'mixpanel-browser';
 import ua from 'universal-analytics';
 import cx from 'classnames';
 import 'skeleton-css/css/normalize.css';
-import 'skeleton-css/css/skeleton.css';
 import { MatchGroup, Match, Miss } from 'teardrop';
 
-import './App.css';
-import Profile from './Profile.jsx';
+import Home from './Home.jsx';
 import Calendar from './Calendar.jsx';
 import TelstraStatus from './TelstraStatus.jsx';
+import ErrorPage from './404.jsx';
+import Projects from './Projects.jsx';
+import Turnbull from './Turnbull.jsx';
 
 class App extends Component {
   constructor(props) {
@@ -20,29 +22,46 @@ class App extends Component {
     this.visitor.pageview("/").send()
 
     this.state = {
-      calendar: false
+      breadcrumb: {
+        link: '/',
+        title: 'Home'
+      }
+    }
+  }
+  static childContextTypes = {
+    setBreadcrumb: PropTypes.func,
+    breadcrumb: PropTypes.object,
+    mixpanel: PropTypes.object
+  }
+  setBreadcrumb(breadcrumb) {
+    document.title = breadcrumb.link === '/' ? 'Will Hackett' : `${breadcrumb.title} — Will Hackett`;
+    mixpanel.track('Link Clicked', {
+      href: breadcrumb.link,
+      title: breadcrumb.title,
+      internal: true,
+    });
+    this.setState({
+      breadcrumb
+    });
+  }
+  getChildContext() {
+    return {
+      setBreadcrumb: this.setBreadcrumb.bind(this),
+      breadcrumb: this.state.breadcrumb,
+      mixpanel
     }
   }
   render() {
     console.log(this.props);
-    const toggleCalendar = () => this.setState({ calendar: !this.state.calendar });
     return (
-      <MatchGroup>
-        <Match exactly pattern="/">
-          { route => (
-            <div className={cx({ 'display-calendar': this.state.calendar })}>
-              <Profile mixpanel={mixpanel} state={this.state} toggleCalendar={toggleCalendar.bind(this)} />
-              <Calendar mixpanel={mixpanel} state={this.state} toggleCalendar={toggleCalendar.bind(this)}/ >
-            </div>
-          )}
-        </Match>
-        <Match pattern="/telstra">
-          {route => <TelstraStatus {...route} />}
-        </Match>
-        <Miss>
-          <h4>404 - Not Found</h4>
-        </Miss>
-      </MatchGroup>
+        <MatchGroup>
+          <Match exactly pattern="/" component={Home} />
+          <Match pattern="/calendar" component={Calendar} />
+          <Match pattern="/telstra" component={TelstraStatus} />
+          <Match pattern="/projects" component={Projects} />
+          <Match pattern="/turnbull" component={Turnbull} />
+          <Miss render={route => <ErrorPage {...route} />} />
+        </MatchGroup>
     );
   }
 }
