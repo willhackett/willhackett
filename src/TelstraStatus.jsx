@@ -32,9 +32,9 @@ class TelstraStatus extends Component {
     this.postCodeFilter = this.postCodeFilter.bind(this);
 
     this.dataSets = {
-      current: 'https://cors-anywhere.herokuapp.com/http://servicestatus.telstra.com/res/blackhawk/telstra.com/desktop/events_current.json',
-      future: 'https://cors-anywhere.herokuapp.com/http://servicestatus.telstra.com/res/blackhawk/telstra.com/desktop/events_future.json',
-      past: 'https://cors-anywhere.herokuapp.com/http://servicestatus.telstra.com/res/blackhawk/telstra.com/desktop/events_past.json'
+      current: '/api/telstra/events_current.json',
+      future: '/api/telstra/events_future.json',
+      past: '/api/telstra/events_past.json'
     }
     this.postCodes = window.location.origin + '/location_state_postcode.json';
     this.states = [
