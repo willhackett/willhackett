@@ -1,0 +1,16 @@
+.logo--stacked {
+  left: 0;
+  position: absolute;
+  width: 60%;
+  z-index: 5;
+  bottom: 0;
+}
+.logo--stacked g {
+  fill: white;
+}
+
+@media all and (max-width: 425px) {
+  .logo--stacked {
+    width: 85%;
+  }
+}

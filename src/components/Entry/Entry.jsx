@@ -1,5 +1,10 @@
 // @flow
-import React, { Component, type Node } from 'react'
+import React, { Component } from 'react'
+import { BrowserRouter, Route } from 'react-router-dom'
+
+import Loader from 'components/Loader'
+
+const Home = Loader(() => import('pages/Home'), true)
 
 type PropsType = {}
 type StateType = {}
@@ -7,7 +12,9 @@ type StateType = {}
 class Entry extends Component<PropsType, StateType> {
   render() {
     return (
-      <div>hi</div>
+      <BrowserRouter>
+        <Route exact path="/" component={Home} />
+      </BrowserRouter>
     )
   }
 }
