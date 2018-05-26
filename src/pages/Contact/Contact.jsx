@@ -47,7 +47,7 @@ class Contact extends Component<PropsType, StateType> {
     const { state: { type } } = this
     return (
       <Page className="imageblock switchable height-100">
-        <div className="imageblock__content col-lg-6 col-sm-4 pos-right">
+        <div className="imageblock__content col-lg-5 col-sm-4 pos-right">
           <div className="background-image-holder" style={{
             background: `url(${type === 'easterEgg' ? blue : house})`,
             opacity: 1,
@@ -55,7 +55,7 @@ class Contact extends Component<PropsType, StateType> {
         </div>
         <div className="container pos-vertical-center">
           <div className="row">
-            <div className="col-lg-5 col-sm-7 contact--types">
+            <div className="col-lg-6 col-sm-7 contact--types">
               <h1>Contact</h1>
               <h3>What would you like to talk about?</h3>
               <hr />

@@ -22,7 +22,8 @@ type StateType = {
 
 class Home extends Component<PropsType, StateType> {
   state = {
-    home: {}
+    home: {},
+    open: false
   }
   componentDidMount() {
     waitForImageToLoad(profile, this.props.ready)
@@ -50,7 +51,7 @@ class Home extends Component<PropsType, StateType> {
         <div className="container">
           <div className="row">
             <div className="col-md-9 col-lg-7">
-              <h1 className="home--shadow">I make digital products<span className="hidden-xs hidden-sm"> for people, business and things.</span></h1>
+              <h1 className="home--shadow">I make digital products.</h1>
               <div className="row">
                 <div className="col-sm-3 p-0">
                   {heartData && <Heartrate heart={heartData} />}
