@@ -1,0 +1,49 @@
+.widget--container {
+  display: flex;
+  text-shadow: 1px 1px rgba(0,0,0,0.25);
+}
+.widget--container:hover {
+  transform: scale3d(120%);
+}
+.widget--icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.5rem;
+  width: 2.5rem;
+}
+.widget--icon .icon {
+  text-shadow: 1px 1px rgba(0,0,0,0.25);
+  font-size: 1.8rem;
+}
+.widget--icon img {
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid white;
+}
+.widget--progress {
+  display: block;
+  border-bottom: 1.5px solid rgba(167, 215, 249, 0.9);
+}
+.widget--progress .paused {
+  border-bottom: 1.5px solid #9c9c9c;
+}
+.widget--nowrap {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.widget--metrics {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-size: 1rem;
+  line-height: 1rem;
+}
+.widget--metrics span {
+  display: block;
+}
+.widget--metrics span:nth-of-type(2) {
+  font-size: 0.7rem;
+  line-height: 1rem;
+}
