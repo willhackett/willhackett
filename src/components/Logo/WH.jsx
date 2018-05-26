@@ -1,5 +1,6 @@
 // @flow
 import React from 'react'
+import { Link } from 'react-router-dom'
 import cx from 'classnames'
 
 import './WH.css'
@@ -9,6 +10,7 @@ type PropsType = {
 }
 
 const WH = ({ className }: PropsType) => (
+  <Link to="/">
   <svg className={cx('logo--wh', className)} viewBox="0 0 473 202" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
     <g id="LogoWH" stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
       <g id="WH" fill="#000000">
@@ -16,5 +18,6 @@ const WH = ({ className }: PropsType) => (
       </g>
     </g>
   </svg>
+  </Link>
 )
 export default WH
