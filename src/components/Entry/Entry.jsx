@@ -7,6 +7,7 @@ import MainMenu from 'components/MainMenu'
 
 const Home = Loader(() => import('pages/Home'), true)
 const Contact = Loader(() => import('pages/Contact'), true)
+const Bio = Loader(() => import('pages/Bio'), true)
 
 type PropsType = {}
 type StateType = {}
@@ -18,6 +19,7 @@ class Entry extends Component<PropsType, StateType> {
         <Route path="*" component={MainMenu} />
         <Route exact path="/" component={Home} />
         <Route path="/contact" component={Contact} />
+        <Route path="/bio" component={Bio} />
       </Fragment>
     )
   }

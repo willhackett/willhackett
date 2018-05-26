@@ -1,5 +1,5 @@
 .menu--container {
-  position: absolute;
+  position: fixed;
   background: rgba(0,0,0,0.5);
   height: 3.5rem;
   right: 2rem;

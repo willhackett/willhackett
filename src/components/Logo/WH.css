@@ -5,6 +5,17 @@
   height: 3.5rem;
   z-index: 3;
 }
+.logo--wh svg {
+  height: 100%;
+}
 .logo--wh g {
   fill: white;
+}
+.logo--wh:hover {
+  transform: rotate(2deg);
+  transition: 0.15s ease-in-out;
+}
+.logo--wh:hover g, .logo--wh:active g {
+  fill: #f363ff;
+  transition: 0.15s ease-in-out;
 }
