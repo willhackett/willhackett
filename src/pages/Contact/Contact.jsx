@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
 import Page from 'components/Page'
-import WH from 'components/Logo'
+import { WH } from 'components/Logo'
 
 import waitForImageToLoad from 'utils/waitForImageToLoad'
 
@@ -271,6 +271,7 @@ class Contact extends Component<PropsType, StateType> {
             </div>
           </div>
         </div>
+        <WH />
       </Page>
     )
   }

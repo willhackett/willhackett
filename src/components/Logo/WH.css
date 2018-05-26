@@ -1,3 +1,10 @@
 .logo--wh {
-  
+  position: fixed;
+  top: 2rem;
+  left: 2rem;
+  height: 3.5rem;
+  z-index: 3;
+}
+.logo--wh g {
+  fill: white;
 }
