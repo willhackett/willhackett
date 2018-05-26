@@ -28,7 +28,7 @@ class Bio extends Component<PropsType, StateType> {
     return (
       <Page className="imageblock switchable height-100">
         <div className="imageblock__content col-lg-5 col-sm-4 pos-right">
-          <div className="background-image-holder" style={{
+          <div className="background-image-holder bio--image" style={{
             background: `url(${will})`,
             opacity: 1,
           }} />
