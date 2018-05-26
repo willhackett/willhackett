@@ -46,6 +46,7 @@
 .widget--metrics span {
   display: block;
   font-size: 1.2rem;
+  line-height: 1.4rem;
 }
 .widget--metrics span:nth-of-type(2) {
   font-size: 0.7rem;

@@ -2,14 +2,16 @@
 
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { CSSTransition, Transition } from 'react-transition-group'
+import { CSSTransition } from 'react-transition-group'
 import cx from 'classnames'
 
 import { Stacked } from 'components/Logo'
 
 import './MainMenu.css'
 
-type PropsType = {}
+type PropsType = {
+  location: Object,
+}
 type StateType = {
   menu: boolean,
   open: boolean,
@@ -19,6 +21,11 @@ class MainMenu extends Component<PropsType, StateType> {
   state = {
     menu: false,
     open: false,
+  }
+  componentDidUpdate(prevProps: PropsType) {
+    if (prevProps.location.pathname !== this.props.location.pathname && this.state.open) {
+      this.toggle()
+    }
   }
   toggle = () => {
     const open = this.state.open

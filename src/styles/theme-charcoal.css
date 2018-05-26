@@ -46,7 +46,7 @@
 /**!**************/
 /**!**************/
 /**! 01. Reset **/
-@import url('https://fonts.googleapis.com/css?family=Kanit:900');
+@import url('https://fonts.googleapis.com/css?family=Kanit:900,600');
 *,
 h1,
 h2,
@@ -91,12 +91,15 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: 'Open Sans', 'Helvetica', 'Arial', sans-serif;
+  font-family: 'Kanit', sans-serif;
   color: #252525;
-  font-weight: 300;
-  font-variant-ligatures: common-ligatures;
+  font-weight: 600;
   margin-top: 0;
   margin-bottom: 0;
+}
+h1,
+h2 {
+  font-weight: 900;
 }
 h1,
 .h1 {
@@ -838,18 +841,20 @@ div[data-overlay] ul {
 }
 /**! 06. Buttons **/
 .btn {
-  font-family: 'Open Sans', 'Helvetica', 'Arial', sans-serif;
+  font-family: 'Kanit', sans-serif;
   transition: 0.1s linear;
   -webkit-transition: 0.1s linear;
   -moz-transition: 0.1s linear;
-  border-radius: 6px;
-  padding-top: 0.46428571em;
-  padding-bottom: 0.46428571em;
-  padding-right: 2.78571429em;
-  padding-left: 2.78571429em;
+  border-radius: 0;
+  padding-top: 0.16428571em;
+  padding-bottom: 0.16428571em;
+  padding-right: 1.78571429em;
+  padding-left: 1.78571429em;
   border: 1px solid #252525;
   border-width: 1px;
-  font-size: inherit;
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-transform: uppercase;
   line-height: 1.85714286em;
 }
 .btn .btn__text,
@@ -866,6 +871,13 @@ div[data-overlay] ul {
 .btn:active {
   box-shadow: none;
   -webkit-box-shadow: none;
+}
+.btn.bg--pink {
+  background: #f363ff;
+  border: none;
+}
+.btn.bg--pink i {
+  color: white;
 }
 .btn.bg--facebook,
 .btn.bg--twitter,
@@ -884,7 +896,8 @@ div[data-overlay] ul {
 .btn.bg--pinterest .btn__text,
 .btn.bg--dribbble .btn__text,
 .btn.bg--behance .btn__text,
-.btn.bg--dark .btn__text {
+.btn.bg--dark .btn__text,
+.btn.bg--pink .btn__text {
   color: #fff;
 }
 .btn.bg--facebook .btn__text i,
@@ -904,7 +917,8 @@ div[data-overlay] ul {
 .btn.bg--pinterest:hover,
 .btn.bg--dribbble:hover,
 .btn.bg--behance:hover,
-.btn.bg--dark:hover {
+.btn.bg--dark:hover,
+.btn.bg--pink:hover {
   opacity: .9;
 }
 .btn.bg--error {
@@ -1290,10 +1304,14 @@ input[type],
 textarea,
 select {
   -webkit-appearance: none;
-  background: #fcfcfc;
-  padding: 0.46428571em;
-  border-radius: 6px;
-  border: 1px solid #ececec;
+  padding: 0.16428571em;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  line-height: 1.5rem;
+  height: 1rem;
+  width: 7rem;
+  border-bottom: 2px solid #f363ff;
 }
 input[type]:focus,
 textarea:focus,
@@ -2736,7 +2754,7 @@ body {
   color: #2374ab !important;
 }
 a {
-  color: #2374ab;
+  color: #f363ff;
 }
 .color--primary-1 {
   color: #2c3d55 !important;
@@ -4208,11 +4226,11 @@ pre {
 }
 /*! -- Stack Links -- */
 a {
-  color: #2374ab;
+  color: #f363ff;
   font-weight: 700;
 }
 a:hover {
-  color: #1a5781;
+  color: #000000;
   text-decoration: underline;
 }
 a.block {
@@ -7420,8 +7438,6 @@ input[type="submit"] {
 }
 button.btn,
 input[type="submit"].btn {
-  font-size: 0.85714286em;
-  font-weight: 700;
   padding-left: 0;
   padding-right: 0;
 }
@@ -7496,7 +7512,7 @@ button[type="submit"]:not([class*='col-']) {
 input[type],
 select,
 textarea {
-  padding-left: 0.92857143em;
+  padding-left: 0.12857143em;
 }
 input[type]:focus,
 select:focus,

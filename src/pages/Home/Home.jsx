@@ -45,14 +45,12 @@ class Home extends Component<PropsType, StateType> {
             background: `url(${profile})`,
             opacity: 1,
           }}
-        >
-          <img alt="background" src={profile} />
-        </div>
+        />
         <div className="home--tint" />
         <div className="container">
           <div className="row">
             <div className="col-md-9 col-lg-7">
-              <h1 className="home--shadow">I make digital products that connect people and grow businesses.</h1>
+              <h1 className="home--shadow">I make digital products for people, business and things.</h1>
               <div className="row">
                 <div className="col-sm-3 p-0">
                   {heartData && <Heartrate heart={heartData} />}

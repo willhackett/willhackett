@@ -10,16 +10,21 @@ type PropsType = {
   accessToken: string,
 }
 type StateType = {
-  data: Object
+  data: Object,
+  loaded: boolean,
 }
 
 class Playback extends Component<PropsType, StateType> {
   player: Function
   state = {
-    data: {}
+    data: {},
+    loaded: false,
   }
   componentDidMount() {
     this.player = nowPlaying(() => this.props.accessToken)
+    this.player.on('loaded', () => {
+      this.setState({ loaded: true })
+    })
     this.player.on('update', (data) => {
       this.setState({ data })
     })
@@ -34,7 +39,7 @@ class Playback extends Component<PropsType, StateType> {
     })
   }
   render() {
-    const { state: { data: { item, progress_ms, is_playing } = {} } } = this
+    const { state: { loaded, data: { item, progress_ms, is_playing } = {} } } = this
 
     if (!item) return (
       <div className="widget--container">
@@ -42,8 +47,8 @@ class Playback extends Component<PropsType, StateType> {
           <i className="icon icon-Music-Note2" />
         </div>
         <div className="widget--metrics">
-          <span>No playback</span>
-          <span>Synced from Spotify</span>
+          <span>{loaded ? 'Nothing playing' : 'Loading...'}</span>
+          <span>{loaded ? 'Synced from Spotify' : 'Connecting to Spotify.'}</span>
         </div>
       </div>
     )

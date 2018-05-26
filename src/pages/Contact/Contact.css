@@ -1,0 +1,52 @@
+.contact--types button {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  outline: 0;
+  height: initial;
+  color: #f363ff;
+}
+.contact--types button:hover {
+  color: black;
+}
+
+.contact--types button.active {
+  color: black;
+  transform: scaleX(-1);
+  transition: transform 0.25s;
+}
+
+.contact--types--transition-enter {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+}
+.contact--types--transition-enter-active {
+  overflow: hidden;
+  max-height: 20rem;
+  opacity: 1;
+  transition: .5s ease-in-out;
+}
+.contact--types--transition-enter-done {
+  overflow: initial;
+}
+.contact--types--transition-exit {
+  max-height: 20rem;
+  opacity: 1;
+  overflow: hidden;
+}
+.contact--types--transition-exit-active {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: .5s ease-in-out;
+}
+.contact--form input {
+  width: 10rem;
+  line-height: 1.5rem;
+  height: 1.3rem;
+  margin-right: 0.15rem;
+}
+.contact--form .h4 {
+  margin-bottom: 0.4rem;
+}
