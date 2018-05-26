@@ -5,15 +5,17 @@
   background-position: 100% 50% !important;
 }
 .home--tint {
-  background: black;
+  background: linear-gradient(80deg, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
   height: 100vh;
-  opacity: 0.1;
+  opacity: 1;
   position: absolute;
   top: 0;
   width: 100%;
 }
 .home--shadow {
-  text-shadow: 1px 1px rgba(0,0,0,0.25);
+  font-family: 'Kanit', sans-serif;
+  text-shadow: 2px 2px rgba(0,0,0,0.15);
+  max-width: 40rem;
 }
 @media all and (max-width: 768px) {
   .home--background {

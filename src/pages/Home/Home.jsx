@@ -33,7 +33,6 @@ class Home extends Component<PropsType, StateType> {
     })
   }
   render() {
-    console.log(this.state)
     const spotifyAccessToken = get(this.state, 'home.spotify.accessToken')
     const heartData = get(this.state, 'home.health.heart')
     const stepsData = get(this.state, 'home.health.steps')
@@ -53,7 +52,7 @@ class Home extends Component<PropsType, StateType> {
         <div className="container">
           <div className="row">
             <div className="col-md-9 col-lg-7">
-              <h2 className="home--shadow">I build digital products.</h2>
+              <h1 className="home--shadow">I make digital products that connect people and grow businesses.</h1>
               <div className="row">
                 <div className="col-sm-3 p-0">
                   {heartData && <Heartrate heart={heartData} />}
