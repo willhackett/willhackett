@@ -46,6 +46,7 @@
 /**!**************/
 /**!**************/
 /**! 01. Reset **/
+@import url('https://fonts.googleapis.com/css?family=Kanit:900');
 *,
 h1,
 h2,
@@ -151,6 +152,9 @@ h6,
     font-size: 1.35714286em;
     line-height: 1.36842105em;
   }
+}
+.p-0 {
+  padding: 0;
 }
 p,
 ul,

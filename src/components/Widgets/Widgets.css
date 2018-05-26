@@ -9,16 +9,17 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 2.5rem;
-  width: 2.5rem;
+  height: 4rem;
+  width: 4rem;
+  min-width: 2.5rem;
 }
 .widget--icon .icon {
   text-shadow: 1px 1px rgba(0,0,0,0.25);
-  font-size: 1.8rem;
+  font-size: 2.8rem;
 }
 .widget--icon img {
-  width: 2rem;
-  height: 2rem;
+  width: 3rem;
+  height: 3rem;
   border: 1px solid white;
 }
 .widget--progress {
@@ -32,6 +33,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  max-width: calc(100% - 3rem)
 }
 .widget--metrics {
   display: flex;
@@ -42,6 +44,7 @@
 }
 .widget--metrics span {
   display: block;
+  font-size: 1.2rem;
 }
 .widget--metrics span:nth-of-type(2) {
   font-size: 0.7rem;

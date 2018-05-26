@@ -1,6 +1,6 @@
 .logo--stacked {
   left: 0;
-  position: absolute;
+  position: fixed;
   width: 60%;
   z-index: 5;
   bottom: 0;

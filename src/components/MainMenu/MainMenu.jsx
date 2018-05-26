@@ -2,8 +2,10 @@
 
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { TransitionGroup, CSSTransition } from 'react-transition-group'
+import { CSSTransition, Transition } from 'react-transition-group'
 import cx from 'classnames'
+
+import { Stacked } from 'components/Logo'
 
 import './MainMenu.css'
 
@@ -22,12 +24,12 @@ class MainMenu extends Component<PropsType, StateType> {
     const open = this.state.open
     if (!open) {
       this.setState({ open: true })
-      setTimeout(() => this.setState({ menu: true }), 250)
+      setTimeout(() => this.setState({ menu: true }), 500)
       return
     }
     if (open) {
       this.setState({ menu: false })
-      setTimeout(() => this.setState({ open: false }), 250)
+      setTimeout(() => this.setState({ open: false }), 500)
     }
   }
   render() {
@@ -43,37 +45,43 @@ class MainMenu extends Component<PropsType, StateType> {
             <span />
           </div>
         </div>
-        {menu && (
-          <CSSTransition className="menu--nav--transition" timeout={250}>
-            <div className="menu--nav--transition">
-              <div className="menu--nav">
-                <div className="menu--nav--item">
-                  <Link to="/">Home</Link>
-                </div>
-                <div className="menu--nav--item">
-                  <Link to="/bio">Bio</Link>
-                </div>
-                <div className="menu--nav--item">
-                  <Link to="/products">Products</Link>
-                </div>
-                <div className="menu--nav--item">
-                  <Link to="/blog">Blog</Link>
-                </div>
-                <div className="menu--nav--item">
-                  <Link to="/contact">Contact</Link>
-                </div>
-                <div className="menu--nav--sub-items">
-                  <a href="https://www.instagram.com/willhackett" target="blank" rel="noopener noreferrer">
-                    <i className="icon socicon-instagram" />
-                  </a>
-                  <a href="https://www.linkedin.com/in/willhackett" target="blank" rel="noopener noreferrer">
-                    <i className="icon socicon-linkedin" />
-                  </a>
-                </div>
+        <CSSTransition
+          in={menu}
+          exit
+          mountOnEnter
+          unmountOnExit
+          classNames="menu--nav--transition"
+          timeout={500}
+          >
+          <div className="menu--nav--container">
+            <div className="menu--nav">
+              <div className="menu--nav--item">
+                <Link to="/">Home</Link>
+              </div>
+              <div className="menu--nav--item">
+                <Link to="/bio">Bio</Link>
+              </div>
+              <div className="menu--nav--item">
+                <Link to="/products">Products</Link>
+              </div>
+              <div className="menu--nav--item">
+                <Link to="/blog">Blog</Link>
+              </div>
+              <div className="menu--nav--item">
+                <Link to="/contact">Contact</Link>
+              </div>
+              <div className="menu--nav--sub-items">
+                <a href="https://www.instagram.com/willhackett" target="blank" rel="noopener noreferrer">
+                  <i className="icon socicon-instagram" />
+                </a>
+                <a href="https://www.linkedin.com/in/willhackett" target="blank" rel="noopener noreferrer">
+                  <i className="icon socicon-linkedin" />
+                </a>
               </div>
             </div>
-          </CSSTransition>
-        )}
+          </div>
+        </CSSTransition>
+        {open && <Stacked />}
       </div>
     )
   }

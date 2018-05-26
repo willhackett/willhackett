@@ -55,13 +55,13 @@ class Home extends Component<PropsType, StateType> {
             <div className="col-md-9 col-lg-7">
               <h2 className="home--shadow">I build digital products.</h2>
               <div className="row">
-                <div className="col-sm-3">
+                <div className="col-sm-3 p-0">
                   {heartData && <Heartrate heart={heartData} />}
                 </div>
-                <div className="col-sm-3">
+                <div className="col-sm-3 p-0">
                   {stepsData && <Steps steps={stepsData} />}
                 </div>
-                <div className="col-sm-6">
+                <div className="col-sm-6 p-0">
                   {spotifyAccessToken && <Playback accessToken={spotifyAccessToken} />}
                 </div>
               </div>

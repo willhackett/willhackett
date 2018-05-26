@@ -2,6 +2,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { Maybe } from 'monet'
 
 import Entry from './components/Entry'
@@ -13,7 +14,9 @@ import './styles/bootstrap.css'
 import './styles/theme-charcoal.css'
 
 ReactDOM.render(
-  <Entry />,
+  <BrowserRouter>
+    <Entry />
+  </BrowserRouter>,
   Maybe.fromNull(document.getElementById('root')).orSome()
 );
 

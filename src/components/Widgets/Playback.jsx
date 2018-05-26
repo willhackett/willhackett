@@ -56,8 +56,8 @@ class Playback extends Component<PropsType, StateType> {
           <img src={albumArt} alt={albumName}/>
         </div>
         <div className="widget--metrics">
-          <span className="widget--nowrap">{songName} by {artistName}</span>
-          <span>{is_playing ? `Now Playing | ${moment(progress_ms).format('mm:ss')}` : 'Paused'}</span>
+          <span className="widget--nowrap">{songName}</span>
+          <span>{artistName} | {is_playing ? `Now Playing | ${moment(progress_ms).format('mm:ss')}` : 'Paused'}</span>
           <span
             className={cx('widget--progress', { paused: !is_playing })}
             style={{ width: `${(String)(Math.floor(100 / duration_ms * progress_ms))}%` }}

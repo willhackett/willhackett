@@ -1,8 +1,9 @@
 // @flow
-import React, { Component } from 'react'
-import { BrowserRouter, Route } from 'react-router-dom'
+import React, { Component, Fragment } from 'react'
+import { Route } from 'react-router-dom'
 
 import Loader from 'components/Loader'
+import MainMenu from 'components/MainMenu'
 
 const Home = Loader(() => import('pages/Home'), true)
 
@@ -12,9 +13,10 @@ type StateType = {}
 class Entry extends Component<PropsType, StateType> {
   render() {
     return (
-      <BrowserRouter>
+      <Fragment>
+        <MainMenu />
         <Route exact path="/" component={Home} />
-      </BrowserRouter>
+      </Fragment>
     )
   }
 }
