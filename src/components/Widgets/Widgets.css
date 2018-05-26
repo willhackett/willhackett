@@ -33,7 +33,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: calc(100% - 3rem)
+  max-width: 100%;
 }
 .widget--metrics {
   display: flex;
