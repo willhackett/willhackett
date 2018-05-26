@@ -25,7 +25,7 @@
   display: block;
   border-bottom: 1.5px solid rgba(167, 215, 249, 0.9);
 }
-.widget--progress .paused {
+.widget--progress.paused {
   border-bottom: 1.5px solid #9c9c9c;
 }
 .widget--nowrap {

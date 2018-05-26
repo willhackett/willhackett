@@ -1,0 +1,6 @@
+{
+  "main": "./MainMenu",
+  "name": "MainMenu",
+  "private": true,
+  "version": "0.0.0"
+}

@@ -1,0 +1,111 @@
+.menu--container {
+  position: absolute;
+  background: transparent;
+  height: 3.5rem;
+  right: 2rem;
+  top: 2rem;
+  width: 4rem;
+  z-index: 3;
+}
+.menu--container.open {
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 100%;
+  transition: 0.25s ease-in-out;
+  background: black;
+}
+.menu--container:hover {
+  background: black;
+  transition: 0.25s;
+}
+.menu--icon--container {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3.5rem;
+}
+.menu--icon {
+  width: 2.5rem;
+  height: 25px;
+  margin: 0.75rem;
+  position: relative;
+  transform: rotate(0deg);
+  transition: .25s ease-in-out;
+  cursor: pointer;
+}
+.menu--icon span {
+  background: white;
+  display: block;
+  height: 5px;
+  left: 0;
+  opacity: 1;
+  position: absolute;
+  transform: rotate(0deg);
+  transition: .25s ease-in-out;
+  width: 100%;
+}
+.menu--icon span:nth-child(1) {
+  top: 0;
+  transform-origin: left center;
+}
+
+.menu--icon span:nth-child(2) {
+  top: 10px;
+  transform-origin: left center;
+}
+
+.menu--icon span:nth-child(3) {
+  top: 20px;
+  transform-origin: left center;
+}
+
+.menu--container.open .menu--icon span:nth-child(1) {
+  transform: rotate(45deg);
+  top: -3px;
+  left: 0px;
+}
+
+.menu--container.open .menu--icon span:nth-child(2) {
+  width: 0%;
+  opacity: 0;
+}
+
+.menu--container.open .menu--icon span:nth-child(3) {
+  transform: rotate(-45deg);
+  top: 22px;
+  left: 0px;
+}
+
+.menu--nav--container, .menu--nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.menu--nav--transition-enter {
+  opacity: 0;
+}
+.menu--nav--transition-enter-active {
+  opacity: 1;
+  transition: opacity 0.25s ease-in-out;
+}
+.menu--nav--transition-enter {
+  opacity: 1;
+}
+.menu--nav--transition-enter-active {
+  opacity: 0;
+  transition: opacity 0.25s ease-in-out;
+}
+
+.menu--nav {
+
+}
+
+.menu--nav--item, .menu--nav--sub-items {
+
+}
