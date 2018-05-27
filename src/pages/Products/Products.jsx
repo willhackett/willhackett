@@ -158,7 +158,7 @@ class Products extends Component<PropsType, StateType> {
                 <div className="text-block">
                   <h4><a href="https://www.corporaterealestate.com/" target="_blank" rel="noopener noreferrer">CorporateRealEstate.com</a></h4>
                   <p>One of the earliest projects I worked on delivered a new experience for discovering commercial real estate spaces.</p>
-                  <img src={logos.cre} alt="CorporateRealEstate" />
+                  <img src={logos.cre} alt="CorporateRealEstate" style={{ maxHeight: '2rem' }}/>
                 </div>
               </div>
               <div className="col-md-4" />
