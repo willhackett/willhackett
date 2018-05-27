@@ -55,10 +55,13 @@ class Contact extends Component<PropsType, StateType> {
   submitForm = (form: EnquiryTypes) => async (e: SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault()
     if (!form) return false;
+    const fields = {}
+    const inputs = e.target.querySelectorAll('input')
+    inputs.forEach(i => {
+      fields[i.name] = i.value
+    })
 
     this.setState({ submitting: form })
-
-    const fields = {}
 
     try {
       await fetch('/', {
@@ -69,7 +72,7 @@ class Contact extends Component<PropsType, StateType> {
           ...fields
         })
       })
-      this.setState({ [form]: true })
+      this.setState({ [form]: true, submitting: false })
     } catch (err) {
       alert(err.message)
     }
@@ -191,9 +194,9 @@ class Contact extends Component<PropsType, StateType> {
                         <h4>I'm always looking for new ways to partner with individuals and businesses to achieve our goals together. Let me know your details and I'll try to get in touch.</h4>
                         {!partner ? (
                           <form className="contact--form form--inline" onSubmit={this.submitForm('partner')}>
-                            <label className="h4">Your name <input type="text" name="name" />,&nbsp;</label>
-                            <label className="h4">email <input type="email" name="email" />,&nbsp;</label>
-                            <label className="h4">company <input type="email" name="email" />&nbsp;</label>
+                            <label className="h4">Your name <input type="text" name="name" required/>,&nbsp;</label>
+                            <label className="h4">email <input type="email" name="email" required/>,&nbsp;</label>
+                            <label className="h4">company <input type="text" name="company" required/>&nbsp;</label>
                             <label className="h4">and message <input type="text" name="message" />.</label>
                             <button className="btn bg--pink" type="submit" disabled={submitting === 'partner'}>
                               <span className="btn__text">
@@ -266,9 +269,9 @@ class Contact extends Component<PropsType, StateType> {
                         <h4>I love speaking about tech, business, development and lots of other things. If you'd like me to make an appearance just fill in the form below and I'll see what I can do.</h4>
                         {!speak ? (
                           <form className="contact--form form--inline">
-                            <label className="h4">Your name <input type="text" name="name" />,&nbsp;</label>
-                            <label className="h4">email <input type="email" name="email" />,&nbsp;</label>
-                            <label className="h4">company <input type="email" name="email" />,&nbsp;</label>
+                            <label className="h4">Your name <input type="text" name="name" required/>,&nbsp;</label>
+                            <label className="h4">email <input type="email" name="email" required/>,&nbsp;</label>
+                            <label className="h4">company <input type="text" name="company" required/>,&nbsp;</label>
                             <label className="h4">where <input type="text" name="where" />,&nbsp;</label>
                             <label className="h4">when <input type="date" name="when" />,&nbsp;</label>
                             <label className="h4">speaking about <input type="text" name="about" />.</label>
