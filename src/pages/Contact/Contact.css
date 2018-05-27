@@ -44,9 +44,11 @@
 .contact--form input {
   width: 10rem;
   line-height: 1.5rem;
-  height: 1.3rem;
+  height: 2.1rem;
   margin-right: 0.15rem;
 }
 .contact--form .h4 {
   margin-bottom: 0.4rem;
+  height: 2.1rem;
+  line-height: 2.1rem;
 }
