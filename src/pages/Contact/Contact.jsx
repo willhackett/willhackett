@@ -1,6 +1,7 @@
 // @flow
 
 import React, { Component } from 'react'
+import Helmet from 'react-helmet'
 import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
 import Page from 'components/Page'
@@ -30,23 +31,60 @@ type PropsType = {
 }
 type StateType = {
   type: EnquiryTypes,
+  submitting: EnquiryTypes,
+  partner: boolean,
+  speak: boolean,
+}
+
+const encode = (data) => {
+  return Object.keys(data)
+      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+      .join("&");
 }
 
 class Contact extends Component<PropsType, StateType> {
   state = {
-    type: false
+    type: false,
+    submitting: false,
+    partner: false,
+    speak: false,
   }
   componentDidMount() {
     waitForImageToLoad(house, this.props.ready)
+  }
+  submitForm = (form: EnquiryTypes) => async (e: SyntheticEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    if (!form) return false;
+
+    this.setState({ submitting: form })
+
+    const fields = {}
+
+    try {
+      await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encode({
+          'form-name': form,
+          ...fields
+        })
+      })
+      this.setState({ [form]: true })
+    } catch (err) {
+      alert(err.message)
+    }
   }
   setType = (type: EnquiryTypes) => {
     if (type === this.state.type) type = false
     this.setState({ type })
   }
   render() {
-    const { state: { type } } = this
+    const { state: { type, submitting, partner, speak } } = this
     return (
       <Page className="imageblock switchable height-100">
+        <Helmet>
+          <title>Contact - get in touch — Will Hackett</title>
+        </Helmet>
         <div className="imageblock__content col-lg-5 col-sm-4 pos-right">
           <div className="background-image-holder" style={{
             background: `url(${type === 'easterEgg' ? blue : house})`,
@@ -151,17 +189,21 @@ class Contact extends Component<PropsType, StateType> {
                     >
                       <div>
                         <h4>I'm always looking for new ways to partner with individuals and businesses to achieve our goals together. Let me know your details and I'll try to get in touch.</h4>
-                        <form className="contact--form form--inline">
-                          <label className="h4">Your name <input type="text" name="name" />,&nbsp;</label>
-                          <label className="h4">email <input type="email" name="email" />,&nbsp;</label>
-                          <label className="h4">company <input type="email" name="email" />&nbsp;</label>
-                          <label className="h4">and message <input type="text" name="message" />.</label>
-                          <button className="btn bg--pink" type="submit">
-                            <span className="btn__text">
-                              Get in touch
-                            </span>
-                          </button>
-                        </form>
+                        {!partner ? (
+                          <form className="contact--form form--inline" onSubmit={this.submitForm('partner')}>
+                            <label className="h4">Your name <input type="text" name="name" />,&nbsp;</label>
+                            <label className="h4">email <input type="email" name="email" />,&nbsp;</label>
+                            <label className="h4">company <input type="email" name="email" />&nbsp;</label>
+                            <label className="h4">and message <input type="text" name="message" />.</label>
+                            <button className="btn bg--pink" type="submit" disabled={submitting === 'partner'}>
+                              <span className="btn__text">
+                                {submitting === 'partner' ? 'Submitting...' : 'Get in touch'}
+                              </span>
+                            </button>
+                          </form>
+                        ) : (
+                          <h4>Thanks! I'll be in touch!</h4>
+                        )}
                         <hr />
                       </div>
                     </CSSTransition>
@@ -222,19 +264,23 @@ class Contact extends Component<PropsType, StateType> {
                     >
                       <div>
                         <h4>I love speaking about tech, business, development and lots of other things. If you'd like me to make an appearance just fill in the form below and I'll see what I can do.</h4>
-                        <form className="contact--form form--inline">
-                          <label className="h4">Your name <input type="text" name="name" />,&nbsp;</label>
-                          <label className="h4">email <input type="email" name="email" />,&nbsp;</label>
-                          <label className="h4">company <input type="email" name="email" />,&nbsp;</label>
-                          <label className="h4">where <input type="text" name="where" />,&nbsp;</label>
-                          <label className="h4">when <input type="date" name="when" />,&nbsp;</label>
-                          <label className="h4">speaking about <input type="text" name="about" />.</label>
-                          <button className="btn bg--pink" type="submit">
-                            <span className="btn__text">
-                              Touch base
-                            </span>
-                          </button>
-                        </form>
+                        {!speak ? (
+                          <form className="contact--form form--inline">
+                            <label className="h4">Your name <input type="text" name="name" />,&nbsp;</label>
+                            <label className="h4">email <input type="email" name="email" />,&nbsp;</label>
+                            <label className="h4">company <input type="email" name="email" />,&nbsp;</label>
+                            <label className="h4">where <input type="text" name="where" />,&nbsp;</label>
+                            <label className="h4">when <input type="date" name="when" />,&nbsp;</label>
+                            <label className="h4">speaking about <input type="text" name="about" />.</label>
+                            <button className="btn bg--pink" type="submit" disabled={submitting === 'speak'}>
+                              <span className="btn__text">
+                                {submitting === 'speak' ? 'Submitting...' : 'Touch base'}
+                              </span>
+                            </button>
+                          </form>
+                        ) : (
+                          <h4>Thanks! I'll be in touch soon!</h4>
+                        )}
                         <hr />
                       </div>
                     </CSSTransition>

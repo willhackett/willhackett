@@ -72,7 +72,7 @@ class MainMenu extends Component<PropsType, StateType> {
                 <Link to="/products">Products</Link>
               </div>
               <div className="menu--nav--item">
-                <Link to="/blog">Blog</Link>
+                <a href="https://journal.willhackett.com/" target="_blank" rel="noopener noreferrer">Blog</a>
               </div>
               <div className="menu--nav--item">
                 <Link to="/contact">Contact</Link>

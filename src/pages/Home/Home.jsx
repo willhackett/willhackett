@@ -1,5 +1,6 @@
 // @flow
 import React, { Component } from 'react'
+import Helmet from 'react-helmet'
 import get from 'lodash/get'
 
 import Page from 'components/Page'
@@ -40,6 +41,10 @@ class Home extends Component<PropsType, StateType> {
 
     return (
       <Page className="cover home--root imagebg">
+        <Helmet>
+          <title>Will Hackett—product engineer, founder of OpenClub, founder of Firelabs</title>
+          <meta title="description" content="I'm a software engineer, but specifically a product engineer. I've built products big and small, and used by thousands of people." />
+        </Helmet>
         <div
           className="background-image-holder home--background"
           style={{
