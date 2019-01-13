@@ -49,6 +49,12 @@ const Index = ({ dispatch }) => (
             •
           </span>
           <span>
+            18º C in Melbourne
+          </span>
+          <span className="spacer">
+            •
+          </span>
+          <span>
             Last workout was Strength Training at 6:00am
           </span>
         </div>

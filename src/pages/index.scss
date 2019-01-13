@@ -16,8 +16,8 @@
         padding: 0;
         outline: none;
         svg {
-          width: 10rem;
-          height: 10rem;
+          width: 7rem;
+          height: 7rem;
           animation: pulse 2s infinite;
         }
         &:hover {
@@ -32,7 +32,7 @@
           text-transform: uppercase;
           letter-spacing: 0.1rem;
           font-weight: 700;
-          line-height: 1.5rem;
+          line-height: 1.9rem;
           margin: 0 1.5rem 0.5rem 0.5rem;
         }
         h2 {
@@ -49,16 +49,31 @@
     background: $base-color;
     margin: 1rem 0;
     height: 0.25rem;
+    @media only screen and (max-width: 768px) {
+      width: 100vw;
+    }
   }
   .index--stats {
     display: flex;
     font-size: 0.8rem;
-    justify-content: space-around;  
+    justify-content: space-around; 
+    @media only screen and (max-width: 768px) {
+      flex-direction: column;
+      span {
+        display: block;
+      }
+      span.spacer {
+        display: none;
+      }
+    }
   }
   .index--footer {
     margin: 0.2rem 0;
     display: flex;
     justify-content: flex-end;
+    @media only screen and (max-width: 768px) {
+      justify-content: flex-start;
+    }
     a {
       font-size: 0.7rem;
       text-decoration: none;
