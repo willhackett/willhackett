@@ -5,6 +5,7 @@
   "author": "Austin Green",
   "dependencies": {
     "bulma": "^0.7.0",
+    "classnames": "^2.2.6",
     "gatsby": "^2.0.66",
     "gatsby-image": "^2.0.23",
     "gatsby-plugin-netlify": "^2.0.6",
@@ -25,9 +26,13 @@
     "node-sass": "^4.11.0",
     "parcel-bundler": "^1.9.4",
     "prop-types": "^15.6.0",
+    "purecss": "^1.0.0",
     "react": "^16.2.0",
     "react-dom": "^16.4.1",
     "react-helmet": "^5.2.0",
+    "react-redux": "^6.0.0",
+    "recompose": "^0.30.0",
+    "redux": "^4.0.1",
     "uuid": "^3.2.1"
   },
   "keywords": [

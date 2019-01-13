@@ -1,79 +1,64 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import { Link, graphql } from 'gatsby'
-import Layout from '../components/Layout'
+import Main from '../components/Base/Main'
+import Logo from '../components/Base/Logo'
 
-export default class IndexPage extends React.Component {
-  render() {
-    const { data } = this.props
-    const { edges: posts } = data.allMarkdownRemark
+import { toggleNav } from '../modules/store'
 
-    return (
-      <Layout>
-        <section className="section">
-          <div className="container">
-            <div className="content">
-              <h1 className="has-text-weight-bold is-size-2">Latest Stories</h1>
-            </div>
-            {posts
-              .map(({ node: post }) => (
-                <div
-                  className="content"
-                  style={{ border: '1px solid #333', padding: '2em 4em' }}
-                  key={post.id}
-                >
-                  <p>
-                    <Link className="has-text-primary" to={post.fields.slug}>
-                      {post.frontmatter.title}
-                    </Link>
-                    <span> &bull; </span>
-                    <small>{post.frontmatter.date}</small>
-                  </p>
-                  <p>
-                    {post.excerpt}
-                    <br />
-                    <br />
-                    <Link className="button is-small" to={post.fields.slug}>
-                      Keep Reading →
-                    </Link>
-                  </p>
-                </div>
-              ))}
+import './index.scss'
+
+const Index = ({ dispatch }) => (
+  <Main>
+    <div className="index--container">
+      <div className="index--inner">
+        <div className="index--logo">
+          <button onClick={() => dispatch(toggleNav)}>
+            <Logo color="#111F2F" />
+          </button>
+          <div className="index--text">
+            <h1>Will Hackett</h1>
+            <h2>Digital consultant</h2>
           </div>
-        </section>
-      </Layout>
-    )
-  }
-}
-
-IndexPage.propTypes = {
-  data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
-      edges: PropTypes.array,
-    }),
-  }),
-}
-
-export const pageQuery = graphql`
-  query IndexQuery {
-    allMarkdownRemark(
-      sort: { order: DESC, fields: [frontmatter___date] },
-      filter: { frontmatter: { templateKey: { eq: "blog-post" } }}
-    ) {
-      edges {
-        node {
-          excerpt(pruneLength: 400)
-          id
-          fields {
-            slug
-          }
-          frontmatter {
-            title
-            templateKey
-            date(formatString: "MMMM DD, YYYY")
-          }
-        }
-      }
-    }
-  }
-`
+        </div>
+        <div className="index--spacer" />
+        <div className="index--stats">
+          <span>
+            10,450 steps
+          </span>
+          <span className="spacer">
+            •
+          </span>
+          <span>
+            76 bpm
+          </span>
+          <span className="spacer">
+            •
+          </span>
+          <span>
+            Now playing Frozen by Disney
+          </span>
+          <span className="spacer">
+            •
+          </span>
+          <span>
+            78% productivity
+          </span>
+          <span className="spacer">
+            •
+          </span>
+          <span>
+            Last workout was Strength Training at 6:00am
+          </span>
+        </div>
+        <div className="index--footer">
+          <Link to="/">
+            Find out how these stats are collected →
+          </Link>
+        </div>
+      </div>
+    </div>
+  </Main>
+)
+export default connect()(Index)
