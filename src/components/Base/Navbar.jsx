@@ -20,13 +20,13 @@ const Navbar = ({ expanded }) => (
     <div className="nav--divider" />
     <ul className="nav--list">
       <li>
-        <Link to="/about">About</Link>
+        <Link to="/bio">Bio</Link>
       </li>
       <li>
-        <Link to="/services">Services</Link>
+        <Link to="/experiences">Experiences</Link>
       </li>
       <li>
-        <Link to="/work">Work</Link>
+        <Link to="/consulting">Consulting</Link>
       </li>
       <li>
         <Link to="/studies">Studies</Link>

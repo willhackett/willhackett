@@ -1,5 +1,31 @@
 @import "../components/Variables.sass";
 
+.index--cover {
+  position: fixed;
+  display: flex;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  background: white;
+  transition: all 0.35s ease-in-out;
+  outline: 1px solid red;
+  .index--cover-image {
+    position: absolute;
+    background-position: center top;
+    background-size: 50%;
+    background-repeat: no-repeat;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+  }
+  &.hidden {
+    top: -100vh;
+  }
+}
+
+
 .index--container {
   display: flex;
   align-items: center;
