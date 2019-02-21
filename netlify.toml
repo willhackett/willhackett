@@ -10,4 +10,4 @@
   to = "https://exist.io/api/1/users/$self/attributes/?limit=10&attributes=steps,heartrate,caffeine,tracks,weather_summary,weather_temp_max,weather_temp_min"
   status = 200
   force = true
-  headers = {Authorization = "Token $EXIST_TOKEN"}
+  headers = {Authorization = $EXIST_TOKEN}

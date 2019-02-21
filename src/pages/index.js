@@ -17,7 +17,7 @@ const Hero = styled('div')`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 3rem auto;
+  margin: 7rem auto;
   flex-direction: column;
   ${breakpoints.md} {
     flex-direction: row;
@@ -71,6 +71,7 @@ const Image = styled('img')`
   align-self: center;
   max-width: 70%;
   max-height: 70%;
+  filter: grayscale(100%);
 `
 
 const Statistics = styled('div')`
