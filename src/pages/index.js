@@ -87,6 +87,10 @@ const Image = styled('img')`
   max-width: 70%;
   max-height: 70%;
   filter: grayscale(100%);
+  transition: filter 0.25s;
+  &:hover {
+    filter: grayscale(0%);
+  }
 `;
 
 const Statistics = styled('div')`
