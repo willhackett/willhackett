@@ -285,7 +285,7 @@ class Index extends Component {
     selected_day: 0,
     home: {}
   };
-  componentWillMount() {
+  componentDidMount() {
     db.bindToState('home', {
       context: this,
       state: 'home'
