@@ -23,7 +23,7 @@ const Hero = styled('div')`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 7rem auto;
+  margin: 4rem auto;
   flex-direction: column;
   ${breakpoints.md} {
     flex-direction: row;
@@ -37,21 +37,15 @@ const HeroLeft = styled('div')`
   }
 `;
 
-const HeroRight = styled('div')`
-  max-width: auto;
-  ${breakpoints.md} {
-    max-width: 50%;
-  }
-`;
-
 const H1 = styled('h1')`
   font-size: 4rem;
   line-height: 3.5rem;
-  font-weight: 600;
+  font-weight: 800;
 `;
 
 const H2 = styled('h2')`
   font-size: 2rem;
+  font-weight: 400;
 `;
 
 const Spacer = styled('span')`
@@ -69,14 +63,15 @@ const ImageContainer = styled('div')`
   height: 3rem;
   ${breakpoints.md} {
     max-width: 12.5%;
-    height: 4rem;
+    // height: 4rem;
   }
 `;
 
 const Logos = styled('div')`
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
-  margin: 3rem 0;
+  margin: 4rem 0;
   ${breakpoints.md} {
     flex-wrap: nowrap;
   }
@@ -94,7 +89,7 @@ const Image = styled('img')`
 `;
 
 const Statistics = styled('div')`
-  margin-top: 2rem;
+  margin: 4rem auto;
 `;
 
 const DaySelectorContainer = styled('div')`
@@ -102,21 +97,7 @@ const DaySelectorContainer = styled('div')`
   display: flex;
   justify-content: left;
   align-items: center;
-  border-bottom: 1px solid #f3f3f3;
-`;
-
-const DaySelectorButton = styled('button')`
-  background: #f3f3f3;
-  border: none;
-  border-radius: 100%;
-  width: 1.75rem;
-  height: 1.75rem;
-  margin: auto 0.2rem;
-  transition: background 0.25s;
-  cursor: pointer;
-  &:hover:enabled {
-    background: #dadada;
-  }
+  margin: 1rem auto;
 `;
 
 const DayStats = styled('div')`
@@ -125,21 +106,37 @@ const DayStats = styled('div')`
 `;
 
 const IndividualStat = styled('div')`
-  padding: 1rem;
-  width: calc(50% - 2rem);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  margin: 0.5rem 0;
   ${breakpoints.md} {
-    width: calc(25% - 2rem);
+    width: 50%;
+  }
+  ${breakpoints.lg} {
+    width: 33%;
+  }
+  ${breakpoints.xl} {
+    width: 25%;
   }
   h3 {
-    font-size: 1.25rem;
+    font-size: 1rem;
     line-height: 1rem;
+    font-weight: 200;
     margin: 0;
   }
   span {
-    font-size: 2rem;
+    font-size: 3rem;
+    line-height: 3rem;
     small {
       font-size: 1rem;
     }
+  }
+  &:first-of-type {
+    padding-left: 0;
+  }
+  &:last-of-type {
+    padding-right: 0;
   }
 `;
 
@@ -161,120 +158,123 @@ const logos = [
 ];
 
 const NowPlayingImg = styled('img')`
-  width: 2rem;
-  height: 2rem;
-  border-radus: 8px;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 4px;
   margin-right: 0.2rem;
 `;
 
-const NowPlaying = ({ now_playing: { is_playing, item = {} } = {} }) => (
+const NowPlayingContainer = styled('span')`
+  display: flex;
+  height: 2.6rem;
+  align-items: flex-end;
+  span {
+    line-height: 1rem;
+    font-size: 1rem;
+    small {
+      font-size: 0.75rem;
+    }
+  }
+`;
+
+const NowPlaying = ({
+  formatted,
+  now_playing: { is_playing, item = {} } = {}
+}) => (
   <IndividualStat>
-    <h3>now playing {is_playing ? '▶️' : '⏸'}</h3>
+    <h3>
+      <i className="fa fa-music" /> music
+    </h3>
+    {!item ? (
+      <span>
+        {formatted.tracks}
+        <small> tracks played</small>
+      </span>
+    ) : (
+      <span>
+        <NowPlayingContainer>
+          <NowPlayingImg src={get(item, 'album.images[0].url', '/dummy')} />
+          <span>
+            {item.name}
+            <br />
+            <small>{(item.artists || []).map(a => a.name).join(', ')}.</small>
+          </span>
+        </NowPlayingContainer>
+      </span>
+    )}
+  </IndividualStat>
+);
+
+const BasicStat = ({ icon, stat, unit, value }) => (
+  <IndividualStat>
+    <h3>
+      <i className={`fa fa-${icon}`} /> {stat}
+    </h3>
     <span>
-      <NowPlayingImg src={get(item, 'album.images[0].url', '/dummy')} />
-      <small>
-        {item.name} by {get(item, 'artists[0].name', '')}
-      </small>
+      {value}
+      <small> {unit}</small>
     </span>
   </IndividualStat>
 );
 
-const Stats = ({
-  home,
-  home: { now_playing, attributes } = {},
-  setDay,
-  selected_day
-}) => {
+const trackers = [
+  { id: 'steps', icon: 'shoe-prints', stat: 'steps', unit: 'steps' },
+  { id: 'floors', icon: 'hiking', stat: 'floors', unit: 'climbed' },
+  { id: 'workouts_min', icon: 'dumbbell', stat: 'workouts', unit: 'mins' },
+  { id: 'water', icon: 'tint', stat: 'water', unit: 'mL' },
+  { id: 'caffeine', icon: 'coffee', stat: 'caffeine', unit: 'mg' }
+];
+
+const Stats = ({ home, home: { now_playing, attributes } = {} }) => {
   if (isEmpty(home)) return null;
 
-  console.log(home);
-
-  const attrs = [
-    'heartrate',
-    'location_name',
-    'steps',
-    'tracks',
-    'weather_summary',
-    'weather_temp_max',
-    'weather_temp_min'
-  ];
+  const attrs = Object.keys(attributes);
 
   const today = {};
-  attrs.forEach(a => (today[a] = get(attributes, `${a}[${selected_day}]`, {})));
+  attrs.forEach(a => (today[a] = get(attributes, `${a}[0]`, {})));
 
   console.log(today);
 
   const formatted = {
-    date: today.heartrate.date,
-    heartrate: numeral(today.heartrate.value).format('0'),
-    steps: numeral(today.steps.value).format('0,0'),
-    tracks: numeral(today.tracks.value).format('0'),
     location_name: today.location_name.value || 'unknown',
-    weather_temp_max: numeral(today.weather_temp_max.value).format('0º'),
-    weather_summary: today.weather_summary.value || 'unknown'
+    weather_temp_max: numeral(today.weather_temp_max.value).format('0'),
+    weather_temp_min: numeral(today.weather_temp_min.value).format('0.0')
   };
+
+  trackers.forEach(tracker => {
+    formatted[tracker.id] = numeral(
+      get(today, `${tracker.id}.value`, 0)
+    ).format(tracker.format || '0');
+  });
 
   return (
     <Statistics>
       <DaySelectorContainer>
-        <h2>
-          {formatted.date === moment().format('YYYY-MM-DD')
-            ? 'Today'
-            : moment(formatted.date).fromNow()}
-        </h2>
-        <DaySelectorButton
-          onClick={() => setDay(1)}
-          disabled={selected_day === 4}
-        >
-          <i className="fa fa-chevron-left" />
-        </DaySelectorButton>
-        <DaySelectorButton
-          onClick={() => setDay(-1)}
-          disabled={selected_day === 0}
-        >
-          <i className="fa fa-chevron-right" />
-        </DaySelectorButton>
+        <h2>Today in data</h2>
       </DaySelectorContainer>
       <DayStats>
-        {/* Steps */}
-        <IndividualStat>
-          <h3>steps</h3>
-          <span>
-            {formatted.steps}
-            <small> today</small>
-          </span>
-        </IndividualStat>
-        {/* Heartrate */}
-        <IndividualStat>
-          <h3>heartrate</h3>
-          <span>
-            {formatted.heartrate}
-            <small> bpm avg.</small>
-          </span>
-        </IndividualStat>
-        {/* Media */}
-        <IndividualStat>
-          <h3>music</h3>
-          <span>
-            {formatted.tracks}
-            <small> tracks played</small>
-          </span>
-        </IndividualStat>
-        {/* Now playing */}
-        <NowPlaying now_playing={now_playing} />
         {/* Location */}
         <IndividualStat>
-          <h3>location</h3>
+          <h3>
+            <i className="fa fa-globe-asia" /> current location
+          </h3>
           <span>{formatted.location_name}</span>
         </IndividualStat>
+        {/* Now playing */}
+        <NowPlaying now_playing={now_playing} formatted={formatted} />
         {/* Weather */}
         <IndividualStat>
-          <h3>weather</h3>
+          <h3>
+            <i className="fa fa-sun" /> weather
+          </h3>
           <span>
-            {formatted.weather_temp_max}
-            <small>C - {formatted.weather_summary}</small>
+            {formatted.weather_temp_max}º
+            <small>C / {formatted.weather_temp_min}º</small>
           </span>
         </IndividualStat>
+        {trackers.map(({ id, ...rest }) => (
+          <BasicStat key={id} value={formatted[id]} {...rest} />
+        ))}
       </DayStats>
     </Statistics>
   );
@@ -282,7 +282,6 @@ const Stats = ({
 
 class Index extends Component {
   state = {
-    selected_day: 0,
     home: {}
   };
   componentDidMount() {
@@ -291,13 +290,6 @@ class Index extends Component {
       state: 'home'
     });
   }
-  setDay = modifier => {
-    const { selected_day } = this.state;
-    const nextState = selected_day + modifier;
-    if (nextState >= 0 && nextState < 4) {
-      this.setState({ selected_day: nextState });
-    }
-  };
   render() {
     const { home, selected_day } = this.state;
 

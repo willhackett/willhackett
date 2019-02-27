@@ -4,7 +4,7 @@ import 'firebase/database';
 
 // export default rebase.createClass(firebase.database());
 
-export default () => {
+export default (() => {
   if (!window)
     return {
       bindToState: () => null
@@ -19,4 +19,4 @@ export default () => {
   });
 
   return rebase.createClass(firebase.database());
-};
+})();
