@@ -5,7 +5,7 @@ import 'firebase/database';
 // export default rebase.createClass(firebase.database());
 
 export default (() => {
-  if (!window)
+  if (typeof window === 'undefined')
     return {
       bindToState: () => null
     };

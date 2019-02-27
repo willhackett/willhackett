@@ -233,8 +233,6 @@ const Stats = ({ home, home: { now_playing, attributes } = {} }) => {
   const today = {};
   attrs.forEach(a => (today[a] = get(attributes, `${a}[0]`, {})));
 
-  console.log(today);
-
   const formatted = {
     location_name: today.location_name.value || 'unknown',
     weather_temp_max: numeral(today.weather_temp_max.value).format('0'),

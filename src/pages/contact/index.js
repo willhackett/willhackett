@@ -1,87 +1,113 @@
-import React from "react";
-import { navigate } from "gatsby-link";
-import Layout from '../../components/Layout'
+import React, { Component } from 'react';
+import { styled } from 'reakit';
+import ReCAPTCHA from 'react-google-recaptcha';
+import FluidContainer from '../../components/FluidContainer';
 
-function encode(data) {
-  return Object.keys(data)
-    .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-    .join("&");
-}
+const Form = styled('form')`
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+`;
 
-export default class Index extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { isValidated: false };
-  }
+const Label = styled('label')`
+  display: block;
+  font-size: 1.5rem;
+  margin-top: 1rem;
+`;
 
-  handleChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
+const Input = styled('input')`
+  display: block;
+  font-size: 2rem;
+  border: 0;
+  border-bottom: 2px solid grey;
+  margin-bottom: 1rem;
+`;
+
+const TextArea = styled('textarea')`
+  display: block;
+  font-size: 2rem;
+  border: 0;
+  border-bottom: 2px solid grey;
+  margin-bottom: 1rem;
+`;
+
+const Button = styled('button')`
+  display: block;
+  padding: 0.5rem 4rem;
+  background: white;
+  align-self: flex-start;
+  border: 2px solid grey;
+  font-size: 1.5rem;
+`;
+
+const recaptchaRef = React.createRef();
+
+class ContactForm extends Component {
+  state = {
+    submitting: false,
+    error: false
   };
-
-  handleSubmit = e => {
+  submitForm = async e => {
     e.preventDefault();
-    const form = e.target;
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({
-        "form-name": form.getAttribute("name"),
-        ...this.state
-      })
-    })
-      .then(() => navigate(form.getAttribute("action")))
-      .catch(error => alert(error));
-  };
+    this.setState({ submitting: true });
+    try {
+      await recaptchaRef.current.execute();
+      const recaptchaRes = recaptchaRef.current.getValue();
 
+      await fetch('/contact', {
+        method: 'POST',
+        body: {
+          name: document.getElementById('name').value,
+          email: document.getElementById('email').value,
+          phone: document.getElementById('phone').value,
+          message: document.getElementById('message').value,
+          'g-recaptcha-response': recaptchaRes
+        }
+      });
+      document.querySelectorAll('input,textarea').forEach(node => {
+        node.value = '';
+      });
+    } catch (e) {
+      console.log(e, e.message);
+      this.setState({ error: 'Something went wrong - please try again.' });
+    }
+  };
   render() {
     return (
-      <Layout>
-        <section className="section">
-          <div className="container">
-            <div className="content">
-        <h1>Contact</h1>
-        <form
-          name="contact"
-          method="post"
-          action="/contact/thanks/"
-          data-netlify="true"
-          data-netlify-honeypot="bot-field"
-          onSubmit={this.handleSubmit}
-        >
-          {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
-          <input type="hidden" name="form-name" value="contact" />
-          <div hidden>
-            <label>
-              Don’t fill this out:{" "}
-              <input name="bot-field" onChange={this.handleChange} />
-            </label>
-          </div>
-          <div className="field">
-            <label className="label" htmlFor={"name"} >Your name</label>
-            <div className="control">
-              <input className="input" type={"text"} name={"name"} onChange={this.handleChange} id={"name"} required={true} />
-            </div>
-          </div>
-          <div className="field">
-            <label className="label" htmlFor={"email"}>Email</label>
-              <div className="control">
-                <input className="input" type={"email"} name={"email"} onChange={this.handleChange} id={"email"} required={true} />
-              </div>
-          </div>
-          <div className="field">
-            <label className="label" htmlFor={"message"}>Message</label>
-            <div className="control">
-              <textarea className="textarea" name={"message"} onChange={this.handleChange} id={"message"} required={true} />
-            </div>
-          </div>
-          <div className="field">
-            <button className="button is-link" type="submit">Send</button>
-          </div>
-        </form>
-        </div>
-        </div>
-        </section>
-      </Layout>
+      <Form onSubmit={this.submitForm}>
+        <ReCAPTCHA
+          ref={recaptchaRef}
+          size="invisible"
+          sitekey="6LexSZQUAAAAAI4BGV59tsDCQ8V-gitEdLfBnpQU"
+        />
+        <Label htmlFor="name">Name</Label>
+        <Input id="name" type="text" required />
+        <Label htmlFor="email">Email</Label>
+        <Input id="email" type="email" required />
+        <Label htmlFor="phone">Phone</Label>
+        <Input id="phone" type="number" />
+        <Label htmlFor="message">Message</Label>
+        <TextArea id="message" />
+        <Button type="submit" disabled={this.state.submitting}>
+          Send
+        </Button>
+      </Form>
     );
   }
 }
+
+const Contact = () => (
+  <FluidContainer>
+    <h1>Contact me</h1>
+    <h2>Best ways to get in touch</h2>
+    <p>
+      For recruitment or networking, the best way to get in touch is via{' '}
+      <a href="https://www.linkedin.com/in/willhackett">LinkedIn</a>.
+    </p>
+    <h2>Something else</h2>
+    <p>For anything else, please use this form.</p>
+    <ContactForm />
+  </FluidContainer>
+);
+
+export default Contact;

@@ -37,6 +37,7 @@
     "re-base": "^4.0.0",
     "react": "^16.2.0",
     "react-dom": "^16.4.1",
+    "react-google-recaptcha": "^1.0.5",
     "react-helmet": "^5.2.0",
     "react-redux": "^6.0.0",
     "reakit": "^0.16.0",

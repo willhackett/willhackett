@@ -24,7 +24,7 @@ const FooterContent = styled('div')`
 const Footer = () => (
   <FooterContainer>
     <FooterContent>
-      Copyright © Will Hackett, Firelabs Pty Ltd. {new Date().getFullYear()}
+      Copyright © Will Hackett, Firelabs Pty Ltd. {new Date().getFullYear()}.
       <br />
       ABN 51 167 446 451
     </FooterContent>
