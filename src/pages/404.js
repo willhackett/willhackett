@@ -1,14 +1,24 @@
-import React from 'react'
-
-import Main from '../components/Base/Main'
+import React from 'react';
 
 const NotFoundPage = () => (
-  <Main>
-    <div>
-      <h1>NOT FOUND</h1>
-      <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-    </div>
-  </Main>
-)
+  <div>
+    <h1>🤷‍♂️</h1>
+    <h3>I'm really not sure what you were expecting</h3>
+    <p>This page does not exist. </p>
+    <iframe
+      src="https://giphy.com/embed/9J7tdYltWyXIY"
+      width="480"
+      height="404"
+      frameBorder="0"
+      class="giphy-embed"
+      allowFullScreen
+    />
+    <p>
+      <a href="https://giphy.com/gifs/internet-google-chrone-9J7tdYltWyXIY">
+        via GIPHY
+      </a>
+    </p>
+  </div>
+);
 
-export default NotFoundPage
+export default NotFoundPage;
