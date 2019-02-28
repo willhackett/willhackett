@@ -1,4 +1,4 @@
-import React, { Fragment, Component } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { styled } from 'reakit';
 import get from 'lodash/get';
@@ -14,6 +14,7 @@ import innowell from '../img/logos/innowell.png';
 import enablo from '../img/logos/enablo.png';
 import expedia from '../img/logos/expedia.png';
 
+import Container from '../components/Container';
 import breakpoints from '../components/breakpoints';
 
 import db from '../modules/db';
@@ -295,7 +296,7 @@ class Index extends Component {
     const { home, selected_day } = this.state;
 
     return (
-      <Fragment>
+      <Container>
         <Hero>
           <HeroLeft>
             <H1>
@@ -313,7 +314,7 @@ class Index extends Component {
           ))}
         </Logos>
         <Stats home={home} setDay={this.setDay} selected_day={selected_day} />
-      </Fragment>
+      </Container>
     );
   }
 }

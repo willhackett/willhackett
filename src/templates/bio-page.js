@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
+import Container from '../components/Container';
 import Content, { HTMLContent } from '../components/Content';
 
 export const BioPageTemplate = ({ title, content, contentComponent }) => {
@@ -19,11 +20,13 @@ const BioPage = ({ data }) => {
   const { markdownRemark: post } = data;
 
   return (
-    <BioPageTemplate
-      contentComponent={HTMLContent}
-      title={post.frontmatter.title}
-      content={post.html}
-    />
+    <Container>
+      <BioPageTemplate
+        contentComponent={HTMLContent}
+        title={post.frontmatter.title}
+        content={post.html}
+      />
+    </Container>
   );
 };
 

@@ -1,9 +1,10 @@
 import React from 'react';
 import { styled } from 'reakit';
+import Container from './Container';
 
 import breakpoints from './breakpoints';
 
-const Container = styled('div')`
+const Inner = styled('div')`
   width: 90%;
   ${breakpoints.md} {
     width: 700px;
@@ -16,6 +17,10 @@ const Container = styled('div')`
   }
 `;
 
-const FluidContainer = ({ children }) => <Container>{children}</Container>;
+const FluidContainer = ({ children }) => (
+  <Container>
+    <Inner>{children}</Inner>
+  </Container>
+);
 
 export default FluidContainer;

@@ -63,7 +63,7 @@ class ContactForm extends Component {
   state = {
     submitting: false,
     error: false,
-    success: true
+    success: false
   };
   submitForm = async e => {
     e.preventDefault();
@@ -87,6 +87,7 @@ class ContactForm extends Component {
       document.querySelectorAll('input,textarea').forEach(node => {
         node.value = '';
       });
+      this.setState({ success: true });
     } catch (e) {
       console.log(e, e.message);
       this.setState({ error: 'Something went wrong - please try again.' });

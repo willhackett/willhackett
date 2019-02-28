@@ -1,11 +1,17 @@
 import React from 'react';
+import Container from '../components/Container';
 
 const NotFoundPage = () => (
-  <div>
-    <h1>🤷‍♂️</h1>
+  <Container>
+    <h1>
+      <span role="img" aria-label="404 - Page not Found">
+        🤷‍♂️
+      </span>
+    </h1>
     <h3>I'm really not sure what you were expecting</h3>
     <p>This page does not exist. </p>
     <iframe
+      title="Giphy 404 Image"
       src="https://giphy.com/embed/9J7tdYltWyXIY"
       width="480"
       height="404"
@@ -18,7 +24,7 @@ const NotFoundPage = () => (
         via GIPHY
       </a>
     </p>
-  </div>
+  </Container>
 );
 
 export default NotFoundPage;
