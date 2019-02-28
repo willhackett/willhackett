@@ -223,7 +223,7 @@ const BasicStat = ({ icon, stat, unit, value }) => (
 const trackers = [
   { id: 'steps', icon: 'shoe-prints', stat: 'steps', unit: 'steps' },
   { id: 'floors', icon: 'hiking', stat: 'floors', unit: 'climbed' },
-  { id: 'heartrate', icon: 'heartbroken', stat: 'heartrate', unit: 'bpm' },
+  { id: 'heartrate', icon: 'heart-broken', stat: 'heartrate', unit: 'bpm' },
   { id: 'workouts_min', icon: 'dumbbell', stat: 'workouts', unit: 'mins' },
   { id: 'water', icon: 'tint', stat: 'water', unit: 'mL' },
   { id: 'caffeine', icon: 'coffee', stat: 'caffeine', unit: 'mg' }
