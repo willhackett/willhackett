@@ -97,6 +97,9 @@ const GlobalStyle = createGlobalStyle`
       border-bottom: 2px solid transparent;
     }
   }
+  .grecaptcha-badge {
+    display: none !important;
+  }
 `;
 
 const Main = connect(state => ({ theme: state.theme }))(

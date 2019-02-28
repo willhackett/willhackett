@@ -119,6 +119,27 @@ class ContactForm extends Component {
         <Button type="submit" disabled={this.state.submitting}>
           Send
         </Button>
+        <p>
+          <small>
+            This site is protected by reCAPTCHA and the Google{' '}
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://policies.google.com/privacy"
+            >
+              Privacy Policy
+            </a>{' '}
+            and{' '}
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://policies.google.com/terms"
+            >
+              Terms of Service
+            </a>{' '}
+            apply.
+          </small>
+        </p>
       </Form>
     );
   }
