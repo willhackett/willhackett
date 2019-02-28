@@ -305,7 +305,10 @@ class Index extends Component {
               Hackett
             </H1>
             <Spacer />
-            <H2>I build digital products &amp; experiences.</H2>
+            <H2>
+              Creative digital products &amp; experiences; gin &amp;
+              skateboards.
+            </H2>
           </HeroLeft>
         </Hero>
         <Logos>
