@@ -1,10 +1,9 @@
 import React, { Fragment, Component } from 'react';
 import { connect } from 'react-redux';
-import { Flex, styled } from 'reakit';
+import { styled } from 'reakit';
 import get from 'lodash/get';
 import isEmpty from 'lodash/isEmpty';
 import numeral from 'numeral';
-import moment from 'moment';
 
 import seek from '../img/logos/seek.png';
 import openclub from '../img/logos/openclub.png';
@@ -171,6 +170,9 @@ const NowPlayingContainer = styled('span')`
   span {
     line-height: 1rem;
     font-size: 1rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding-right: 1rem;
     small {
       font-size: 0.75rem;
     }
@@ -220,6 +222,7 @@ const BasicStat = ({ icon, stat, unit, value }) => (
 const trackers = [
   { id: 'steps', icon: 'shoe-prints', stat: 'steps', unit: 'steps' },
   { id: 'floors', icon: 'hiking', stat: 'floors', unit: 'climbed' },
+  { id: 'heartrate', icon: 'heartbroken', stat: 'heartrate', unit: 'bpm' },
   { id: 'workouts_min', icon: 'dumbbell', stat: 'workouts', unit: 'mins' },
   { id: 'water', icon: 'tint', stat: 'water', unit: 'mL' },
   { id: 'caffeine', icon: 'coffee', stat: 'caffeine', unit: 'mg' }

@@ -35,6 +35,7 @@
     "parcel-bundler": "^1.9.4",
     "prop-types": "^15.6.0",
     "purecss": "^1.0.0",
+    "query-string": "^6.2.0",
     "re-base": "^4.0.0",
     "react": "^16.2.0",
     "react-dom": "^16.4.1",

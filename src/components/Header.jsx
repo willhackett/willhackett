@@ -1,5 +1,5 @@
 import React from 'react';
-import { InlineFlex, Avatar, Block, styled } from 'reakit';
+import { InlineFlex, Avatar, styled } from 'reakit';
 import { Link } from 'gatsby';
 
 import breakpoints from './breakpoints';

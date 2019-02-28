@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { styled } from 'reakit';
 import ReCAPTCHA from 'react-google-recaptcha';
 import FluidContainer from '../../components/FluidContainer';
+import qs from 'query-string';
 
 const Form = styled('form')`
   display: flex;
@@ -40,12 +41,29 @@ const Button = styled('button')`
   font-size: 1.5rem;
 `;
 
+const Success = styled('span')`
+  display: block;
+  width: 100%;
+  padding: 1.5rem;
+  border: 1px solid #c3e6cb;
+  background-color: #d4edda;
+`;
+
+const Error = styled('span')`
+  display: block;
+  width: 100%;
+  padding: 1.5rem;
+  border: 1px solid #f5c6cb;
+  background-color: #f8d7da;
+`;
+
 const recaptchaRef = React.createRef();
 
 class ContactForm extends Component {
   state = {
     submitting: false,
-    error: false
+    error: false,
+    success: true
   };
   submitForm = async e => {
     e.preventDefault();
@@ -54,16 +72,18 @@ class ContactForm extends Component {
       await recaptchaRef.current.execute();
       const recaptchaRes = recaptchaRef.current.getValue();
 
-      await fetch('/contact', {
+      const res = await fetch('/contact', {
         method: 'POST',
-        body: {
+        body: qs.stringify({
+          'form-name': 'contact',
           name: document.getElementById('name').value,
           email: document.getElementById('email').value,
           phone: document.getElementById('phone').value,
           message: document.getElementById('message').value,
           'g-recaptcha-response': recaptchaRes
-        }
+        })
       });
+      console.log(res);
       document.querySelectorAll('input,textarea').forEach(node => {
         node.value = '';
       });
@@ -73,8 +93,15 @@ class ContactForm extends Component {
     }
   };
   render() {
+    const { error, success } = this.state;
     return (
       <Form onSubmit={this.submitForm}>
+        {success && (
+          <Success role="alert">
+            Your message has been sent&mdash;thank you!
+          </Success>
+        )}
+        {error && <Error role="alert">{error}</Error>}
         <ReCAPTCHA
           ref={recaptchaRef}
           size="invisible"
