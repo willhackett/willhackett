@@ -66,10 +66,10 @@ class Loader extends Component {
     renderer: PropTypes.oneOf(['browser', 'ssr'])
   };
   state = {
-    animate: this.context.renderer === 'browser' ? 0 : 2
+    animate: 0 //this.context.renderer === 'browser' ? 0 : 2
   };
   componentDidMount() {
-    if (this.context.renderer === 'ssr') return;
+    // if (this.context.renderer === 'ssr') return;
     setTimeout(() => {
       this.setState({ animate: 1 });
       setTimeout(() => {
@@ -78,7 +78,7 @@ class Loader extends Component {
     }, 50);
   }
   render() {
-    if (this.context.renderer === 'ssr') return null;
+    // if (this.context.renderer === 'ssr') return null;
     const { animate } = this.state;
 
     return (
