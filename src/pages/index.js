@@ -4,6 +4,7 @@ import { styled } from 'reakit';
 import get from 'lodash/get';
 import isEmpty from 'lodash/isEmpty';
 import numeral from 'numeral';
+import moment from 'moment-timezone';
 
 import seek from '../img/logos/seek.png';
 import openclub from '../img/logos/openclub.png';
@@ -108,7 +109,7 @@ const DayStats = styled('div')`
 const IndividualStat = styled('div')`
   text-overflow: ellipsis;
   white-space: nowrap;
-  width: 100%;
+  width: ${props => (props.fullWidth ? '100%' : '50%')};
   margin: 0.5rem 0;
   ${breakpoints.md} {
     width: 50%;
@@ -184,7 +185,7 @@ const NowPlaying = ({
   formatted,
   now_playing: { is_playing, item = {} } = {}
 }) => (
-  <IndividualStat>
+  <IndividualStat fullWidth={true}>
     <h3>
       <i className="fa fa-music" /> music
     </h3>
@@ -208,13 +209,13 @@ const NowPlaying = ({
   </IndividualStat>
 );
 
-const BasicStat = ({ icon, stat, unit, value }) => (
+const BasicStat = ({ icon, stat, unit, value, formatter }) => (
   <IndividualStat>
     <h3>
       <i className={`fa fa-${icon}`} /> {stat}
     </h3>
     <span>
-      {value}
+      {numeral(value).format(formatter || '0,0')}
       <small> {unit}</small>
     </span>
   </IndividualStat>
@@ -256,11 +257,18 @@ const Stats = ({ home, home: { now_playing, attributes } = {} }) => {
       </DaySelectorContainer>
       <DayStats>
         {/* Location */}
-        <IndividualStat>
+        <IndividualStat fullWidth={true}>
           <h3>
             <i className="fa fa-globe-asia" /> current location
           </h3>
           <span>{formatted.location_name}</span>
+        </IndividualStat>
+        {/* Location */}
+        <IndividualStat fullWidth={true}>
+          <h3>
+            <i className="fa fa-clocl" /> local time
+          </h3>
+          <span>{moment().format('h:mm:ss a')}</span>
         </IndividualStat>
         {/* Now playing */}
         <NowPlaying now_playing={now_playing} formatted={formatted} />
@@ -283,14 +291,24 @@ const Stats = ({ home, home: { now_playing, attributes } = {} }) => {
 };
 
 class Index extends Component {
+  interval = null;
   state = {
     home: {}
   };
   componentDidMount() {
+    this.interval = setInterval(
+      () => this.setState({ time: Date.now() }),
+      1000
+    );
     db.bindToState('home', {
       context: this,
       state: 'home'
     });
+  }
+  componentWillUnmount() {
+    if (this.interval) {
+      clearInterval(this.interval);
+    }
   }
   render() {
     const { home, selected_day } = this.state;

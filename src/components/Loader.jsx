@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { styled } from 'reakit';
 import cx from 'classnames';
+import breakpoints from './breakpoints';
 
 const Cover = styled('div')`
   display: flex;
@@ -26,9 +27,19 @@ const Cover = styled('div')`
 const Text = styled('span')`
   color: white;
   font-weight: 500;
-  font-size: 3rem;
-  line-height: 4rem;
-  margin-bottom: 4rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  margin-bottom: 2rem;
+  ${breakpoints.md} {
+    font-size: 2rem;
+    line-height: 3rem;
+    margin-bottom: 3rem;
+  }
+  ${breakpoints.lg} {
+    font-size: 3rem;
+    line-height: 4rem;
+    margin-bottom: 4rem;
+  }
   overflow: hidden;
   & > span {
     display: inline-block;
