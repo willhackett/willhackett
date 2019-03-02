@@ -51,35 +51,19 @@ const Span = styled('span')`
 `;
 
 class Loader extends Component {
-  queuedFunction = null;
   static contextTypes = {
     renderer: PropTypes.oneOf(['browser', 'ssr'])
   };
   state = {
-    animate: this.context.renderer === 'browser' ? 0 : 2,
-    progress: 0
-  };
-  done = () => {
-    const { progress } = this.state;
-
-    if (progress >= 1) {
-      return this.setState({ animate: 2 });
-    }
-    this.queuedFunction = this.done;
-  };
-  next = (step, timeout) => {
-    const { animate, progress } = this.state;
-    this.setState({ animate: animate + step });
-    setTimeout(() => {
-      this.setState({ progress: progress + step });
-      if (this.queuedFunction) this.queuedFunction();
-    }, timeout);
+    animate: this.context.renderer === 'browser' ? 0 : 2
   };
   componentDidMount() {
-    this.props.done(this.done);
     if (this.context.renderer === 'ssr') return;
     setTimeout(() => {
-      this.next(1, 1400);
+      this.setState({ animate: 1 });
+      setTimeout(() => {
+        this.setState({ animate: 2 });
+      }, 1400);
     }, 50);
   }
   render() {

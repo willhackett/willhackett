@@ -16,7 +16,6 @@ import expedia from '../img/logos/expedia.png';
 
 import Container from '../components/Container';
 import breakpoints from '../components/breakpoints';
-import Loader from '../components/Loader';
 
 import db from '../modules/db';
 
@@ -284,18 +283,13 @@ const Stats = ({ home, home: { now_playing, attributes } = {} }) => {
 };
 
 class Index extends Component {
-  ready = () => null;
   state = {
     home: {}
-  };
-  onReady = r => {
-    this.ready = r;
   };
   componentDidMount() {
     db.bindToState('home', {
       context: this,
-      state: 'home',
-      then: () => this.ready()
+      state: 'home'
     });
   }
   render() {
@@ -323,7 +317,6 @@ class Index extends Component {
           ))}
         </Logos>
         <Stats home={home} setDay={this.setDay} selected_day={selected_day} />
-        <Loader done={this.onReady} />
       </Container>
     );
   }

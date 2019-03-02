@@ -11,6 +11,7 @@ import {
 import baseTheme from 'reakit-theme-default';
 import 'circular-std';
 
+import Loader from './src/components/Loader';
 import breakpoints from './src/components/breakpoints';
 import store from './src/modules/store';
 
@@ -118,6 +119,7 @@ const Main = enhancers(({ children, theme, additional }) => (
       {additional}
       <GlobalStyle />
       <StyledBlock>{children}</StyledBlock>
+      <Loader />
     </Fragment>
   </ThemeProvider>
 ));
