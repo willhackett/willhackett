@@ -209,17 +209,18 @@ const NowPlaying = ({
   </IndividualStat>
 );
 
-const BasicStat = ({ icon, stat, unit, value, formatter }) => (
-  <IndividualStat>
-    <h3>
-      <i className={`fa fa-${icon}`} /> {stat}
-    </h3>
-    <span>
-      {numeral(value).format(formatter || '0,0')}
-      <small> {unit}</small>
-    </span>
-  </IndividualStat>
-);
+const BasicStat = ({ icon, stat, unit, value, formatter }) =>
+  value ? (
+    <IndividualStat>
+      <h3>
+        <i className={`fa fa-${icon}`} /> {stat}
+      </h3>
+      <span>
+        {numeral(value).format(formatter || '0,0')}
+        <small> {unit}</small>
+      </span>
+    </IndividualStat>
+  ) : null;
 
 const trackers = [
   { id: 'steps', icon: 'shoe-prints', stat: 'steps', unit: 'steps' },
@@ -245,9 +246,7 @@ const Stats = ({ home, home: { now_playing, attributes } = {} }) => {
   };
 
   trackers.forEach(tracker => {
-    formatted[tracker.id] = numeral(
-      get(today, `${tracker.id}.value`, 0)
-    ).format(tracker.format || '0');
+    formatted[tracker.id] = get(today, `${tracker.id}.value`);
   });
 
   return (
