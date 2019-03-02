@@ -265,9 +265,9 @@ const Stats = ({ home, home: { now_playing, attributes } = {} }) => {
         {/* Location */}
         <IndividualStat fullWidth={true}>
           <h3>
-            <i className="fa fa-clocl" /> local time
+            <i className="fa fa-clock" /> local time
           </h3>
-          <span>{moment().format('h:mm:ss a')}</span>
+          <span>{moment.tz('Australia/Melbourne').format('h:mm:ss a')}</span>
         </IndividualStat>
         {/* Now playing */}
         <NowPlaying now_playing={now_playing} formatted={formatted} />
