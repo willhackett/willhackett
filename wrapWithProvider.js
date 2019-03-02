@@ -112,18 +112,21 @@ const enhancers = compose(
   connect(state => ({ theme: state.theme }))
 );
 
-const Main = enhancers(({ children, theme }) => (
+const Main = enhancers(({ children, theme, additional }) => (
   <ThemeProvider theme={themes[theme]}>
     <Fragment>
+      {additional}
       <GlobalStyle />
       <StyledBlock>{children}</StyledBlock>
     </Fragment>
   </ThemeProvider>
 ));
 
-const Root = renderer => ({ element }) => (
+const Root = (renderer, additional) => ({ element }) => (
   <Provider store={store}>
-    <Main renderer={renderer}>{element}</Main>
+    <Main renderer={renderer} additional={additional}>
+      {element}
+    </Main>
   </Provider>
 );
 

@@ -43,6 +43,14 @@ Utilising these new-age technologies can drastically reduce the time it takes to
 
 The next steps for the industry will be pushing cloud providers for technologies that discourage vendor lock-in and create a more competitive landscape for app hosting. Like infrastructure and electricity, you should be able to move your PaaS app. I hope to push the industry in this direction.
 
+### Security by design 🔒
+
+Application security is extremely important because of the growing global risk of data breaches. Australia has had several high-profile data breaches in recent years and these highlight the growing need for security training and auditing.
+
+Application security is best approached by people, process and technology. I can go on about praciticing defensive programming — technically utilising linters, encapsulating private methods, ensuring immutability, sanitising inputs, controlling data exposure, implementing security policies and much more — but integration first starts with your team.
+
+It's always prudent to stay up to date with vulnerabilities and security patches for your software stack as well as the [Open Web Application Security Project (OWASP) Top 10](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project).
+
 ### Transparency & no bullsh\*\* 🙅‍♂️
 
 I'm quite easy to work with but generally work best when a transparent and open dialogue is kept within the team. Keeping the channels clear helps get shit done, kill biases and create a forum for great ideas.
@@ -50,8 +58,6 @@ I'm quite easy to work with but generally work best when a transparent and open 
 I maintain three policies when building products; it's important for those working with me to know them—"the customer comes first", "no idea is a dumb idea" and "just get shit done". With every new idea, I always ask "how does this benefit the customer?"
 
 Team environments offer the best way for people to teach, learn and display excellence. I expect everybody in my teams to bring creativity, enthusiasm and an encouraging persona to the workplace. I believe in a hands-off approach to teaching—talking out a problem is far more effective than just solving it for you.
-
-On Wednesdays, we wear pink and on Fridays, we drink—in my teams we should always take breaks to hear about each other's lives, exchange theories about the universe and dispute Douglas Adam's answer to the meaning of life.
 
 ## Coffee order ☕️
 
