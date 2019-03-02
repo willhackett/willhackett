@@ -231,7 +231,7 @@ const trackers = [
   { id: 'caffeine', icon: 'coffee', stat: 'caffeine', unit: 'mg' }
 ];
 
-const Stats = ({ home, home: { now_playing, attributes } = {} }) => {
+const Stats = ({ home, home: { now_playing, attributes, id = {} } = {} }) => {
   if (isEmpty(home)) return null;
 
   const attrs = Object.keys(attributes);
@@ -267,7 +267,11 @@ const Stats = ({ home, home: { now_playing, attributes } = {} }) => {
           <h3>
             <i className="fa fa-clock" /> local time
           </h3>
-          <span>{moment.tz('Australia/Melbourne').format('h:mm:ss a')}</span>
+          <span>
+            {moment
+              .tz(id.timezone || 'Australia/Melbourne')
+              .format('h:mm:ss a')}
+          </span>
         </IndividualStat>
         {/* Now playing */}
         <NowPlaying now_playing={now_playing} formatted={formatted} />
@@ -277,8 +281,8 @@ const Stats = ({ home, home: { now_playing, attributes } = {} }) => {
             <i className="fa fa-sun" /> weather
           </h3>
           <span>
-            {formatted.weather_temp_max}º
-            <small>C / {formatted.weather_temp_min}º</small>
+            {numeral(id.weather.temperature).format('0')}º
+            <small>C & {id.weather.summary}</small>
           </span>
         </IndividualStat>
         {trackers.map(({ id, ...rest }) => (
