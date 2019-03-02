@@ -16,6 +16,7 @@ import expedia from '../img/logos/expedia.png';
 
 import Container from '../components/Container';
 import breakpoints from '../components/breakpoints';
+import Loader from '../components/Loader';
 
 import db from '../modules/db';
 
@@ -89,7 +90,7 @@ const Image = styled('img')`
 `;
 
 const Statistics = styled('div')`
-  margin: 4rem auto;
+  margin: 5.8rem auto 4rem auto;
 `;
 
 const DaySelectorContainer = styled('div')`
@@ -283,13 +284,18 @@ const Stats = ({ home, home: { now_playing, attributes } = {} }) => {
 };
 
 class Index extends Component {
+  ready = () => null;
   state = {
     home: {}
+  };
+  onReady = r => {
+    this.ready = r;
   };
   componentDidMount() {
     db.bindToState('home', {
       context: this,
-      state: 'home'
+      state: 'home',
+      then: () => this.ready()
     });
   }
   render() {
@@ -306,7 +312,7 @@ class Index extends Component {
             </H1>
             <Spacer />
             <H2>
-              Creative digital products &amp; experiences; gin &amp;
+              Creative, digital products &amp; experiences; gin &amp;
               skateboards.
             </H2>
           </HeroLeft>
@@ -317,6 +323,7 @@ class Index extends Component {
           ))}
         </Logos>
         <Stats home={home} setDay={this.setDay} selected_day={selected_day} />
+        <Loader done={this.onReady} />
       </Container>
     );
   }

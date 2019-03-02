@@ -1,5 +1,7 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import { Provider, connect } from 'react-redux';
+import { compose, withContext } from 'recompose';
 import {
   Provider as ThemeProvider,
   Block,
@@ -52,7 +54,7 @@ const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
   }
-  html, .root {
+  html, :root {
     font-size: 16px;
   }
   h1, h2, h3, h4, h5, h6 {
@@ -102,20 +104,26 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const Main = connect(state => ({ theme: state.theme }))(
-  ({ children, theme }) => (
-    <ThemeProvider theme={themes[theme]}>
-      <Fragment>
-        <GlobalStyle />
-        <StyledBlock>{children}</StyledBlock>
-      </Fragment>
-    </ThemeProvider>
-  )
+const enhancers = compose(
+  withContext(
+    { renderer: PropTypes.oneOf(['browser', 'ssr']) },
+    ({ renderer }) => ({ renderer })
+  ),
+  connect(state => ({ theme: state.theme }))
 );
 
-const Root = ({ element }) => (
+const Main = enhancers(({ children, theme }) => (
+  <ThemeProvider theme={themes[theme]}>
+    <Fragment>
+      <GlobalStyle />
+      <StyledBlock>{children}</StyledBlock>
+    </Fragment>
+  </ThemeProvider>
+));
+
+const Root = renderer => ({ element }) => (
   <Provider store={store}>
-    <Main>{element}</Main>
+    <Main renderer={renderer}>{element}</Main>
   </Provider>
 );
 
