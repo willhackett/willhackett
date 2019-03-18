@@ -16,7 +16,7 @@ Currently, I'm at [Seek](https://www.seek.com.au/) — Australia's no. 1 jobs, 
 
 I've learned during my career promote a special approach to problem solving and product design&mdash;the customer comes first, no idea is a dumb idea and just get sh\*\* done.
 
-In my spare time I skateboard (longboard variety) which has resulted in 2 hospital visits in the past year. I'm an advid gin fanatic, resulting in no hospital visits but a lot of distillary visits and a hefty increase in spending at the bottle-shop.
+In my spare time I skateboard (longboard variety) which has resulted in 2 hospital visits in the past year. I'm an avid gin fanatic, resulting in no hospital visits but a lot of distillary visits and a hefty increase in spending at the bottle-shop.
 
 ## A little about my style
 
