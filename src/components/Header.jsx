@@ -23,7 +23,8 @@ const InnerHeaderContainer = styled.div`
 `
 
 const Menu = styled('ul')`
-  display: inline-block;
+  display: flex;
+  list-style: none;
 `;
 
 const MenuItem = styled(Link)`
@@ -31,13 +32,13 @@ const MenuItem = styled(Link)`
   font-size: 1.25rem;
   text-decoration: none;
   font-weight: 500;
-  color: ${props => props.theme.linkColor};
+  color: ${props => props.theme.navLink};
   transition: all 0.25s;
   border-bottom: 2px solid transparent;
   padding-bottom: 8px;
   &:hover {
     padding-bottom: 4px;
-    border-bottom: 2px solid ${props => props.theme.linkColor};
+    border-bottom: 2px solid ${props => props.theme.navLink};
   }
 `;
 
@@ -63,15 +64,26 @@ const Header = () => (
         </InlineFlex>
         <InlineFlex justifyContent="right">
           <Menu>
-            <MenuItem title="About" to="/about">
-              about
-            </MenuItem>
-            <MenuItem title="Blog" to="/blog">
-              blog
-            </MenuItem>
-            <MenuItem title="Contact" to="/contact">
-              contact
-            </MenuItem>
+            <li>
+              <MenuItem title="Made by Will" to="/madeby">
+                Digital
+              </MenuItem>
+            </li>
+            <li>
+              <MenuItem title="Made by Will" to="/madeby">
+                Made by Will
+              </MenuItem>
+            </li>
+            <li>
+              <MenuItem title="Blog" to="/blog">
+                Blog
+              </MenuItem>
+            </li>
+            <li>
+              <MenuItem title="About" to="/about">
+                About
+              </MenuItem>
+            </li>
           </Menu>
         </InlineFlex>
       </InnerHeaderContainer>
