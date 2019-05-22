@@ -1,19 +1,26 @@
 import React from 'react';
-import { InlineFlex, Avatar, styled } from 'reakit';
+import { InlineFlex, styled } from 'reakit';
 import { Link } from 'gatsby';
 
 import breakpoints from './breakpoints';
-import avatar from '../img/wh.jpg';
+import Logo from './Logo'
+import Box from './Box'
 
-const Container = styled(InlineFlex)`
+const HeaderContainer = styled.div`
+  position: fixed;
+  background: ${props => props.theme.black};
+  height: 3rem;
+  top: 0;
+  left: 0;
+  right: 0;
+`
+
+const InnerHeaderContainer = styled.div`
+  display: flex;
   width: 100%;
-  height: 5rem;
   justify-content: space-between;
   align-items: center;
-  ${breakpoints.md} {
-    height: 7rem;
-  }
-`;
+`
 
 const Menu = styled('ul')`
   display: inline-block;
@@ -34,27 +41,42 @@ const MenuItem = styled(Link)`
   }
 `;
 
+const HeaderLogo = styled(Logo)`
+svg {
+  height: 1.5rem;
+  max-width: 3rem;
+}
+`
+
+const HeaderLogoLink = styled(Link)`
+margin: 0;
+`
+
 const Header = () => (
-  <Container>
-    <InlineFlex justifyContent="left">
-      <Link to="/">
-        <Avatar src={avatar} alt="Will Hackett" fontSize="2rem" />
-      </Link>
-    </InlineFlex>
-    <InlineFlex justifyContent="right">
-      <Menu>
-        <MenuItem title="About" to="/about">
-          about
-        </MenuItem>
-        <MenuItem title="Blog" to="/blog">
-          blog
-        </MenuItem>
-        <MenuItem title="Contact" to="/contact">
-          contact
-        </MenuItem>
-      </Menu>
-    </InlineFlex>
-  </Container>
+  <HeaderContainer>
+    <Box>
+      <InnerHeaderContainer>
+        <InlineFlex justifyContent="left">
+          <HeaderLogoLink to="/">
+            <HeaderLogo color="#ffffff" size={2} />
+          </HeaderLogoLink>
+        </InlineFlex>
+        <InlineFlex justifyContent="right">
+          <Menu>
+            <MenuItem title="About" to="/about">
+              about
+            </MenuItem>
+            <MenuItem title="Blog" to="/blog">
+              blog
+            </MenuItem>
+            <MenuItem title="Contact" to="/contact">
+              contact
+            </MenuItem>
+          </Menu>
+        </InlineFlex>
+      </InnerHeaderContainer>
+    </Box>
+  </HeaderContainer>
 );
 
 export default Header;

@@ -40,14 +40,18 @@ const mainTheme = {
 const themes = {
   light: {
     ...mainTheme,
-    linkColor: '#111F2F',
-    bgColor: '#FFFFFF'
+    linkColor: '#161616',
+    bgColor: '#FFFFFF',
+    black: '#161616',
+    navLink: '#FFFFFF'
   },
   dark: {
     ...mainTheme,
     linkColor: '#FFFFFF',
-    bgColor: '#111417'
-  }
+    bgColor: '#161616',
+    black: '#FFFFFF',
+    navLink: '#161616'
+  },
 };
 
 const GlobalStyle = createGlobalStyle`
