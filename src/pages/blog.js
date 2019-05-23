@@ -90,7 +90,7 @@ class Blog extends Component {
     const { articles } = this.state;
     console.log(articles);
     return (
-      <FluidContainer>
+      <FluidContainer top="6rem">
         <Section>
           <h1>Blog</h1>
           <h2>Originals</h2>

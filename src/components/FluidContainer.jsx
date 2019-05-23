@@ -6,6 +6,7 @@ import breakpoints from './breakpoints';
 
 const Inner = styled('div')`
   width: 90%;
+  margin-top: ${props => props.top || 'inherit'};
   ${breakpoints.md} {
     width: 700px;
   }
@@ -17,9 +18,9 @@ const Inner = styled('div')`
   }
 `;
 
-const FluidContainer = ({ children }) => (
-  <Container>
-    <Inner>{children}</Inner>
+const FluidContainer = ({ children, top, ...rest }) => (
+  <Container {...rest}>
+    <Inner top={top}>{children}</Inner>
   </Container>
 );
 

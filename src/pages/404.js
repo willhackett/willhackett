@@ -1,30 +1,30 @@
 import React from 'react';
-import Container from '../components/Container';
+import { Link } from 'gatsby'
+import FluidContainer from '../components/FluidContainer';
+import styled from 'styled-components'
+import breakpoints from '../components/breakpoints'
+
+const Big404 = styled.h1`
+  font-size: 14rem;
+  ${breakpoints.md} {
+    font-size: 20rem;
+  }
+  ${breakpoints.lg} {
+    font-size: 30rem;
+  }
+`
 
 const NotFoundPage = () => (
-  <Container>
-    <h1>
-      <span role="img" aria-label="404 - Page not Found">
-        🤷‍♂️
-      </span>
-    </h1>
-    <h3>I'm really not sure what you were expecting</h3>
-    <p>This page does not exist. </p>
-    <iframe
-      title="Giphy 404 Image"
-      src="https://giphy.com/embed/9J7tdYltWyXIY"
-      width="480"
-      height="404"
-      frameBorder="0"
-      class="giphy-embed"
-      allowFullScreen
-    />
+  <FluidContainer>
+    <Big404>
+      404
+    </Big404>
+    <h2>Page Not Found</h2>
+    <p>Sorry, the page you've requested does not exist or may have moved.</p>
     <p>
-      <a href="https://giphy.com/gifs/internet-google-chrone-9J7tdYltWyXIY">
-        via GIPHY
-      </a>
+      <Link to="/">Homepage</Link>
     </p>
-  </Container>
+  </FluidContainer>
 );
 
 export default NotFoundPage;

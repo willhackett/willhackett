@@ -9,10 +9,11 @@ import Box from './Box'
 const HeaderContainer = styled.div`
   position: fixed;
   background: ${props => props.theme.black};
-  height: 3rem;
+  height: 3.5rem;
   top: 0;
   left: 0;
   right: 0;
+  z-index: 2;
 `
 
 const InnerHeaderContainer = styled.div`
@@ -31,7 +32,7 @@ const MenuItem = styled(Link)`
   margin: auto 0.6rem;
   font-size: 1.25rem;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 300;
   color: ${props => props.theme.navLink};
   transition: all 0.25s;
   border-bottom: 2px solid transparent;
@@ -64,21 +65,6 @@ const Header = () => (
         </InlineFlex>
         <InlineFlex justifyContent="right">
           <Menu>
-            <li>
-              <MenuItem title="Made by Will" to="/madeby">
-                Digital
-              </MenuItem>
-            </li>
-            <li>
-              <MenuItem title="Made by Will" to="/madeby">
-                Made by Will
-              </MenuItem>
-            </li>
-            <li>
-              <MenuItem title="Blog" to="/blog">
-                Blog
-              </MenuItem>
-            </li>
             <li>
               <MenuItem title="About" to="/about">
                 About

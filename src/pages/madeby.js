@@ -1,32 +1,43 @@
 import React from 'react'
-import Container from '../components/Container'
+import FluidContainer from '../components/FluidContainer'
 import styled from 'styled-components'
+import MadeByLogo from '../components/MadeByLogo'
+import breakpoints from '../components/breakpoints'
 
 const Flex = styled.div`
-display: flex;
+  display: flex;
+  
+  flex-direction: column;
+  ${breakpoints.lg} {
+    flex-direction: row;
+  }
 `
 
 const SectionTitle = styled.div`
   svg {
-    width: 5rem;
+    width: 20rem;
   }
 `
 
 const SectionSubTitle = styled.div`
   font-size: 4rem;
+  padding-left: 4rem;
+  
 `
 
 const MadeBy = () => (
-  <Container>
+  <FluidContainer top="6rem">
     <Flex>
       <SectionTitle>
-        <h1>Made by Will</h1>
+        <MadeByLogo size={20} />
       </SectionTitle>
       <SectionSubTitle>
-        <h2>Unique creative digital experiences and experiments.</h2>
+        <div>
+          <h2>Unique creative digital experiences and experiments.</h2>
+        </div>
       </SectionSubTitle>
     </Flex>
-  </Container>
+  </FluidContainer>
 )
 
 export default MadeBy

@@ -18,6 +18,7 @@ import store from './src/modules/store';
 const StyledBlock = styled(Block)`
   margin: auto;
   max-width: 95%;
+  margin-top: 3.5rem;
   ${breakpoints.sm} {
     max-width: 540px;
   }

@@ -5,16 +5,9 @@ import get from 'lodash/get';
 import isEmpty from 'lodash/isEmpty';
 import numeral from 'numeral';
 import moment from 'moment-timezone';
+import { Link } from 'gatsby'
 
-import seek from '../img/logos/seek.png';
-import openclub from '../img/logos/openclub.png';
-import firelabs from '../img/logos/firelabs.png';
-import bmwgroup from '../img/logos/bmwgroup.png';
-import localz from '../img/logos/localz.png';
-import innowell from '../img/logos/innowell.png';
-import enablo from '../img/logos/enablo.png';
-import expedia from '../img/logos/expedia.png';
-
+import Article from '../components/Article'
 import Container from '../components/Container';
 import breakpoints from '../components/breakpoints';
 
@@ -22,13 +15,8 @@ import db from '../modules/db';
 
 const Hero = styled('div')`
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   margin: 4rem auto;
   flex-direction: column;
-  ${breakpoints.md} {
-    flex-direction: row;
-  }
 `;
 
 const HeroLeft = styled('div')`
@@ -39,14 +27,19 @@ const HeroLeft = styled('div')`
 `;
 
 const H1 = styled('h1')`
-  font-size: 4rem;
+  font-size: 3rem;
   line-height: 3.5rem;
   font-weight: 800;
+  margin: 2rem 0 1rem 0;
 `;
 
 const H2 = styled('h2')`
-  font-size: 2rem;
-  font-weight: 400;
+  font-size: 1rem;
+  font-weight: 100;
+  line-height: 1.4rem;
+  max-width: 35rem;
+  color: #505050;
+  margin: 0;
 `;
 
 const Spacer = styled('span')`
@@ -54,39 +47,6 @@ const Spacer = styled('span')`
   width: 3.5rem;
   height: 0.5rem;
   background-color: ${props => props.theme.linkColor};
-`;
-
-const ImageContainer = styled('div')`
-  max-width: 25%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 3rem;
-  ${breakpoints.md} {
-    max-width: 12.5%;
-    // height: 4rem;
-  }
-`;
-
-const Logos = styled('div')`
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  margin: 4rem 0;
-  ${breakpoints.md} {
-    flex-wrap: nowrap;
-  }
-`;
-
-const Image = styled('img')`
-  align-self: center;
-  max-width: 70%;
-  max-height: 70%;
-  filter: grayscale(100%);
-  transition: filter 0.25s;
-  &:hover {
-    filter: grayscale(0%);
-  }
 `;
 
 const Statistics = styled('div')`
@@ -141,23 +101,6 @@ const IndividualStat = styled('div')`
   }
 `;
 
-const Logo = ({ src, brand }) => (
-  <ImageContainer>
-    <Image src={src} title={brand} alt={brand} />
-  </ImageContainer>
-);
-
-const logos = [
-  { src: seek, brand: 'Seek' },
-  { src: openclub, brand: 'OpenClub' },
-  { src: firelabs, brand: 'Firelabs' },
-  { src: bmwgroup, brand: 'BMW Group' },
-  { src: localz, brand: 'Localz' },
-  { src: innowell, brand: 'InnoWell' },
-  { src: enablo, brand: 'Enablo' },
-  { src: expedia, brand: 'Expedia' }
-];
-
 const NowPlayingImg = styled('img')`
   width: 2.2rem;
   height: 2.2rem;
@@ -185,29 +128,29 @@ const NowPlaying = ({
   formatted,
   now_playing: { is_playing, item = {} } = {}
 }) => (
-  <IndividualStat fullWidth={true}>
-    <h3>
-      <i className="fa fa-music" /> music
+    <IndividualStat fullWidth={true}>
+      <h3>
+        <i className="fa fa-music" /> music
     </h3>
-    {!item ? (
-      <span>
-        {formatted.tracks}
-        <small> tracks played</small>
-      </span>
-    ) : (
-      <span>
-        <NowPlayingContainer>
-          <NowPlayingImg src={get(item, 'album.images[0].url', '/dummy')} />
+      {!item ? (
+        <span>
+          {formatted.tracks}
+          <small> tracks played</small>
+        </span>
+      ) : (
           <span>
-            {item.name}
-            <br />
-            <small>{(item.artists || []).map(a => a.name).join(', ')}.</small>
+            <NowPlayingContainer>
+              <NowPlayingImg src={get(item, 'album.images[0].url', '/dummy')} />
+              <span>
+                {item.name}
+                <br />
+                <small>{(item.artists || []).map(a => a.name).join(', ')}.</small>
+              </span>
+            </NowPlayingContainer>
           </span>
-        </NowPlayingContainer>
-      </span>
-    )}
-  </IndividualStat>
-);
+        )}
+    </IndividualStat>
+  );
 
 const BasicStat = ({ icon, stat, unit, value, formatter }) =>
   value ? (
@@ -293,6 +236,24 @@ const Stats = ({ home, home: { now_playing, attributes, id = {} } = {} }) => {
   );
 };
 
+const Grids = styled.div`
+  display: flex;
+  flex-direction: column;
+  ${breakpoints.md} {
+    flex-direction: row;
+  }
+  margin: 0 -0.5rem;
+`
+
+const Grid = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1 0 100%;
+  ${breakpoints.md} {
+    flex: 1 0 50%;
+  }
+`
+
 class Index extends Component {
   interval = null;
   state = {
@@ -319,24 +280,27 @@ class Index extends Component {
     return (
       <Container>
         <Hero>
-          <HeroLeft>
-            <H1>
-              Will
-              <br />
-              Hackett
-            </H1>
-            <Spacer />
-            <H2>
-              Creative, digital products &amp; experiences; gin &amp;
-              skateboards.
-            </H2>
-          </HeroLeft>
+          <H1>
+            Will Hackett.
+          </H1>
+          <H2>
+            I'm a software engineer and product designer. I help companies, big & small, build great digital products & experiences.
+            <br />
+            <Link to="/about">Read more.</Link>
+          </H2>
         </Hero>
-        <Logos>
-          {logos.map(logo => (
-            <Logo key={logo.brand} src={logo.src} brand={logo.brand} />
-          ))}
-        </Logos>
+        <Grids>
+          <Grid>
+            <Article type="long" tag="Product" title="Valmont" />
+            <Article type="tall" tag="Security" title="Does my password suck?" />
+            <Article type="tall" tag="Engineering" title="Now playing in the office" />
+          </Grid>
+          <Grid>
+            <Article type="tall" tag="Engineering" title="JavaScript is weird" />
+            <Article type="tall" tag="Engineering" title="Monoliths and Microservices" />
+            <Article type="long" tag="Product" title="Expedia Viewfinder" />
+          </Grid>
+        </Grids>
         <Stats home={home} setDay={this.setDay} selected_day={selected_day} />
       </Container>
     );

@@ -146,7 +146,7 @@ class ContactForm extends Component {
 }
 
 const Contact = () => (
-  <FluidContainer>
+  <FluidContainer top="6rem">
     <h1>Contact me</h1>
     <h2>Best ways to get in touch</h2>
     <p>
