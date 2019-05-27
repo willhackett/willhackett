@@ -29,6 +29,9 @@ const linkStyles = css`
   font-weight: 700;
   margin: 0;
   line-height: 4rem;
+  &:hover {
+    opacity: 0.8;
+  }
   ${breakpoints.md} {
     font-size: 2rem;
     line-height: 2.4rem;
@@ -45,7 +48,7 @@ const Description = styled('p')`
   margin: 0;
 `
 
-const ImageContainer = styled.div`
+const imageContainerStyles = css`
   display: flex;
   flex: 1 0 33%;
   align-items: flex-start;
@@ -61,11 +64,21 @@ const ImageContainer = styled.div`
   }
 `
 
+const ImageContainerA = styled.a`${imageContainerStyles}`
+const ImageContainerLink = styled(Link)`${imageContainerStyles}`
+
 const Article = ({ title, tag, path, description, image, postType }) => (
   <Container>
-    <ImageContainer>
-      <img src={image} alt={title} />
-    </ImageContainer>
+    {postType === 'internal-link' && (
+      <ImageContainerLink to={path}>
+        <img src={image} alt={title} />
+      </ImageContainerLink>
+    )}
+    {postType === 'external-link' && (
+      <ImageContainerA href={path} rel="noopener" target="_blank">
+        <img src={image} alt={title} />
+      </ImageContainerA>
+    )}
     <Inner>
       <Tag>{tag}</Tag>
       {postType === 'internal-link' && (

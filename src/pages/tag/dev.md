@@ -1,5 +1,5 @@
 ---
-templateKey: 'tag'
+templateKey: 'index-page'
 path: /tag/dev
 title: Dev
 description: 'Web and app development'
