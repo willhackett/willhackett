@@ -48,7 +48,8 @@ const themes = {
     black: '#161616',
     navLink: '#FFFFFF',
     catColor: '#6E6E6E',
-    headerBoxShadow: 'rgba(0,0,0,0.08) 0px 3px 10px'
+    headerBoxShadow: 'rgba(0,0,0,0.08) 0px 3px 10px',
+    lineColor: 'rgba(0,0,0,0.1)',
   },
   dark: {
     ...mainTheme,
@@ -57,7 +58,8 @@ const themes = {
     black: '#FFFFFF',
     navLink: '#161616',
     catColor: '#D3D3D3',
-    headerBoxShadow: 'rgba(255, 255, 255, 0.08) 0px 3px 10px'
+    headerBoxShadow: 'rgba(255, 255, 255, 0.08) 0px 3px 10px',
+    lineColor: 'rgba(255,255,255,0.1)'
   },
 };
 

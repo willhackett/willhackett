@@ -1,9 +1,7 @@
 import React from 'react'
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Link } from 'gatsby'
 import breakpoints from './breakpoints'
-
-import dmps from '../img/assets/does-my-password-suck.png'
 
 const Container = styled('article')`
   display: flex;
@@ -24,8 +22,10 @@ const Tag = styled('h2')`
   line-height: 1.3rem;
 `
 
-const Title = styled('h1')`
+const linkStyles = css`
   font-size: 2rem;
+  text-decoration: none;
+  color: ${props => props.theme.linkColor};
   font-weight: 700;
   margin: 0;
   line-height: 4rem;
@@ -34,6 +34,9 @@ const Title = styled('h1')`
     line-height: 2.4rem;
   }
 `
+
+const Title = styled(Link)`${linkStyles}`
+const TitleExt = styled('a')`${linkStyles}`
 
 const Description = styled('p')`
   font-size: 1rem;
@@ -58,15 +61,22 @@ const ImageContainer = styled.div`
   }
 `
 
-const Article = ({ type = 'tall', tag, title }) => (
-  <Container type={type}>
+const Article = ({ title, tag, path, description, image, postType }) => (
+  <Container>
     <ImageContainer>
-      <img src={dmps} alt="Does my password suck?" />
+      <img src={image} alt={title} />
     </ImageContainer>
     <Inner>
       <Tag>{tag}</Tag>
-      <Title>{title}</Title>
-      <Description>Some micro description containing not many words.</Description>
+      {postType === 'internal-link' && (
+        <Title to={path}>{title}</Title>
+      )}
+      {postType === 'external-link' && (
+        <TitleExt href={path} rel="noopener" target="_blank">
+          {title}
+        </TitleExt>
+      )}
+      <Description>{description}</Description>
     </Inner>
   </Container>
 )
