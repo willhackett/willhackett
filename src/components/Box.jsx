@@ -6,6 +6,7 @@ import breakpoints from './breakpoints'
 
 const StyledBlock = styled(Block)`
   margin: auto;
+  height: 100%;
   max-width: 95%;
   ${breakpoints.sm} {
     max-width: 540px;

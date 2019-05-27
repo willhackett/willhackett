@@ -14132,6 +14132,21 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
+typeface-libre-baskerville@^0.0.72:
+  version "0.0.72"
+  resolved "https://registry.yarnpkg.com/typeface-libre-baskerville/-/typeface-libre-baskerville-0.0.72.tgz#c5d6d82a9b316f01a1714088f8ca36fe7c3f418b"
+  integrity sha512-8eY5Tee80wNMfKCPYQguj2dODct+sQo3Et7meKOYklvaBRA1PK/DQnaNlYT+I85s1Z7PGUwBtZuG0yOIz4R9vg==
+
+typeface-maven-pro@^0.0.54:
+  version "0.0.54"
+  resolved "https://registry.yarnpkg.com/typeface-maven-pro/-/typeface-maven-pro-0.0.54.tgz#7ef991257cf53c0fa75142d2aefcddcbd867ff7c"
+  integrity sha512-zUHMT+9uYgiVIEJcXb8FWcVfXYdm3I50ovA7uF+9w3E82hrcInR3cwrgUTao8M3916xYiYwuOSPxBJ9hVVRPUA==
+
+typeface-montserrat@^0.0.54:
+  version "0.0.54"
+  resolved "https://registry.yarnpkg.com/typeface-montserrat/-/typeface-montserrat-0.0.54.tgz#3fc338db6428d73485b75aa7bd2af8c9a55b9ab3"
+  integrity sha512-Typhap0PWT299+Va0G/8ZtycHMXrH4gBWKfiW977KEBx5rXUUCa70gvqLx1fdA0WAo6bhSAQmo8uc+QFAmjPww==
+
 ua-parser-js@^0.7.18:
   version "0.7.19"
   resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.19.tgz#94151be4c0a7fb1d001af7022fdaca4642659e4b"

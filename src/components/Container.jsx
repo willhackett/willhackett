@@ -5,7 +5,7 @@ import Helmet from 'react-helmet';
 import Header from './Header';
 import Footer from './Footer';
 
-const Container = ({ children }) => {
+const Container = ({ children, header = true }) => {
   const data = useStaticQuery(graphql`
     query HeaderQuery {
       site {
@@ -103,7 +103,7 @@ const Container = ({ children }) => {
         <meta property="og:url" content="/" />
         <meta property="og:image" content="/img/og-image.jpg" />
       </Helmet>
-      <Header />
+      {header && <Header />}
       {children}
       <Footer />
     </Fragment>

@@ -84,8 +84,8 @@ class Loader extends Component {
     return (
       <Cover animate={animate}>
         <Text role="presentation" animate={animate}>
-          <Span i={0}>Creative,</Span>
-          <Span i={1}>digital;</Span>
+          <Span i={0}>Business</Span>
+          <Span i={1}> &amp; technology;</Span>
           <Span i={2}>gin &amp;</Span>
           <Span i={3}>skateboards.</Span>
         </Text>

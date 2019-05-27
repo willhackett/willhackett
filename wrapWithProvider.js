@@ -10,6 +10,8 @@ import {
 } from 'reakit';
 import baseTheme from 'reakit-theme-default';
 import 'circular-std';
+import 'typeface-montserrat'
+import 'typeface-libre-baskerville'
 
 import Loader from './src/components/Loader';
 import breakpoints from './src/components/breakpoints';
@@ -35,7 +37,7 @@ const StyledBlock = styled(Block)`
 
 const mainTheme = {
   ...baseTheme,
-  fontFamily: `'CircularStd', sans-serif`
+  fontFamily: `'Montserrat', sans-serif`
 };
 
 const themes = {
@@ -44,14 +46,18 @@ const themes = {
     linkColor: '#161616',
     bgColor: '#FFFFFF',
     black: '#161616',
-    navLink: '#FFFFFF'
+    navLink: '#FFFFFF',
+    catColor: '#6E6E6E',
+    headerBoxShadow: 'rgba(0,0,0,0.08) 0px 3px 10px'
   },
   dark: {
     ...mainTheme,
     linkColor: '#FFFFFF',
     bgColor: '#161616',
     black: '#FFFFFF',
-    navLink: '#161616'
+    navLink: '#161616',
+    catColor: '#D3D3D3',
+    headerBoxShadow: 'rgba(255, 255, 255, 0.08) 0px 3px 10px'
   },
 };
 
@@ -64,7 +70,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: 16px;
   }
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'CircularStd', sans-serif;
+    font-family: 'Montserrat', sans-serif;
   }
   h1 {
     font-size: 4rem;
@@ -78,7 +84,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     background-color: ${props => props.theme.bgColor};
-    font-family: 'CircularStd', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     color: ${props => props.theme.linkColor}
   }
   blockquote {

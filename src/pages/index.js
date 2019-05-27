@@ -10,6 +10,7 @@ import { Link } from 'gatsby'
 import Article from '../components/Article'
 import Container from '../components/Container';
 import breakpoints from '../components/breakpoints';
+import Logo from '../components/Logo'
 
 import db from '../modules/db';
 
@@ -51,6 +52,7 @@ const Spacer = styled('span')`
 
 const Statistics = styled('div')`
   margin: 5.8rem auto 4rem auto;
+  flex: 0 1 50%;
 `;
 
 const DaySelectorContainer = styled('div')`
@@ -71,15 +73,6 @@ const IndividualStat = styled('div')`
   white-space: nowrap;
   width: ${props => (props.fullWidth ? '100%' : '50%')};
   margin: 0.5rem 0;
-  ${breakpoints.md} {
-    width: 50%;
-  }
-  ${breakpoints.lg} {
-    width: 33%;
-  }
-  ${breakpoints.xl} {
-    width: 25%;
-  }
   h3 {
     font-size: 1rem;
     line-height: 1rem;
@@ -236,22 +229,25 @@ const Stats = ({ home, home: { now_playing, attributes, id = {} } = {} }) => {
   );
 };
 
-const Grids = styled.div`
-  display: flex;
-  flex-direction: column;
-  ${breakpoints.md} {
-    flex-direction: row;
-  }
-  margin: 0 -0.5rem;
+const Main = styled.div`
+  max-width: 600px;
+  margin: 0 auto;
 `
 
-const Grid = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  flex: 1 0 100%;
-  ${breakpoints.md} {
-    flex: 1 0 50%;
-  }
+const Content = styled.main`
+  width: 50%;
+`
+
+const LatestTitle = styled.h1`
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 0;
+`
+
+const Hr = styled.hr`
+  border: none;
+  border-top: 1px solid rgba(0,0,0,0.3);
+  margin: 1rem 0;
 `
 
 class Index extends Component {
@@ -279,29 +275,26 @@ class Index extends Component {
 
     return (
       <Container>
-        <Hero>
-          <H1>
-            Will Hackett.
-          </H1>
-          <H2>
-            I'm a software engineer and product designer. I help companies, big & small, build great digital products & experiences.
-            <br />
-            <Link to="/about">Read more.</Link>
-          </H2>
-        </Hero>
-        <Grids>
-          <Grid>
-            <Article type="long" tag="Product" title="Valmont" />
-            <Article type="tall" tag="Security" title="Does my password suck?" />
-            <Article type="tall" tag="Engineering" title="Now playing in the office" />
-          </Grid>
-          <Grid>
-            <Article type="tall" tag="Engineering" title="JavaScript is weird" />
-            <Article type="tall" tag="Engineering" title="Monoliths and Microservices" />
-            <Article type="long" tag="Product" title="Expedia Viewfinder" />
-          </Grid>
-        </Grids>
-        <Stats home={home} setDay={this.setDay} selected_day={selected_day} />
+        <Main>
+          <Hero>
+            <H1>
+              Will Hackett
+            </H1>
+            <H2>
+              I'm a software engineer and product designer. I help companies, big & small, build great digital products & experiences.
+              <br />
+              <Link to="/about">Read more.</Link>
+            </H2>
+          </Hero>
+          <LatestTitle>Latest</LatestTitle>
+          <Hr />
+          <Article type="long" tag="Product" title="Valmont" />
+          <Article type="tall" tag="Security" title="Does my password suck?" />
+          <Article type="tall" tag="Engineering" title="Now playing in the office" />
+          <Article type="tall" tag="Engineering" title="JavaScript is weird" />
+          <Article type="tall" tag="Engineering" title="Monoliths and Microservices" />
+          <Article type="long" tag="Product" title="Expedia Viewfinder" />
+        </Main>
       </Container>
     );
   }
