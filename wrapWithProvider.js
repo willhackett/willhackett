@@ -1,7 +1,8 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Provider, connect } from 'react-redux';
 import { compose, withContext } from 'recompose';
+import { subscribeToColorScheme } from 'is-dark'
 import {
   Provider as ThemeProvider,
   Block,
@@ -15,7 +16,8 @@ import 'typeface-libre-baskerville'
 
 import Loader from './src/components/Loader';
 import breakpoints from './src/components/breakpoints';
-import store from './src/modules/store';
+import store, { setTheme } from './src/modules/store';
+import { dispatch } from 'rxjs/internal/observable/pairs';
 
 const StyledBlock = styled(Block)`
   margin: auto;
@@ -133,16 +135,29 @@ const enhancers = compose(
   connect(state => ({ theme: state.theme }))
 );
 
-const Main = enhancers(({ children, theme, additional }) => (
-  <ThemeProvider theme={themes[theme]}>
-    <Fragment>
-      {additional}
-      <GlobalStyle />
-      <StyledBlock>{children}</StyledBlock>
-      <Loader />
-    </Fragment>
-  </ThemeProvider>
-));
+let subscribedToColorScheme = false;
+
+const Main = enhancers(({ children, theme, additional, dispatch }) => {
+  useEffect(() => {
+    if (!subscribedToColorScheme) {
+      subscribeToColorScheme((scheme) => {
+        dispatch(setTheme(scheme))
+      })
+      subscribedToColorScheme = true
+    }
+  })
+
+  return (
+    <ThemeProvider theme={themes[theme]}>
+      <Fragment>
+        {additional}
+        <GlobalStyle />
+        <StyledBlock>{children}</StyledBlock>
+        <Loader />
+      </Fragment>
+    </ThemeProvider>
+  )
+});
 
 const Root = (renderer, additional) => ({ element }) => (
   <Provider store={store}>

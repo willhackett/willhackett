@@ -4187,7 +4187,7 @@ dom-converter@^0.2:
   dependencies:
     utila "~0.4"
 
-dom-helpers@^3.2.0, dom-helpers@^3.2.1, dom-helpers@^3.3.1:
+dom-helpers@^3.2.0, dom-helpers@^3.2.1, dom-helpers@^3.3.1, dom-helpers@^3.4.0:
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/dom-helpers/-/dom-helpers-3.4.0.tgz#e9b369700f959f62ecde5a6babde4bccd9169af8"
   integrity sha512-LnuPJ+dwqKDIyotW1VzmOZ5TONUN7CwkCR5hrgawTUbkBGYdeoNLZo6nNfGkCrjtE1nXXaj7iMMpDa8/d9WoIA==
@@ -7332,6 +7332,11 @@ is-cwebp-readable@^2.0.1:
   integrity sha1-r7k7DAq9CiUQEBauM66ort+SbSY=
   dependencies:
     file-type "^4.3.0"
+
+is-dark@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/is-dark/-/is-dark-1.0.3.tgz#20820013abc971e25cc24313df3fa329e9988ffd"
+  integrity sha512-vuWHfPQEV+Oh2ynpuLxMbUWCPmLzGP28xpMfpojyGKwMNc7htelNI1BI+y514eFM4HgHqRKtyXoz1GMntR4hUA==
 
 is-data-descriptor@^0.1.4:
   version "0.1.4"
@@ -11797,6 +11802,15 @@ react-transition-group@^2.2.1:
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
     react-lifecycles-compat "^3.0.4"
+
+react-transition-group@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-4.0.1.tgz#8cb8d58763e259da465385bb83b3b41b3ecba629"
+  integrity sha512-SsLcBYhO4afXJC9esL8XMxi/y0ZvEc7To0TvtrBELqzpjXQHPZOTxvuPh2/4EhYc0uSMfp2SExIxsyJ0pBdNzg==
+  dependencies:
+    dom-helpers "^3.4.0"
+    loose-envify "^1.4.0"
+    prop-types "^15.6.2"
 
 react-waypoint@^8.1.0:
   version "8.1.0"

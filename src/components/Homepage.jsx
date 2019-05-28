@@ -2,10 +2,24 @@ import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { styled } from 'reakit';
 import { Link } from 'gatsby'
-import { css } from 'styled-components'
+import { css, keyframes } from 'styled-components'
+import CSSTransition from 'react-transition-group/CSSTransition'
 
 import Article from '../components/Article'
 import Container from '../components/Container';
+
+const appear = keyframes`
+  from {
+    transform: translateY(25%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+`;
+
 
 const Hero = styled('div')`
   display: flex;
@@ -34,6 +48,12 @@ const H2 = styled('h2')`
 const Main = styled.div`
   max-width: 600px;
   margin: 0 auto;
+  & > * {
+    opacity: 0;
+    transform: translateY(20%);
+    animation: 1s ease-out 0s 1 ${appear};
+    animation-fill-mode: forwards;
+  }
 `
 
 const SubTitle = styled.h1`
@@ -75,33 +95,37 @@ const Homepage = ({
   data: {
     home: { frontmatter: home } = {},
     latest: { edges: latest },
-    tag: { frontmatter: tag } = {}
+    tag: { frontmatter: tag } = {},
   },
-}) => console.log(home, latest) || (
+  location
+}) => console.log(location) || (
   <Container>
     <Main>
-      {home && (
-        <Hero>
-          <H1>
-            Will Hackett
+      {(() => {
+        if (home) return (
+          <Hero>
+            <H1>
+              Will Hackett
           </H1>
-          <H2>
-            {home.bioText}
-            <br />
-            <Link to="/about">Read more.</Link>
-          </H2>
-        </Hero>
-      )}
-      {tag && (
-        <Hero>
-          <H1>
-            {tag.title}
-          </H1>
-          <H2>
-            {tag.description}
-          </H2>
-        </Hero>
-      )}
+            <H2>
+              {home.bioText}
+              <br />
+              <Link to="/about">Read more.</Link>
+            </H2>
+          </Hero>
+        )
+        if (tag) return (
+          <Hero>
+            <H1>
+              {tag.title}
+            </H1>
+            <H2>
+              {tag.description}
+            </H2>
+          </Hero>
+        )
+        return null
+      })()}
       {latest.slice(0, 2).map(({ node: { id, frontmatter: post } }) => (
         <Article
           key={id}
