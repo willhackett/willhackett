@@ -44,6 +44,7 @@ const themes = {
   light: {
     ...mainTheme,
     linkColor: '#161616',
+    headerBg: '#FFFFFF',
     bgColor: '#FFFFFF',
     black: '#161616',
     navLink: '#FFFFFF',
@@ -54,11 +55,12 @@ const themes = {
   dark: {
     ...mainTheme,
     linkColor: '#FFFFFF',
-    bgColor: '#161616',
+    headerBg: '#161616',
+    bgColor: '#1f1e1e',
     black: '#FFFFFF',
     navLink: '#161616',
     catColor: '#D3D3D3',
-    headerBoxShadow: 'rgba(255, 255, 255, 0.08) 0px 3px 10px',
+    headerBoxShadow: 'none',
     lineColor: 'rgba(255,255,255,0.1)'
   },
 };
@@ -67,6 +69,7 @@ const GlobalStyle = createGlobalStyle`
   @import url('https://use.fontawesome.com/releases/v5.7.2/css/all.css');
   * {
     box-sizing: border-box;
+    transition: color 0.5s, background-color 0.25s;
   }
   html, :root {
     font-size: 16px;
@@ -94,6 +97,10 @@ const GlobalStyle = createGlobalStyle`
     border-left: 2px solid ${props => props.theme.linkColor};
     padding-left: 2rem;
     margin-left: 0;
+  }
+  a {
+    text-decoration: none;
+    color: ${props => props.theme.linkColor}
   }
   p {
     font-size: 1.25rem;

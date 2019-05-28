@@ -1,21 +1,25 @@
 import React from 'react';
+import { connect } from 'react-redux'
+import { compose } from 'recompose'
 import { InlineFlex, styled } from 'reakit';
 import { Link } from 'gatsby';
 import { withTheme } from 'styled-components'
 
+import { toggleTheme } from '../modules/store'
 import breakpoints from './breakpoints';
 import Logo from './Logo'
 import Box from './Box'
 
 const HeaderContainer = styled.div`
   position: fixed;
-  background: ${props => props.theme.bgColor};
+  background: ${props => props.theme.headerBg};
   height: 3.5rem;
   top: 0;
   left: 0;
   right: 0;
   z-index: 2;
   box-shadow: ${props => props.theme.headerBoxShadow};
+  transition: box-shadow 0.5s, background 0.5s;
 `
 
 const InnerHeaderContainer = styled.div`
@@ -46,28 +50,21 @@ const MenuItem = styled(Link)`
   }
 `;
 
-const HeaderLogo = styled(Logo)`
-svg {
-  height: 1.5rem;
-  max-width: 3rem;
-}
-`
-
 const HeaderLogoLink = styled(Link)`
-color: white;
-text-decoration: none;
-font-weight: 700;
-margin: 0;
-line-height: 0rem;
+  text-decoration: none;
+  font-weight: 700;
+  margin: 0;
+  line-height: 0rem;
+  font-size: 1.4rem;
 `
 
-const Header = ({ theme }) => (
+const Header = ({ theme, dispatch, ui }) => (
   <HeaderContainer>
     <Box>
       <InnerHeaderContainer>
         <InlineFlex justifyContent="left">
           <HeaderLogoLink to="/">
-            <Logo color={theme.linkColor} size="2" />
+            Will Hackett
           </HeaderLogoLink>
         </InlineFlex>
         <InlineFlex justifyContent="center">
@@ -97,6 +94,11 @@ const Header = ({ theme }) => (
         <InlineFlex justifyContent="right">
           <Menu>
             <li>
+              <button onClick={() => dispatch(toggleTheme)}>
+                {ui === 'dark' ? 'Light' : 'Dark'}
+              </button>
+            </li>
+            <li>
               <MenuItem title="About" to="/about">
                 About
               </MenuItem>
@@ -108,4 +110,7 @@ const Header = ({ theme }) => (
   </HeaderContainer>
 );
 
-export default withTheme(Header);
+export default compose(
+  withTheme,
+  connect(state => ({ ui: state.theme })),
+)(Header)

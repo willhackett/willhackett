@@ -19,6 +19,7 @@ const Tag = styled('h2')`
   font-weight: 800;
   text-transform: uppercase;
   margin: 0;
+  color: ${props => props.theme.linkColor};
   line-height: 1.3rem;
 `
 
@@ -46,6 +47,7 @@ const Description = styled('p')`
   font-weight: 100;
   opacity: 0.9;
   margin: 0;
+  color: ${props => props.theme.linkColor};
 `
 
 const imageContainerStyles = css`

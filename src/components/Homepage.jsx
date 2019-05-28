@@ -18,6 +18,7 @@ const H1 = styled('h1')`
   line-height: 3.5rem;
   font-weight: 800;
   margin: 2rem 0 1rem 0;
+  color: ${props => props.theme.linkColor};
 `;
 
 const H2 = styled('h2')`
@@ -27,6 +28,7 @@ const H2 = styled('h2')`
   max-width: 35rem;
   color: #505050;
   margin: 0;
+  color: ${props => props.theme.linkColor};
 `;
 
 const Main = styled.div`
@@ -37,6 +39,7 @@ const Main = styled.div`
 const SubTitle = styled.h1`
   font-size: 1.5rem;
   font-weight: 800;
+  color: ${props => props.theme.linkColor};
 `
 
 const Hr = styled.hr`
@@ -48,12 +51,15 @@ const Hr = styled.hr`
 const ArchiveLinkCss = css`
   display: flex;
   justify-content: space-between;
-  color: ${props => props.theme.linkColor};
   line-height: 2rem;
   text-decoration: none;
   border-bottom: 1px solid ${props => props.theme.lineColor};
+  span {
+    color: ${props => props.theme.linkColor};
+  }
   small {
     text-transform: uppercase;
+    color: ${props => props.theme.linkColor};
   }
   span {
     &:hover {
