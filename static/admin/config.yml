@@ -10,19 +10,23 @@ collections:
     label: "Blog"
     folder: "src/pages/blog"
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    slug: "{{slug}}"
     fields:
-      - {
-          label: "Template Key",
-          name: "templateKey",
-          widget: "hidden",
-          default: "blog-post",
-        }
+      - label: "Template Key"
+        name: "templateKey"
+        widget: "hidden"
+        default: "blog-post"
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
       - { label: "Description", name: "description", widget: "text" }
-      - { label: "Body", name: "body", widget: "markdown" }
-      - { label: "Tags", name: "tags", widget: "list" }
+      - label: "Tag"
+        name: "tag"
+        widget: "select"
+        options:
+        - { label: "Dev", value: "dev" }
+        - { label: "Business", value: "business" }
+        - { label: "Experience", value: "experience" }
+        - { label: "Security", value: "security" }
 
   - name: "pages"
     label: "Pages"
@@ -39,3 +43,15 @@ collections:
             }
           - { label: "Title", name: "title", widget: "string" }
           - { label: "Body", name: "body", widget: "markdown" }
+      - file: "src/pages/index.md"
+        label: "Homepage"
+        name: "index"
+        fields:
+          - {
+              label: "Template Key",
+              name: "templateKey",
+              widget: "hidden",
+              default: "index-page",
+            }
+          - { label: "Call to Action", name: "callToAction", widget: "string" }
+          - { label: "CTA Link", name: "callToActionLink", widget: "string" }

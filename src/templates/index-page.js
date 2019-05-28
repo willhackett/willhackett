@@ -9,7 +9,8 @@ export const pageQuery = graphql`
   query Homepage($id: String!) {
     home:markdownRemark(id:{eq:$id}) {
       frontmatter{
-        bioText
+        callToAction
+        callToActionLink
       }
     }
     latest:allMarkdownRemark(

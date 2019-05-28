@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { styled } from 'reakit';
 import { Link } from 'gatsby'
 import { css, keyframes } from 'styled-components'
+import { FaCaretRight } from 'react-icons/fa'
 import CSSTransition from 'react-transition-group/CSSTransition'
 
 import Article from '../components/Article'
@@ -31,7 +32,7 @@ const H1 = styled('h1')`
   font-size: 3rem;
   line-height: 3.5rem;
   font-weight: 800;
-  margin: 2rem 0 1rem 0;
+  margin: 0rem 0 1rem 0;
   color: ${props => props.theme.linkColor};
 `;
 
@@ -47,7 +48,7 @@ const H2 = styled('h2')`
 
 const Main = styled.div`
   max-width: 600px;
-  margin: 0 auto;
+  margin: 4rem auto;
   & > * {
     opacity: 0;
     transform: translateY(20%);
@@ -88,6 +89,16 @@ const ArchiveLinkCss = css`
   }
 `
 
+const CallToActionContainer = styled.a`
+  border-radius: 6px;
+  background-color: #bedeff;
+  width: 100%;
+  font-size: 0.9rem;
+  padding: 0.8rem;
+  color: #000A18;
+  font-weight: 300;
+`
+
 const ArchiveLink = styled.a`${ArchiveLinkCss}`
 const ArchiveIntLink = styled(Link)`${ArchiveLinkCss}`
 
@@ -104,14 +115,11 @@ const Homepage = ({
       {(() => {
         if (home) return (
           <Hero>
-            <H1>
-              Will Hackett
-          </H1>
-            <H2>
-              {home.bioText}
-              <br />
-              <Link to="/about">Read more.</Link>
-            </H2>
+            {home.callToAction && (
+              <CallToActionContainer target="_blank" rel="noopener noreferrer" href={home.callToActionLink}>
+                {home.callToAction}
+              </CallToActionContainer>
+            )}
           </Hero>
         )
         if (tag) return (

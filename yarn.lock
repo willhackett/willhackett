@@ -7333,10 +7333,10 @@ is-cwebp-readable@^2.0.1:
   dependencies:
     file-type "^4.3.0"
 
-is-dark@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/is-dark/-/is-dark-1.0.3.tgz#20820013abc971e25cc24313df3fa329e9988ffd"
-  integrity sha512-vuWHfPQEV+Oh2ynpuLxMbUWCPmLzGP28xpMfpojyGKwMNc7htelNI1BI+y514eFM4HgHqRKtyXoz1GMntR4hUA==
+is-dark@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/is-dark/-/is-dark-1.0.4.tgz#a3201601cbb40571e5277d2499c87a3ed053bce8"
+  integrity sha512-semPa+CAEb70MXWbuGM8Iho7Y0kMJHV+xQ6xXvScUe2anlBLPXIwduK0FpCO6Lsg991vLC6NTkdb9Vv8fqhQoA==
 
 is-data-descriptor@^0.1.4:
   version "0.1.4"
@@ -11573,6 +11573,13 @@ react-hot-loader@^4.0.0, react-hot-loader@^4.6.2:
     react-lifecycles-compat "^3.0.4"
     shallowequal "^1.0.2"
     source-map "^0.7.3"
+
+react-icons@^3.7.0:
+  version "3.7.0"
+  resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-3.7.0.tgz#64fe46231fabfeea27895edeae6c3b78114b8c8f"
+  integrity sha512-7MyPwjIhuyW0D2N3s4DEd0hGPGFf0sK+IIRKhc1FvSpZNVmnUoGvHbmAwzGJU+3my+fvihVWgwU5SDtlAri56Q==
+  dependencies:
+    camelcase "^5.0.0"
 
 react-immutable-proptypes@^2.1.0:
   version "2.1.0"
