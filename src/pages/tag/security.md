@@ -1,5 +1,5 @@
 ---
-templateKey: 'index-page'
+templateKey: 'tag-page'
 path: /tag/security
 title: Security
 description: 'Web & app security'

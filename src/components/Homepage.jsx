@@ -52,6 +52,9 @@ const ArchiveLinkCss = css`
   line-height: 2rem;
   text-decoration: none;
   border-bottom: 1px solid ${props => props.theme.lineColor};
+  small {
+    text-transform: uppercase;
+  }
   span {
     &:hover {
       opacity: 0.8;
@@ -64,14 +67,14 @@ const ArchiveIntLink = styled(Link)`${ArchiveLinkCss}`
 
 const Homepage = ({
   data: {
-    home: { id: homeId, frontmatter: home },
+    home: { frontmatter: home } = {},
     latest: { edges: latest },
-    tag: { id: tagId, frontmatter: tag }
+    tag: { frontmatter: tag } = {}
   },
 }) => console.log(home, latest) || (
   <Container>
     <Main>
-      {tagId === homeId ? (
+      {home && (
         <Hero>
           <H1>
             Will Hackett
@@ -82,37 +85,35 @@ const Homepage = ({
             <Link to="/about">Read more.</Link>
           </H2>
         </Hero>
-      ) : (
-          <Hero>
-            <H1>
-              {tag.title}
-            </H1>
-            <H2>
-              {tag.description}
-            </H2>
-          </Hero>
-
-        )}
-      {latest.map(({ node: { id, frontmatter: post } }) => (
+      )}
+      {tag && (
+        <Hero>
+          <H1>
+            {tag.title}
+          </H1>
+          <H2>
+            {tag.description}
+          </H2>
+        </Hero>
+      )}
+      {latest.slice(0, 2).map(({ node: { id, frontmatter: post } }) => (
         <Article
           key={id}
           {...post}
         />
       ))}
       <SubTitle>Archive</SubTitle>
-      {/* <Fragment>
-        {archive.edges.map(({ id, node: { frontmatter: post } }) => (
-          node.postType === 'external-link' ? (
-            <ArchiveLink key={id} href={post.path}>
+      {latest.slice(2).map(({ node: { id, frontmatter: post } }) => (
+        post.postType === 'external-link' ? (
+          <ArchiveLink key={id} href={post.path}>
+            <span>{post.title}</span> <small>{post.date}</small>
+          </ArchiveLink>
+        ) : (
+            <ArchiveIntLink key={id} to={post.path}>
               <span>{post.title}</span> <small>{post.date}</small>
-            </ArchiveLink>
-          ) : (
-              <ArchiveIntLink key={id} to={post.path}>
-                <span>{post.title}</span> <small>{post.date}</small>
-              </ArchiveIntLink>
-            )
-        ))}
-      </Fragment> */}
+            </ArchiveIntLink>
+          )
+      ))}
     </Main>
   </Container>
 );

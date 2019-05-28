@@ -71,12 +71,12 @@ const Article = ({ title, tag, path, description, image, postType }) => (
   <Container>
     {postType === 'internal-link' && (
       <ImageContainerLink to={path}>
-        <img src={image} alt={title} />
+        <img src={image && image.publicURL} alt={title} />
       </ImageContainerLink>
     )}
     {postType === 'external-link' && (
       <ImageContainerA href={path} rel="noopener" target="_blank">
-        <img src={image} alt={title} />
+        <img src={image && image.publicURL} alt={title} />
       </ImageContainerA>
     )}
     <Inner>

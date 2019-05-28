@@ -7,21 +7,12 @@ export default Homepage
 
 export const pageQuery = graphql`
   query Homepage($id: String!) {
-    home:markdownRemark(fields:{slug:{eq:"/"}}) {
-      id
+    home:markdownRemark(id:{eq:$id}) {
       frontmatter{
         bioText
       }
     }
-    tag:markdownRemark(id: { eq: $id }) {
-      id
-      frontmatter{
-        title
-        description
-      }
-    }
     latest:allMarkdownRemark(
-      limit:2,
       filter:{frontmatter:{templateKey:{eq:"blog-post"}}},
       sort:{fields:[frontmatter___date], order: [DESC]}
       ) {
@@ -32,10 +23,12 @@ export const pageQuery = graphql`
             title
             path
             description
-            image
+            image{
+              publicURL
+            }
             tag
             postType
-            date
+            date(formatString: "Do MMM YY")
           }
         }
       }

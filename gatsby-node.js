@@ -17,6 +17,7 @@ exports.createPages = ({ actions, graphql }) => {
             }
             frontmatter {
               templateKey
+              tag
             }
           }
         }
@@ -32,6 +33,7 @@ exports.createPages = ({ actions, graphql }) => {
 
     posts.forEach(edge => {
       const id = edge.node.id;
+
       createPage({
         path: edge.node.fields.slug,
         // tags: edge.node.frontmatter.tags,
@@ -40,7 +42,8 @@ exports.createPages = ({ actions, graphql }) => {
         ),
         // additional data can be passed via context
         context: {
-          id
+          id,
+          tag: edge.node.frontmatter.tag,
         }
       });
     });
