@@ -60,6 +60,7 @@ const GlobalStyle = createGlobalStyle`
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Montserrat', sans-serif;
+    color: ${props => props.theme.linkColor};
   }
   h1 {
     font-size: 4rem;
@@ -92,6 +93,7 @@ const GlobalStyle = createGlobalStyle`
     margin-block-start: 1.5rem;
     margin-block-end: 1.5rem;
     font-weight: 200;
+    color: ${props => props.theme.linkColor};
   }
   p > a {
     text-decoration: none;

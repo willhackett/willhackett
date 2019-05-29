@@ -60,7 +60,7 @@ const HeaderLogoLink = styled(Link)`
   text-decoration: none;
   font-weight: 700;
   margin: 0;
-  line-height: 0rem;
+  line-height: 1.4rem;
   font-size: 1.4rem;
 `
 

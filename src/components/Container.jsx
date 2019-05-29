@@ -1,30 +1,10 @@
 import React, { Fragment } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
-import styled from 'styled-components'
-import { Block } from 'reakit'
 import Helmet from 'react-helmet'
 
 import Header from './Header'
 import Footer from './Footer'
-import breakpoints from './breakpoints'
-
-const StyledBlock = styled(Block)`
-  margin: auto;
-  max-width: 95%;
-  margin-top: 3.5rem;
-  ${breakpoints.sm} {
-    max-width: 540px;
-  }
-  ${breakpoints.md} {
-    max-width: 720px;
-  }
-  ${breakpoints.lg} {
-    max-width: 960px;
-  }
-  ${breakpoints.xl} {
-    max-width: 1140px;
-  }
-`
+import Middle from './Middle'
 
 const Container = ({ children, header = true }) => {
   const data = useStaticQuery(graphql`
@@ -125,7 +105,7 @@ const Container = ({ children, header = true }) => {
         <meta property="og:image" content="/img/og-image.jpg" />
       </Helmet>
       {header && <Header />}
-      <StyledBlock>{children}</StyledBlock>
+      <Middle>{children}</Middle>
       <Footer />
     </Fragment>
   )
