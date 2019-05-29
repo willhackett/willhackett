@@ -70,6 +70,8 @@ const Hr = styled.hr`
 `
 
 const ArchiveLinkCss = css`
+  font-size: 0.9rem;
+  line-height: 1rem;
   display: flex;
   justify-content: space-between;
   line-height: 2rem;
@@ -79,10 +81,13 @@ const ArchiveLinkCss = css`
     color: ${props => props.theme.linkColor};
   }
   small {
+    line-height: 1.5rem;
     text-transform: uppercase;
     color: ${props => props.theme.linkColor};
+    white-space: nowrap;
   }
   span {
+    line-height: 1.6rem;
     &:hover {
       opacity: 0.8;
     }

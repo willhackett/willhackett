@@ -6,6 +6,7 @@ import { Link } from 'gatsby';
 import { withTheme } from 'styled-components'
 
 import { toggleTheme } from '../modules/store'
+import Burger from './Burger'
 import breakpoints from './breakpoints';
 import Logo from './Logo'
 import Box from './Box'
@@ -31,9 +32,12 @@ const InnerHeaderContainer = styled.div`
 `
 
 const Menu = styled('ul')`
-  display: flex;
+  display: none;
   list-style: none;
-`;
+  ${breakpoints.md} {
+    display: flex;
+  }
+`
 
 const MenuItem = styled(Link)`
   margin: auto 0.6rem;
@@ -92,7 +96,8 @@ const Header = ({ theme, dispatch, ui }) => (
           </Menu>
         </InlineFlex>
         <InlineFlex justifyContent="right">
-          <Menu>
+          <Burger />
+          {/* <Menu>
             <li>
               <button onClick={() => dispatch(toggleTheme)}>
                 {ui === 'dark' ? 'Light' : 'Dark'}
@@ -103,7 +108,7 @@ const Header = ({ theme, dispatch, ui }) => (
                 About
               </MenuItem>
             </li>
-          </Menu>
+          </Menu> */}
         </InlineFlex>
       </InnerHeaderContainer>
     </Box>

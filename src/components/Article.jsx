@@ -15,21 +15,25 @@ const Inner = styled.div`
 `
 
 const Tag = styled('h2')`
-  font-size: 1rem;
   font-weight: 800;
   text-transform: uppercase;
   margin: 0;
   color: ${props => props.theme.linkColor};
-  line-height: 1.3rem;
+  font-size: 0.8rem;
+  line-height: 1rem;
+  ${breakpoints.md} {
+    font-size: 1rem;
+    line-height: 1.3rem;
+  }
 `
 
 const linkStyles = css`
-  font-size: 2rem;
+  font-size: 1.5rem;
+  line-height: 1.8rem;
   text-decoration: none;
   color: ${props => props.theme.linkColor};
   font-weight: 700;
   margin: 0;
-  line-height: 4rem;
   &:hover {
     opacity: 0.8;
   }
@@ -44,6 +48,7 @@ const TitleExt = styled('a')`${linkStyles}`
 
 const Description = styled('p')`
   font-size: 1rem;
+  line-height: 1.5rem;
   font-weight: 100;
   opacity: 0.9;
   margin: 0;
@@ -52,17 +57,24 @@ const Description = styled('p')`
 
 const imageContainerStyles = css`
   display: flex;
-  flex: 1 0 33%;
   align-items: flex-start;
-  min-width: 10rem;
   overflow: hidden;
   margin-bottom: 4rem;
-  padding-right: 4rem;
+  padding-right: 1rem;
+  flex: 1 0 33%;
+  ${breakpoints.md} {
+    padding-right: 3rem;
+  }
   img {
-    width: 100%;
+    height: 10rem;
+    width: 7rem;
     object-fit: cover;
     object-position: 50% 50%;
     border-radius: 6px;
+    ${breakpoints.md} {
+      height: 14rem;
+      width: 10rem;  
+    }
   }
 `
 
