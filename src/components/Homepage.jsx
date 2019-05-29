@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { styled } from 'reakit'
 import { Link } from 'gatsby'
 import { css, keyframes } from 'styled-components'
-import { FaCaretRight } from 'react-icons/fa'
+import { IoIosRefreshCircle, IoIosShareAlt } from 'react-icons/io'
 import CSSTransition from 'react-transition-group/CSSTransition'
 
 import Article from '../components/Article'
@@ -94,6 +94,8 @@ const ArchiveLinkCss = css`
 `
 
 const CallToActionContainer = styled.a`
+  display: flex;
+  justify-content: space-between;
   border-radius: 6px;
   background-color: #bedeff;
   width: 100%;
@@ -111,63 +113,77 @@ const ArchiveIntLink = styled(Link)`
 `
 
 const Homepage = ({
+  newVersion,
   data: {
     home: { frontmatter: home } = {},
     latest: { edges: latest },
     tag: { frontmatter: tag } = {}
   },
   location
-}) =>
-  console.log(location) || (
-    <Container>
-      <Main>
-        {(() => {
-          if (home)
-            return (
-              <Hero>
-                {home.callToAction && (
+}) => (
+  <Container>
+    <Main>
+      {(() => {
+        if (home)
+          return (
+            <Hero>
+              {newVersion ? (
+                <CallToActionContainer
+                  href="#"
+                  onClick={() => window.location.reload()}
+                >
+                  A new version of this site is available. Reload now to see new
+                  content.
+                  <IoIosRefreshCircle size="1.3rem" />
+                </CallToActionContainer>
+              ) : (
+                home.callToAction && (
                   <CallToActionContainer
                     target="_blank"
                     rel="noopener noreferrer"
                     href={home.callToActionLink}
                   >
                     {home.callToAction}
+                    <IoIosShareAlt size="1.3rem" />
                   </CallToActionContainer>
-                )}
-              </Hero>
-            )
-          if (tag)
-            return (
-              <Hero>
-                <H1>{tag.title}</H1>
-                <H2>{tag.description}</H2>
-              </Hero>
-            )
-          return null
-        })()}
-        {latest.slice(0, 2).map(({ node: { id, frontmatter: post } }) => (
-          <Article key={id} {...post} />
-        ))}
-        <SubTitle>Archive</SubTitle>
-        {latest.slice(2).map(({ node: { id, frontmatter: post } }) =>
-          post.postType === 'external-link' ? (
-            <ArchiveLink key={id} href={post.path}>
-              <span>{post.title}</span>{' '}
-              <small>
-                <time datetime={post.isoDate}>{post.date}</time>
-              </small>
-            </ArchiveLink>
-          ) : (
-            <ArchiveIntLink key={id} to={post.path}>
-              <span>{post.title}</span>{' '}
-              <small>
-                <time datetime={post.isoDate}>{post.date}</time>
-              </small>
-            </ArchiveIntLink>
+                )
+              )}
+            </Hero>
           )
-        )}
-      </Main>
-    </Container>
-  )
+        if (tag)
+          return (
+            <Hero>
+              <H1>{tag.title}</H1>
+              <H2>{tag.description}</H2>
+            </Hero>
+          )
+        return null
+      })()}
+      {latest.slice(0, 2).map(({ node: { id, frontmatter: post } }) => (
+        <Article key={id} {...post} />
+      ))}
+      <SubTitle>Archive</SubTitle>
+      {latest.slice(2).map(({ node: { id, frontmatter: post } }) =>
+        post.postType === 'external-link' ? (
+          <ArchiveLink key={id} href={post.path}>
+            <span>{post.title}</span>{' '}
+            <small>
+              <time dateTime={post.isoDate}>{post.date}</time>
+            </small>
+          </ArchiveLink>
+        ) : (
+          <ArchiveIntLink key={id} to={post.path}>
+            <span>{post.title}</span>{' '}
+            <small>
+              <time dateTime={post.isoDate}>{post.date}</time>
+            </small>
+          </ArchiveIntLink>
+        )
+      )}
+    </Main>
+  </Container>
+)
 
-export default connect()(Homepage)
+export default connect(state => ({
+  newVersion: state.newVersion
+}))(Homepage)

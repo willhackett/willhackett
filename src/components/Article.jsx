@@ -163,7 +163,7 @@ const Article = ({
         )}
         <Description>{description}</Description>
         <Extras>
-          <Date datetime={isoDate}>{date}</Date>
+          <Date dateTime={isoDate}>{date}</Date>
           {sharePossible && <Share onClick={makeShare}>Share</Share>}
         </Extras>
       </Inner>

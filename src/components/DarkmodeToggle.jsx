@@ -81,23 +81,22 @@ const Moon = styled(IoIosMoon)`
   `}
 `
 
-const DarkmodeToggle = ({ ui, dispatch }) =>
-  console.log(ui) || (
-    <Switch
-      role="switch"
-      aria-checked={ui === 'dark'}
-      aria-label="Toggle Dark Mode"
-    >
-      <Input
-        type="checkbox"
-        checked={ui === 'dark'}
-        onChange={e => dispatch(setTheme(e.target.checked ? 'dark' : 'light'))}
-      />
-      <Slider />
-      <Sun />
-      <Moon />
-    </Switch>
-  )
+const DarkmodeToggle = ({ ui, dispatch }) => (
+  <Switch
+    role="switch"
+    aria-checked={ui === 'dark'}
+    aria-label="Toggle Dark Mode"
+  >
+    <Input
+      type="checkbox"
+      checked={ui === 'dark'}
+      onChange={e => dispatch(setTheme(e.target.checked ? 'dark' : 'light'))}
+    />
+    <Slider />
+    <Sun />
+    <Moon />
+  </Switch>
+)
 
 export default connect(state => ({
   ui: state.theme

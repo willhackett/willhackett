@@ -131,8 +131,15 @@ const Main = enhancers(({ children, theme, additional, dispatch }) => {
       })
       subscribedToColorScheme = true
     }
-  })
 
+    window.newVersion = () => {
+      console.info('New Version Set')
+      dispatch({ type: 'system/NEW_VERSION' })
+    }
+    navigator.serviceWorker.addEventListener('message', event => {
+      console.log('SW: ', event.data)
+    })
+  })
   return (
     <ThemeProvider theme={themes[theme]}>
       <Fragment>
