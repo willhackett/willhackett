@@ -1,13 +1,13 @@
-import React, { Fragment } from 'react';
-import { connect } from 'react-redux';
-import { styled } from 'reakit';
+import React, { Fragment } from 'react'
+import { connect } from 'react-redux'
+import { styled } from 'reakit'
 import { Link } from 'gatsby'
 import { css, keyframes } from 'styled-components'
 import { FaCaretRight } from 'react-icons/fa'
 import CSSTransition from 'react-transition-group/CSSTransition'
 
 import Article from '../components/Article'
-import Container from '../components/Container';
+import Container from '../components/Container'
 
 const appear = keyframes`
   from {
@@ -19,14 +19,13 @@ const appear = keyframes`
     transform: translateY(0);
     opacity: 1;
   }
-`;
-
+`
 
 const Hero = styled('div')`
   display: flex;
   margin: 4rem auto;
   flex-direction: column;
-`;
+`
 
 const H1 = styled('h1')`
   font-size: 3rem;
@@ -34,7 +33,7 @@ const H1 = styled('h1')`
   font-weight: 800;
   margin: 0rem 0 1rem 0;
   color: ${props => props.theme.linkColor};
-`;
+`
 
 const H2 = styled('h2')`
   font-size: 1rem;
@@ -44,11 +43,11 @@ const H2 = styled('h2')`
   color: #505050;
   margin: 0;
   color: ${props => props.theme.linkColor};
-`;
+`
 
 const Main = styled.div`
   max-width: 600px;
-  margin: 4rem auto;
+  margin: 6rem auto;
   & > * {
     opacity: 0;
     transform: translateY(20%);
@@ -89,7 +88,7 @@ const ArchiveLinkCss = css`
   span {
     line-height: 1.6rem;
     &:hover {
-      opacity: 0.8;
+      color: ${props => props.theme.accentColor};
     }
   }
 `
@@ -100,65 +99,69 @@ const CallToActionContainer = styled.a`
   width: 100%;
   font-size: 0.9rem;
   padding: 0.8rem;
-  color: #000A18;
+  color: #000a18;
   font-weight: 300;
 `
 
-const ArchiveLink = styled.a`${ArchiveLinkCss}`
-const ArchiveIntLink = styled(Link)`${ArchiveLinkCss}`
+const ArchiveLink = styled.a`
+  ${ArchiveLinkCss}
+`
+const ArchiveIntLink = styled(Link)`
+  ${ArchiveLinkCss}
+`
 
 const Homepage = ({
   data: {
     home: { frontmatter: home } = {},
     latest: { edges: latest },
-    tag: { frontmatter: tag } = {},
+    tag: { frontmatter: tag } = {}
   },
   location
-}) => console.log(location) || (
-  <Container>
-    <Main>
-      {(() => {
-        if (home) return (
-          <Hero>
-            {home.callToAction && (
-              <CallToActionContainer target="_blank" rel="noopener noreferrer" href={home.callToActionLink}>
-                {home.callToAction}
-              </CallToActionContainer>
-            )}
-          </Hero>
-        )
-        if (tag) return (
-          <Hero>
-            <H1>
-              {tag.title}
-            </H1>
-            <H2>
-              {tag.description}
-            </H2>
-          </Hero>
-        )
-        return null
-      })()}
-      {latest.slice(0, 2).map(({ node: { id, frontmatter: post } }) => (
-        <Article
-          key={id}
-          {...post}
-        />
-      ))}
-      <SubTitle>Archive</SubTitle>
-      {latest.slice(2).map(({ node: { id, frontmatter: post } }) => (
-        post.postType === 'external-link' ? (
-          <ArchiveLink key={id} href={post.path}>
-            <span>{post.title}</span> <small>{post.date}</small>
-          </ArchiveLink>
-        ) : (
+}) =>
+  console.log(location) || (
+    <Container>
+      <Main>
+        {(() => {
+          if (home)
+            return (
+              <Hero>
+                {home.callToAction && (
+                  <CallToActionContainer
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={home.callToActionLink}
+                  >
+                    {home.callToAction}
+                  </CallToActionContainer>
+                )}
+              </Hero>
+            )
+          if (tag)
+            return (
+              <Hero>
+                <H1>{tag.title}</H1>
+                <H2>{tag.description}</H2>
+              </Hero>
+            )
+          return null
+        })()}
+        {latest.slice(0, 2).map(({ node: { id, frontmatter: post } }) => (
+          <Article key={id} {...post} />
+        ))}
+        <SubTitle>Archive</SubTitle>
+        {latest.slice(2).map(({ node: { id, frontmatter: post } }) =>
+          post.postType === 'external-link' ? (
+            <ArchiveLink key={id} href={post.path}>
+              <span>{post.title}</span> <small>{post.date}</small>
+            </ArchiveLink>
+          ) : (
             <ArchiveIntLink key={id} to={post.path}>
               <span>{post.title}</span> <small>{post.date}</small>
             </ArchiveIntLink>
           )
-      ))}
-    </Main>
-  </Container>
-);
+        )}
+      </Main>
+    </Container>
+  )
 
-export default connect()(Homepage);
+export default connect()(Homepage)

@@ -1,71 +1,53 @@
-import React, { Fragment, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { Provider, connect } from 'react-redux';
-import { compose, withContext } from 'recompose';
+import React, { Fragment, useEffect } from 'react'
+import PropTypes from 'prop-types'
+import { Provider, connect } from 'react-redux'
+import { compose, withContext } from 'recompose'
 import { subscribeToColorScheme } from 'is-dark'
-import {
-  Provider as ThemeProvider,
-  Block,
-  createGlobalStyle,
-  styled
-} from 'reakit';
-import baseTheme from 'reakit-theme-default';
-import 'circular-std';
+import { Provider as ThemeProvider, createGlobalStyle, styled } from 'reakit'
+import baseTheme from 'reakit-theme-default'
+import 'circular-std'
 import 'typeface-montserrat'
 import 'typeface-libre-baskerville'
 
-import Loader from './src/components/Loader';
-import breakpoints from './src/components/breakpoints';
-import store, { setTheme } from './src/modules/store';
-import { dispatch } from 'rxjs/internal/observable/pairs';
-
-const StyledBlock = styled(Block)`
-  margin: auto;
-  max-width: 95%;
-  margin-top: 3.5rem;
-  ${breakpoints.sm} {
-    max-width: 540px;
-  }
-  ${breakpoints.md} {
-    max-width: 720px;
-  }
-  ${breakpoints.lg} {
-    max-width: 960px;
-  }
-  ${breakpoints.xl} {
-    max-width: 1140px;
-  }
-`;
+import Loader from './src/components/Loader'
+import breakpoints from './src/components/breakpoints'
+import store, { setTheme } from './src/modules/store'
+import { dispatch } from 'rxjs/internal/observable/pairs'
 
 const mainTheme = {
   ...baseTheme,
-  fontFamily: `'Montserrat', sans-serif`
-};
+  fontFamily: `'Montserrat', sans-serif`,
+  accentColor: '#F74F9E'
+}
 
 const themes = {
   light: {
     ...mainTheme,
+    name: 'light',
     linkColor: '#161616',
     headerBg: '#FFFFFF',
+    footerBg: '#161616',
     bgColor: '#FFFFFF',
     black: '#161616',
     navLink: '#FFFFFF',
     catColor: '#6E6E6E',
     headerBoxShadow: 'rgba(0,0,0,0.08) 0px 3px 10px',
-    lineColor: 'rgba(0,0,0,0.1)',
+    lineColor: 'rgba(0,0,0,0.1)'
   },
   dark: {
     ...mainTheme,
+    name: 'dark',
     linkColor: '#FFFFFF',
     headerBg: '#161616',
+    footerBg: '#1f1e1e',
     bgColor: '#1f1e1e',
     black: '#FFFFFF',
     navLink: '#161616',
     catColor: '#D3D3D3',
     headerBoxShadow: 'none',
     lineColor: 'rgba(255,255,255,0.1)'
-  },
-};
+  }
+}
 
 const GlobalStyle = createGlobalStyle`
   @import url('https://use.fontawesome.com/releases/v5.7.2/css/all.css');
@@ -120,12 +102,14 @@ const GlobalStyle = createGlobalStyle`
     &:hover {
       padding-bottom: 8px;
       border-bottom: 2px solid transparent;
+      color: ${props => props.theme.accentColor};
+      transition: color 0.1s !important;
     }
   }
   .grecaptcha-badge {
     display: none !important;
   }
-`;
+`
 
 const enhancers = compose(
   withContext(
@@ -133,14 +117,14 @@ const enhancers = compose(
     ({ renderer }) => ({ renderer })
   ),
   connect(state => ({ theme: state.theme }))
-);
+)
 
-let subscribedToColorScheme = false;
+let subscribedToColorScheme = false
 
 const Main = enhancers(({ children, theme, additional, dispatch }) => {
   useEffect(() => {
     if (!subscribedToColorScheme) {
-      subscribeToColorScheme((scheme) => {
+      subscribeToColorScheme(scheme => {
         dispatch(setTheme(scheme))
       })
       subscribedToColorScheme = true
@@ -152,12 +136,12 @@ const Main = enhancers(({ children, theme, additional, dispatch }) => {
       <Fragment>
         {additional}
         <GlobalStyle />
-        <StyledBlock>{children}</StyledBlock>
+        {children}
         <Loader />
       </Fragment>
     </ThemeProvider>
   )
-});
+})
 
 const Root = (renderer, additional) => ({ element }) => (
   <Provider store={store}>
@@ -165,6 +149,6 @@ const Root = (renderer, additional) => ({ element }) => (
       {element}
     </Main>
   </Provider>
-);
+)
 
-export default Root;
+export default Root

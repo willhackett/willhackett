@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { css } from 'styled-components';
+import styled, { css } from 'styled-components'
 import { Link } from 'gatsby'
 import breakpoints from './breakpoints'
 
@@ -35,7 +35,7 @@ const linkStyles = css`
   font-weight: 700;
   margin: 0;
   &:hover {
-    opacity: 0.8;
+    color: ${props => props.theme.accentColor};
   }
   ${breakpoints.md} {
     font-size: 2rem;
@@ -43,8 +43,12 @@ const linkStyles = css`
   }
 `
 
-const Title = styled(Link)`${linkStyles}`
-const TitleExt = styled('a')`${linkStyles}`
+const Title = styled(Link)`
+  ${linkStyles}
+`
+const TitleExt = styled('a')`
+  ${linkStyles}
+`
 
 const Description = styled('p')`
   font-size: 1rem;
@@ -68,18 +72,24 @@ const imageContainerStyles = css`
   img {
     height: 10rem;
     width: 7rem;
+    min-width: 7rem;
     object-fit: cover;
     object-position: 50% 50%;
     border-radius: 6px;
     ${breakpoints.md} {
-      height: 14rem;
-      width: 10rem;  
+      min-width: 11rem;
+      height: 15rem;
+      width: 11rem;
     }
   }
 `
 
-const ImageContainerA = styled.a`${imageContainerStyles}`
-const ImageContainerLink = styled(Link)`${imageContainerStyles}`
+const ImageContainerA = styled.a`
+  ${imageContainerStyles}
+`
+const ImageContainerLink = styled(Link)`
+  ${imageContainerStyles}
+`
 
 const Article = ({ title, tag, path, description, image, postType }) => (
   <Container>
@@ -95,9 +105,7 @@ const Article = ({ title, tag, path, description, image, postType }) => (
     )}
     <Inner>
       <Tag>{tag}</Tag>
-      {postType === 'internal-link' && (
-        <Title to={path}>{title}</Title>
-      )}
+      {postType === 'internal-link' && <Title to={path}>{title}</Title>}
       {postType === 'external-link' && (
         <TitleExt href={path} rel="noopener" target="_blank">
           {title}

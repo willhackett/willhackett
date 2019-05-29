@@ -1,17 +1,18 @@
-import React from 'react';
-import { Link } from 'gatsby';
-import { styled } from 'reakit';
-import breakpoints from './breakpoints';
+import React from 'react'
+import { Link } from 'gatsby'
+import { styled } from 'reakit'
+import breakpoints from './breakpoints'
 
 const FooterContainer = styled('footer')`
   display: flex;
   margin: 4rem auto;
   flex-direction: column;
+  background: ${props => props.theme.footerBg};
   ${breakpoints.md} {
     flex-direction: row;
     justify-content: space-between;
   }
-`;
+`
 
 const FooterContent = styled('div')`
   text-align: center;
@@ -20,12 +21,12 @@ const FooterContent = styled('div')`
     text-align: left;
     margin: initial;
   }
-`;
+`
 
 const SvgLogo = styled('svg')`
   width: 2rem;
   height: 2rem;
-`;
+`
 
 const Footer = () => (
   <FooterContainer>
@@ -70,6 +71,6 @@ const Footer = () => (
       </Link>
     </FooterContent>
   </FooterContainer>
-);
+)
 
-export default Footer;
+export default Footer

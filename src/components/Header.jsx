@@ -1,13 +1,14 @@
-import React from 'react';
+import React from 'react'
 import { connect } from 'react-redux'
 import { compose } from 'recompose'
-import { InlineFlex, styled } from 'reakit';
-import { Link } from 'gatsby';
+import { InlineFlex, styled } from 'reakit'
+import { Link } from 'gatsby'
 import { withTheme } from 'styled-components'
 
 import { toggleTheme } from '../modules/store'
 import Burger from './Burger'
-import breakpoints from './breakpoints';
+import DarkmodeToggle from './DarkmodeToggle'
+import breakpoints from './breakpoints'
 import Logo from './Logo'
 import Box from './Box'
 
@@ -49,10 +50,11 @@ const MenuItem = styled(Link)`
   transition: all 0.25s;
   border-bottom: 2px solid transparent;
   padding-bottom: 8px;
+  &.active,
   &:hover {
-    opacity: 0.7;
+    color: ${props => props.theme.accentColor};
   }
-`;
+`
 
 const HeaderLogoLink = styled(Link)`
   text-decoration: none;
@@ -67,29 +69,39 @@ const Header = ({ theme, dispatch, ui }) => (
     <Box>
       <InnerHeaderContainer>
         <InlineFlex justifyContent="left">
-          <HeaderLogoLink to="/">
-            Will Hackett
-          </HeaderLogoLink>
+          <HeaderLogoLink to="/">Will Hackett</HeaderLogoLink>
         </InlineFlex>
         <InlineFlex justifyContent="center">
           <Menu>
             <li>
-              <MenuItem title="Dev" to="/tag/dev">
+              <MenuItem title="Dev" to="/tag/dev" activeClassName="active">
                 Dev
               </MenuItem>
             </li>
             <li>
-              <MenuItem title="Business" to="/tag/business">
+              <MenuItem
+                title="Business"
+                to="/tag/business"
+                activeClassName="active"
+              >
                 Business
               </MenuItem>
             </li>
             <li>
-              <MenuItem title="Experience" to="/tag/experience">
+              <MenuItem
+                title="Experience"
+                to="/tag/experience"
+                activeClassName="active"
+              >
                 Experience
               </MenuItem>
             </li>
             <li>
-              <MenuItem title="Security" to="/tag/security">
+              <MenuItem
+                title="Security"
+                to="/tag/security"
+                activeClassName="active"
+              >
                 Security
               </MenuItem>
             </li>
@@ -97,25 +109,23 @@ const Header = ({ theme, dispatch, ui }) => (
         </InlineFlex>
         <InlineFlex justifyContent="right">
           <Burger />
-          {/* <Menu>
+          <Menu>
             <li>
-              <button onClick={() => dispatch(toggleTheme)}>
-                {ui === 'dark' ? 'Light' : 'Dark'}
-              </button>
+              <DarkmodeToggle />
             </li>
             <li>
               <MenuItem title="About" to="/about">
                 About
               </MenuItem>
             </li>
-          </Menu> */}
+          </Menu>
         </InlineFlex>
       </InnerHeaderContainer>
     </Box>
   </HeaderContainer>
-);
+)
 
 export default compose(
   withTheme,
-  connect(state => ({ ui: state.theme })),
+  connect(state => ({ ui: state.theme }))
 )(Header)
