@@ -152,11 +152,17 @@ const Homepage = ({
         {latest.slice(2).map(({ node: { id, frontmatter: post } }) =>
           post.postType === 'external-link' ? (
             <ArchiveLink key={id} href={post.path}>
-              <span>{post.title}</span> <small>{post.date}</small>
+              <span>{post.title}</span>{' '}
+              <small>
+                <time datetime={post.isoDate}>{post.date}</time>
+              </small>
             </ArchiveLink>
           ) : (
             <ArchiveIntLink key={id} to={post.path}>
-              <span>{post.title}</span> <small>{post.date}</small>
+              <span>{post.title}</span>{' '}
+              <small>
+                <time datetime={post.isoDate}>{post.date}</time>
+              </small>
             </ArchiveIntLink>
           )
         )}

@@ -84,6 +84,35 @@ const imageContainerStyles = css`
   }
 `
 
+const Extras = styled.div`
+  display: flex;
+  margin-top: 0.8rem;
+  justify-content: space-between;
+`
+
+const Date = styled.time`
+  font-size: 0.8rem;
+  text-transform: uppercase;
+`
+
+const Share = styled.button`
+  ${props =>
+    props.disabled &&
+    `
+    display: none;
+  `}
+  border: none;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  background: none;
+  outline: none;
+  transform: color 0.25s;
+  cursor: pointer;
+  &:hover {
+    color: ${props => props.theme.accentColor};
+  }
+`
+
 const ImageContainerA = styled.a`
   ${imageContainerStyles}
 `
@@ -91,29 +120,54 @@ const ImageContainerLink = styled(Link)`
   ${imageContainerStyles}
 `
 
-const Article = ({ title, tag, path, description, image, postType }) => (
-  <Container>
-    {postType === 'internal-link' && (
-      <ImageContainerLink to={path}>
-        <img src={image && image.publicURL} alt={title} />
-      </ImageContainerLink>
-    )}
-    {postType === 'external-link' && (
-      <ImageContainerA href={path} rel="noopener" target="_blank">
-        <img src={image && image.publicURL} alt={title} />
-      </ImageContainerA>
-    )}
-    <Inner>
-      <Tag>{tag}</Tag>
-      {postType === 'internal-link' && <Title to={path}>{title}</Title>}
-      {postType === 'external-link' && (
-        <TitleExt href={path} rel="noopener" target="_blank">
-          {title}
-        </TitleExt>
+const Article = ({
+  title,
+  tag,
+  path,
+  date,
+  description,
+  image,
+  postType,
+  isoDate
+}) => {
+  const sharePossible = typeof navigator.share === 'function'
+
+  const makeShare = () => {
+    navigator.share({
+      title: title,
+      text: description,
+      url: path.indexOf('/') === 0 ? window.location.origin + path : path
+    })
+  }
+
+  return (
+    <Container>
+      {postType === 'internal-link' && (
+        <ImageContainerLink to={path}>
+          <img src={image && image.publicURL} alt={title} />
+        </ImageContainerLink>
       )}
-      <Description>{description}</Description>
-    </Inner>
-  </Container>
-)
+      {postType === 'external-link' && (
+        <ImageContainerA href={path} rel="noopener" target="_blank">
+          <img src={image && image.publicURL} alt={title} />
+        </ImageContainerA>
+      )}
+      <Inner>
+        <Tag>{tag}</Tag>
+        {postType === 'internal-link' && <Title to={path}>{title}</Title>}
+        {postType === 'external-link' && (
+          <TitleExt href={path} rel="noopener" target="_blank">
+            {title}
+          </TitleExt>
+        )}
+        <Description>{description}</Description>
+        <Extras>
+          <Date datetime={isoDate}>{date}</Date>
+          {sharePossible && <Share onClick={makeShare}>Share</Share>}
+        </Extras>
+      </Inner>
+    </Container>
+  )
+}
 
 export default Article
