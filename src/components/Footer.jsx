@@ -74,6 +74,10 @@ const SocialLinks = styled.div`
   font-size: 2rem;
   color: white;
   margin: 1rem 0;
+  justify-content: center;
+  ${breakpoints.md} {
+    justify-content: flex-start;
+  }
 `
 
 const StyledSocialLink = styled.a`
