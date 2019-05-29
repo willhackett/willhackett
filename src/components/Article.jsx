@@ -130,7 +130,8 @@ const Article = ({
   postType,
   isoDate
 }) => {
-  const sharePossible = typeof navigator.share === 'function'
+  const sharePossible =
+    typeof window !== 'undefined' && typeof navigator.share === 'function'
 
   const makeShare = () => {
     navigator.share({
