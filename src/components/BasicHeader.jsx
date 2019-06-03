@@ -1,7 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Link } from 'gatsby';
-import { FaChevronLeft } from 'react-icons/fa';
+import React from 'react'
+import styled from 'styled-components'
+import { Link } from 'gatsby'
+import { FaChevronLeft } from 'react-icons/fa'
 
 const HeaderContainer = styled.header`
   position: fixed;
@@ -13,7 +13,7 @@ const HeaderContainer = styled.header`
   display: flex;
   align-items: center;
   margin: 0.5rem;
-`;
+`
 
 const HeaderLogoLink = styled(Link)`
   color: ${props => props.color || '#FFFFFF'}
@@ -22,15 +22,15 @@ const HeaderLogoLink = styled(Link)`
   margin: 0;
   line-height: 1.4rem;
   font-size: 1.4rem;
-`;
+`
 
 const BasicHeader = ({ color }) => (
   <HeaderContainer>
     <HeaderLogoLink to="/" color={color}>
-      <FaChevronLeft />
+      <FaChevronLeft size="1rem" />
       Will Hackett
     </HeaderLogoLink>
   </HeaderContainer>
-);
+)
 
-export default BasicHeader;
+export default BasicHeader

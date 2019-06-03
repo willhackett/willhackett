@@ -84,6 +84,9 @@ const ArchiveLinkCss = css`
     text-transform: uppercase;
     color: ${props => props.theme.linkColor};
     white-space: nowrap;
+    time {
+      color: ${props => props.theme.linkColor};
+    }
   }
   span {
     line-height: 1.6rem;

@@ -113,11 +113,6 @@ const Header = ({ theme, dispatch, ui }) => (
             <li>
               <DarkmodeToggle />
             </li>
-            <li>
-              <MenuItem title="About" to="/about">
-                About
-              </MenuItem>
-            </li>
           </Menu>
         </InlineFlex>
       </InnerHeaderContainer>

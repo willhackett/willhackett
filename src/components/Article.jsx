@@ -93,6 +93,7 @@ const Extras = styled.div`
 const Date = styled.time`
   font-size: 0.8rem;
   text-transform: uppercase;
+  color: ${props => props.theme.linkColor};
 `
 
 const Share = styled.button`
@@ -101,6 +102,7 @@ const Share = styled.button`
     `
     display: none;
   `}
+  color: ${props => props.theme.linkColor};
   border: none;
   font-size: 0.8rem;
   text-transform: uppercase;

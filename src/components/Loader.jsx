@@ -8,8 +8,8 @@ const Cover = styled('div')`
   display: flex;
   position: fixed;
   z-index: 2;
-  background: ${props => props.theme.linkColor};
-  color: ${props => props.theme.bgColor};
+  background: #161616;
+  color: white;
   align-items: center;
   justify-content: center;
   bottom: 0;
