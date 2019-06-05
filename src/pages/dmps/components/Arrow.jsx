@@ -28,3 +28,5 @@ export const UpArrow = () => (
     <FiChevronUp />
   </Arrow>
 )
+
+export default UpArrow
