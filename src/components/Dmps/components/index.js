@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import breakpoints from '../../../components/breakpoints'
+import breakpoints from '../../breakpoints'
 
 export const BigText = styled.p`
   font-size: 3rem;

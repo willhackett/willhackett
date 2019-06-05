@@ -4,10 +4,10 @@ import styled from 'styled-components'
 import BasicHeader from '../../components/BasicHeader'
 import { useInterval } from '../../modules/effects'
 
-import Logo from './components/Logo'
-import { BigText, Stack, BigInput } from './components'
-import SlideContainer from './components/SlideContainer'
-import { DownArrow, UpArrow } from './components/Arrow'
+import Logo from '../../components/Dmps/components/Logo'
+import { BigText, Stack, BigInput } from '../../components/Dmps/components'
+import SlideContainer from '../../components/Dmps/components/SlideContainer'
+import { DownArrow, UpArrow } from '../../components/Dmps/components/Arrow'
 
 const Container = styled.main`
   display: flex;
