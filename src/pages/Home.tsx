@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import Helmet from 'react-helmet';
 import { Heading, Box, Text } from 'grommet';
 import { visitor } from '../modules/ua';
 
@@ -50,6 +51,13 @@ const Home = () => (
     {useEffect(() => {
       visitor.pageview('/', window.location.origin, 'Homepage').send();
     }, [])}
+    <Helmet>
+      <title>Will Hackett</title>
+      <meta
+        title="description"
+        content="Software engineer. Founder of OpenClub. Director at Firelabs. Engineer at SEEK."
+      />
+    </Helmet>
     <Heading a11yTitle="website owner" size="small">
       Will Hackett
     </Heading>
