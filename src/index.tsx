@@ -1,22 +1,22 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { BrowserRouter } from "react-router-dom";
-import { ThemeProvider } from "styled-components";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 
-import Router from "./Router";
-import theme, { GlobalStyle } from "./theme";
-import * as serviceWorker from "./serviceWorker";
+import Router from './Router';
+import theme, { GlobalStyle } from './theme';
+import { Grommet } from 'grommet';
+import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-  <ThemeProvider theme={theme}>
+  <Grommet theme={theme}>
     <>
       <GlobalStyle />
       <BrowserRouter>
         <Router />
       </BrowserRouter>
     </>
-  </ThemeProvider>,
-  document.getElementById("root")
+  </Grommet>,
+  document.getElementById('root')
 );
 
 serviceWorker.register();

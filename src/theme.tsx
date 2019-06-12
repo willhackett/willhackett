@@ -1,15 +1,35 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
+import styledNormalize from 'styled-normalize';
+
+import 'typeface-montserrat';
 
 export const GlobalStyle = createGlobalStyle`
+  ${styledNormalize};
 
+  html, :root {
+    font-size: 14px;
+  }
+
+  #root {
+    width: 100%;
+    min-height: 100vh;
+  }
+
+  body {
+    padding: 0;
+  }
+
+  a {
+    color: black;
+  }
 `;
 
 export default {
-  breakpoints: {
-    xs: 0,
-    sm: 576,
-    md: 768,
-    lg: 992,
-    xl: 1200
+  global: {
+    font: {
+      family: 'Montserrat',
+      size: '14px',
+      height: '20px'
+    }
   }
 };
