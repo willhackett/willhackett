@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Heading, Box, Text } from 'grommet';
+import { visitor } from '../modules/ua';
 
 const links = {
   opensource: [
@@ -46,6 +47,9 @@ const links = {
 
 const Home = () => (
   <Box pad="large" a11yTitle="main content area" animation="fadeIn">
+    {useEffect(() => {
+      visitor.pageview('/', window.location.origin, 'Homepage').send();
+    }, [])}
     <Heading a11yTitle="website owner" size="small">
       Will Hackett
     </Heading>

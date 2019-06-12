@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
+import { Grommet } from 'grommet';
 
 import Router from './Router';
 import theme, { GlobalStyle } from './theme';
-import { Grommet } from 'grommet';
+
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(

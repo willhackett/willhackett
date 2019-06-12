@@ -9,6 +9,7 @@
     "@types/react-dom": "16.8.4",
     "@types/react-router-dom": "^4.3.3",
     "@types/styled-components": "^4.1.16",
+    "@types/universal-analytics": "^0.4.2",
     "grommet": "^2.7.1",
     "husky": "^2.4.1",
     "lint-staged": "^8.2.0",
@@ -23,7 +24,8 @@
     "styled-components-grid": "^2.2.2",
     "styled-normalize": "^8.0.6",
     "typeface-montserrat": "^0.0.54",
-    "typescript": "3.5.1"
+    "typescript": "3.5.1",
+    "universal-analytics": "^0.4.20"
   },
   "scripts": {
     "start": "react-scripts start",
