@@ -23,19 +23,14 @@ const links = {
   ],
   companies: [
     {
+      title: 'SEEK',
+      url: 'https://www.seek.com.au/',
+      position: 'Senior Software Engineer'
+    },
+    {
       title: 'OpenClub',
       url: 'https://www.openclub.com.au/',
       position: 'Founder'
-    },
-    {
-      title: 'Firelabs',
-      url: 'https://www.firelabs.com.au',
-      position: 'Director'
-    },
-    {
-      title: 'SEEK',
-      url: 'https://www.seek.com.au/',
-      position: 'Senior Engineer'
     }
   ],
   social: [
@@ -55,7 +50,7 @@ const Home = () => (
       <title>Will Hackett</title>
       <meta
         title="description"
-        content="Software engineer. Founder of OpenClub. Director at Firelabs. Engineer at SEEK."
+        content="Senior Software Engineer at SEEK. Founder at OpenClub."
       />
     </Helmet>
     <Heading a11yTitle="website owner" size="small">
