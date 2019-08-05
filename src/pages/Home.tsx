@@ -23,6 +23,11 @@ const links = {
   ],
   companies: [
     {
+      title: 'Firelabs',
+      url: 'https://www.firelabs.com.au/',
+      position: 'Director'
+    },
+    {
       title: 'SEEK',
       url: 'https://www.seek.com.au/',
       position: 'Senior Software Engineer'
@@ -35,7 +40,6 @@ const links = {
   ],
   social: [
     { title: 'github', url: 'https://www.github.com/willhackett' },
-    { title: 'instagram', url: 'https://www.instagram.com/willhackett' },
     { title: 'linkedin', url: 'https://www.linkedin.com/in/willhackett' },
     { title: 'medium', url: 'https://www.medium.com/@willhackett' }
   ]
@@ -48,10 +52,7 @@ const Home = () => (
     }, [])}
     <Helmet>
       <title>Will Hackett</title>
-      <meta
-        title="description"
-        content="Senior Software Engineer at SEEK. Founder at OpenClub."
-      />
+      <meta title="description" content="Hello, Googler — I'm Will." />
     </Helmet>
     <Heading a11yTitle="website owner" size="small">
       Will Hackett
