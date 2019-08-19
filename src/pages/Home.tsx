@@ -73,8 +73,7 @@ const Home = () => (
       <Text key={link.title}>
         <a href={link.url} target="_blank" rel="noopener noreferrer">
           {link.title}
-        </a>{' '}
-        <small>{link.position}</small>
+        </a>
       </Text>
     ))}
     <Heading level="2" size="small" a11yTitle="links to open source libraries">
