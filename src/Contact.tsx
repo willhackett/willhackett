@@ -33,6 +33,16 @@ const Current = () => (
           LinkedIn
         </Link>
       </li>
+      <li>
+        <Link title="PGP Public Key" href="/pgp">
+          PGP Public Key
+        </Link>
+      </li>
+      <li>
+        <Link title="Keybase" href="https://keybase.io/willhackett">
+          Keybase
+        </Link>
+      </li>
     </ul>
   </Root>
 );
