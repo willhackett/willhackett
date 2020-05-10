@@ -1,23 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
-import { Grommet } from 'grommet';
+import { ThemeProvider } from 'styled-components';
 
-import Router from './Router';
 import theme, { GlobalStyle } from './theme';
+import Home from './Home';
+import Container from './Container';
 
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-  <Grommet theme={theme}>
-    <>
+  <ThemeProvider theme={theme}>
+    <Container>
       <GlobalStyle />
-      <BrowserRouter>
-        <Router />
-      </BrowserRouter>
-    </>
-  </Grommet>,
+      <Home />
+    </Container>
+  </ThemeProvider>,
   document.getElementById('root')
 );
 
-serviceWorker.unregister();
+if (window.location.hostname === 'localhost') {
+  serviceWorker.unregister();
+} else {
+  serviceWorker.register();
+}

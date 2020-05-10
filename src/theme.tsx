@@ -6,6 +6,8 @@ import 'typeface-montserrat';
 export const GlobalStyle = createGlobalStyle`
   ${styledNormalize};
 
+  @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;900&display=swap');
+
   html, :root {
     font-size: 14px;
   }
@@ -17,17 +19,26 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     padding: 0;
+    background: black;
+    color: white;
+    font-family: 'Source Sans Pro', sans-serif;
+    front-weight: 400;
   }
 
   a {
-    color: black;
+    color: white;
+    font-family: 'Source Sans Pro', sans-serif;
+  }
+
+  h1 {
+    font-weight: 900;
   }
 `;
 
 export default {
   global: {
     font: {
-      family: 'Montserrat',
+      family: 'Source Sans Pro',
       size: '14px',
       height: '20px'
     }
