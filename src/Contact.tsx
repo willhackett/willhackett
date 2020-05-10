@@ -34,6 +34,11 @@ const Current = () => (
         </Link>
       </li>
       <li>
+        <Link title="GitHub" href="https://www.github.com/willhackett/">
+          GitHub
+        </Link>
+      </li>
+      <li>
         <Link title="PGP Public Key" href="/pgp">
           PGP Public Key
         </Link>
