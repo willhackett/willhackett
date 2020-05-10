@@ -7,6 +7,9 @@ import Contact from './Contact';
 import Current from './Current';
 import Name from './Name';
 
+import profile from './profile.jpeg';
+import icon from './icon.png';
+
 const Home = () => {
   useEffect(() => {
     visitor.pageview('/').send();
@@ -26,9 +29,13 @@ const Home = () => {
         <meta property="og:type" content="profile" />
         <meta property="og:title" content="Will Hackett" />
         <meta property="og:url" content="https://www.willhackett.com/" />
-        <meta property="og:image" content="imageLink" />
+        <meta property="og:image" content={profile} />
         <meta property="profile:first_name" content="Will" />
         <meta property="profile:last_name" content="Hackett" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href={icon} type="image/png" />
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel="icon" href={icon} type="image/png" />
       </Helmet>
       <Name />
       <div>
