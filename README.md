@@ -1,9 +1,7 @@
 ### Hi there 👋
 
-🔭 I’m currently working at [Blinq](https://www.blinq.me/)
+I'm Will, a software engineer based in Melbourne, Australia. I'm currently working at [Blinq](https://blinq.me/?rel=willhackett).
 
-🤔 [We're hiring](https://blinq-me.notion.site/blinq-me/Blinq-is-hiring-77cd347b088c49e3a8b140b0f785697c)
-
-💬 [Ask me anything](https://github.com/willhackett/willhackett/discussions)
-
-📫 [How to reach me](https://www.willhackett.com/contact)
+[📝 Notes](https://notes.willhackett.com)
+[📱 Contact](https://willhackett.com/contact)
+[👨‍💻 Work at Blinq)(https://blinq-me.notion.site/blinq-me/Blinq-is-hiring-77cd347b088c49e3a8b140b0f785697c)
