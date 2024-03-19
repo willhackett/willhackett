@@ -1,6 +1,6 @@
 ### Hi there 👋
 
-I'm Will, a software engineer based in Melbourne, Australia. I'm currently working at [Blinq](https://blinq.me/?rel=willhackett).
+I'm Will, a software engineer based in Melbourne, Australia. I'm currently working on [Hey Jamie, an AI virtual assistant](https://heyjamie.ai/?rel=willhackett).
 
 
 [📝 Notes](https://notes.willhackett.com)
